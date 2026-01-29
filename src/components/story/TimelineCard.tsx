@@ -13,14 +13,14 @@ export default function TimelineCard({ item }: TimelineCardProps) {
   const bgClass = isEducation ? 'bg-cyan-900/20' : 'bg-purple-900/20';
 
   return (
-    <AestheticGlassBox className="p-8">
+    <AestheticGlassBox className="p-5 sm:p-6 md:p-8">
       <div className="relative z-10">
         <span
           className={`${colorClass} text-sm font-bold tracking-widest ${bgClass} px-2 py-1 rounded`}
         >
           {item.period}
         </span>
-        <h4 className="text-xl font-bold mt-3">{item.title}</h4>
+        <h4 className="text-lg sm:text-xl font-bold mt-3">{item.title}</h4>
         <p className="text-white/60 text-sm font-medium">{item.subtitle}</p>
       </div>
     </AestheticGlassBox>

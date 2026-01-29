@@ -5,17 +5,17 @@ import AestheticGlassBox from '@/components/ui/AestheticGlassBox';
 
 export default function ContactPage() {
   return (
-    <section className="max-w-xl mx-auto text-center animate-fade-in-up pt-10">
-      <AestheticGlassBox className="p-10 space-y-8 relative">
+    <section className="max-w-full sm:max-w-md md:max-w-lg lg:max-w-xl mx-auto text-center animate-fade-in-up pt-6 sm:pt-8 md:pt-10 px-2 sm:px-0">
+      <AestheticGlassBox className="p-5 sm:p-7 md:p-10 space-y-6 sm:space-y-8 relative">
         <div className="relative z-10">
           {/* Header */}
-          <h1 className="text-4xl font-bold">Let&apos;s Create Together</h1>
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold">Let&apos;s Create Together</h1>
           <p className="text-white/60">
             Have a project that needs a touch of liquid geometry?
           </p>
 
           {/* Form */}
-          <form className="space-y-4 text-left">
+          <form className="space-y-3 sm:space-y-4 text-left mt-4 sm:mt-6">
             <input
               type="text"
               name="name"

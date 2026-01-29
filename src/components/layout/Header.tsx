@@ -21,7 +21,7 @@ export default function Header() {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 p-4 md:p-6 flex justify-center pointer-events-none">
+    <header className="fixed top-0 left-0 right-0 z-50 p-3 sm:p-4 md:p-5 lg:p-6 flex justify-center pointer-events-none">
       <div
         className="w-full max-w-7xl flex items-center justify-between px-6 py-4 rounded-2xl pointer-events-auto"
         style={{
@@ -46,7 +46,7 @@ export default function Header() {
         </Link>
 
         {/* Central Nav */}
-        <nav className="flex items-center gap-1 md:gap-4">
+        <nav className="flex items-center gap-1 sm:gap-2 md:gap-3 lg:gap-4">
           {navItems.map((item) => {
             const Icon = item.icon;
             const active = isActive(item.href);

@@ -31,11 +31,11 @@ export default function ToolsGrid() {
       </div>
 
       {/* Tools Grid */}
-      <div className="flex flex-wrap justify-center gap-4 opacity-90">
+      <div className="flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4 opacity-90">
         {tools.map((tool) => {
           const colors = getColorClasses(tool.level);
           return (
-            <div key={tool.name} className="group flex flex-col items-center w-48">
+            <div key={tool.name} className="group flex flex-col items-center w-36 sm:w-40 md:w-44 lg:w-48">
               {/* Tool Card */}
               <div className="w-full h-14 rounded-2xl bg-[#111] border border-white/10 hover:border-cyan-500/30 hover:bg-white/5 transition-all duration-300 flex items-center px-4 gap-3 cursor-default hover:shadow-lg hover:shadow-cyan-500/10 z-10">
                 <div
