@@ -1,0 +1,76 @@
+'use client';
+
+import { Github, Linkedin, Mail } from 'lucide-react';
+import AestheticGlassBox from '@/components/ui/AestheticGlassBox';
+
+export default function ContactPage() {
+  return (
+    <section className="max-w-xl mx-auto text-center animate-fade-in-up pt-10">
+      <AestheticGlassBox className="p-10 space-y-8 relative">
+        <div className="relative z-10">
+          {/* Header */}
+          <h1 className="text-4xl font-bold">Let&apos;s Create Together</h1>
+          <p className="text-white/60">
+            Have a project that needs a touch of liquid geometry?
+          </p>
+
+          {/* Form */}
+          <form className="space-y-4 text-left">
+            <input
+              type="text"
+              name="name"
+              className="w-full bg-white/5 border border-white/10 rounded-lg p-3 text-white focus:outline-none focus:border-cyan-400 transition-colors placeholder:text-white/40"
+              placeholder="Name"
+            />
+            <input
+              type="email"
+              name="email"
+              className="w-full bg-white/5 border border-white/10 rounded-lg p-3 text-white focus:outline-none focus:border-cyan-400 transition-colors placeholder:text-white/40"
+              placeholder="Email"
+            />
+            <textarea
+              name="message"
+              className="w-full bg-white/5 border border-white/10 rounded-lg p-3 text-white focus:outline-none focus:border-cyan-400 transition-colors h-32 resize-none placeholder:text-white/40"
+              placeholder="Message"
+            />
+            <button
+              type="submit"
+              className="w-full py-4 bg-gradient-to-r from-cyan-600 to-blue-600 rounded-lg font-bold hover:shadow-lg hover:shadow-cyan-500/30 transition-all"
+            >
+              Send Message
+            </button>
+          </form>
+
+          {/* Social Links */}
+          <div className="flex justify-center gap-6 pt-6 border-t border-white/10">
+            <a
+              href="https://github.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/50 hover:text-white cursor-pointer transition-colors"
+              aria-label="GitHub"
+            >
+              <Github className="w-6 h-6" />
+            </a>
+            <a
+              href="https://linkedin.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/50 hover:text-white cursor-pointer transition-colors"
+              aria-label="LinkedIn"
+            >
+              <Linkedin className="w-6 h-6" />
+            </a>
+            <a
+              href="mailto:hello@example.com"
+              className="text-white/50 hover:text-white cursor-pointer transition-colors"
+              aria-label="Email"
+            >
+              <Mail className="w-6 h-6" />
+            </a>
+          </div>
+        </div>
+      </AestheticGlassBox>
+    </section>
+  );
+}
