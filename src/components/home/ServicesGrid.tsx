@@ -26,11 +26,11 @@ const services = [
 
 export default function ServicesGrid() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-6xl pt-10 text-left">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 w-full max-w-6xl pt-6 sm:pt-8 md:pt-10 text-left">
       {services.map((service) => {
         const Icon = service.icon;
         return (
-          <AestheticGlassBox key={service.title} className="group p-8">
+          <AestheticGlassBox key={service.title} className="group p-5 sm:p-6 md:p-8">
             <div className="relative z-10">
               <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center mb-4 text-cyan-400">
                 <Icon className="w-6 h-6" />

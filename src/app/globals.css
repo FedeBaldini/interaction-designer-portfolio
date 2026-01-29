@@ -120,30 +120,62 @@
 
 /* --- PROSE CUSTOM --- */
 .prose-custom p {
-  margin-bottom: 1.5em;
-  line-height: 1.8;
+  margin-bottom: 1.25em;
+  line-height: 1.7;
   color: rgba(255,255,255,0.8);
-  font-size: 1.1rem;
-  text-align: justify;
+  font-size: 0.95rem;
+  text-align: left;
 }
 
 .prose-custom h3 {
-  font-size: 1.8rem;
+  font-size: 1.3rem;
   font-weight: 700;
   color: white;
   margin-top: 0;
-  margin-bottom: 1em;
+  margin-bottom: 0.75em;
   display: inline-block;
   border-bottom: 2px solid #06b6d4;
   padding-bottom: 0.2em;
 }
 
 .inline-img {
-  border-radius: 1rem;
+  border-radius: 0.75rem;
   border: 1px solid rgba(255,255,255,0.1);
   box-shadow: 0 10px 30px rgba(0,0,0,0.3);
   width: 100%;
   display: block;
+}
+
+/* Tablet and up */
+@media (min-width: 640px) {
+  .prose-custom p {
+    font-size: 1rem;
+    line-height: 1.75;
+    text-align: justify;
+  }
+  .prose-custom h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.85em;
+  }
+  .inline-img {
+    border-radius: 0.875rem;
+  }
+}
+
+/* Desktop and up */
+@media (min-width: 768px) {
+  .prose-custom p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 1.5em;
+  }
+  .prose-custom h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1em;
+  }
+  .inline-img {
+    border-radius: 1rem;
+  }
 }
 
 /* --- SCROLLBAR --- */
@@ -163,15 +195,29 @@
   top: 50% !important;
   left: 50% !important;
   transform: translate(-50%, -50%) !important;
-  width: 90vw !important;
+  width: 95vw !important;
   max-width: 1400px !important;
   height: auto !important;
   aspect-ratio: 16/9;
   z-index: 9999 !important;
-  border-radius: 1rem !important;
+  border-radius: 0.5rem !important;
   box-shadow: 0 0 100px rgba(0,0,0,0.9) !important;
   border: 1px solid rgba(255,255,255,0.2) !important;
   cursor: zoom-out !important;
+}
+
+@media (min-width: 640px) {
+  .video-expanded {
+    width: 92vw !important;
+    border-radius: 0.75rem !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .video-expanded {
+    width: 90vw !important;
+    border-radius: 1rem !important;
+  }
 }
 
 /* --- BASE BODY --- */

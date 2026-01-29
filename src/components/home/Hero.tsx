@@ -7,16 +7,16 @@ export default function Hero() {
   return (
     <div className="relative z-10 max-w-4xl mx-auto pt-10 text-center">
       {/* Status Badge */}
-      <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full border border-cyan-500/30 bg-cyan-900/10 backdrop-blur-sm shadow-[0_0_15px_rgba(6,182,212,0.1)]">
+      <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 mb-4 sm:mb-6 rounded-full border border-cyan-500/30 bg-cyan-900/10 backdrop-blur-sm shadow-[0_0_15px_rgba(6,182,212,0.1)]">
         <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
-        <span className="text-cyan-300 text-sm tracking-widest uppercase font-medium">
+        <span className="text-cyan-300 text-xs sm:text-sm tracking-widest uppercase font-medium">
           Available for freelance
         </span>
       </div>
 
       {/* Main Title */}
       <div className="relative">
-        <h1 className="text-7xl md:text-9xl font-bold tracking-tighter leading-none mb-12 relative z-10 uppercase">
+        <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold tracking-tighter leading-none mb-8 sm:mb-10 md:mb-12 relative z-10 uppercase">
           <span className="block text-transparent bg-clip-text bg-gradient-to-b from-white to-white/40 drop-shadow-2xl mb-2">
             INTERACTION
           </span>
@@ -27,14 +27,14 @@ export default function Hero() {
       </div>
 
       {/* Subtitle */}
-      <p className="text-xl md:text-2xl text-white/70 max-w-2xl mx-auto leading-relaxed">
+      <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/70 max-w-2xl mx-auto leading-relaxed px-2 sm:px-0">
         Blending <span className="text-cyan-300 font-semibold">Geometric Precision</span> with{' '}
         <span className="text-purple-300 font-semibold">Liquid Motion</span> to craft immersive
         digital experiences.
       </p>
 
       {/* CTA Buttons */}
-      <div className="flex flex-col sm:flex-row gap-4 justify-center mt-10">
+      <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mt-8 sm:mt-10 px-4 sm:px-0">
         <Link
           href="/projects"
           className="group relative px-8 py-4 bg-white text-black rounded-full font-bold overflow-hidden transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(255,255,255,0.3)] cursor-pointer z-50"

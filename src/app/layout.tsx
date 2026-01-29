@@ -27,7 +27,7 @@ export default function RootLayout({
       <body className="bg-[#050505] text-white font-sans overflow-x-hidden selection:bg-cyan-500 selection:text-black relative">
         <Background />
         <Header />
-        <main className="relative z-10 container mx-auto px-4 py-32 min-h-screen flex flex-col items-center">
+        <main className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-24 md:py-28 lg:py-32 min-h-screen flex flex-col items-center">
           <div className="w-full max-w-7xl">{children}</div>
         </main>
         <ScrollToTop />

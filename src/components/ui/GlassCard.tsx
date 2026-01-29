@@ -17,7 +17,7 @@ export default function GlassCard({
 }: GlassCardProps) {
   return (
     <div
-      className={`glass-card ${interactive ? 'interactive cursor-pointer' : ''} rounded-3xl ${className}`}
+      className={`glass-card ${interactive ? 'interactive cursor-pointer' : ''} rounded-2xl sm:rounded-3xl ${className}`}
       onClick={onClick}
     >
       {children}
