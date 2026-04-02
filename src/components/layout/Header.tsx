@@ -36,7 +36,7 @@ export default function Header() {
         }}
       >
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-3 cursor-pointer group" aria-label="Home — Interaction Designer">
+        <Link href="/" className="flex items-center gap-3 cursor-pointer group rounded-lg" aria-label="Home — Interaction Designer">
           <div className="w-10 h-10 bg-gradient-to-tr from-cyan-400 to-purple-500 rounded-lg flex items-center justify-center transform group-hover:rotate-12 transition-transform">
             <Hexagon className="text-black w-4 h-4" />
           </div>

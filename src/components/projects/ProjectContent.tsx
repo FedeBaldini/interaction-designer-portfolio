@@ -35,7 +35,7 @@ export default function ProjectContent({ project }: ProjectContentProps) {
       >
         <Link
           href="/projects"
-          className="inline-flex items-center gap-2 text-white/60 hover:text-white mb-6 transition-colors"
+          className="inline-flex items-center gap-2 text-white/60 hover:text-white mb-6 transition-colors rounded-lg"
         >
           <ArrowLeft className="w-4 h-4" />
           Back to Projects
