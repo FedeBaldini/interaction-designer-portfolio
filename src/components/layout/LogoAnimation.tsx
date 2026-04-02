@@ -7,7 +7,6 @@ export default function LogoAnimation() {
   const [phase, setPhase] = useState<'visible' | 'fading' | 'done'>('visible');
 
   useEffect(() => {
-    // Skip animation for users who prefer reduced motion
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReducedMotion) {
       setPhase('done');
@@ -27,13 +26,13 @@ export default function LogoAnimation() {
 
   return (
     <div
-      className={`fixed inset-0 z-[100] flex items-center justify-center bg-[#050505] transition-opacity duration-300 ${
+      className={`fixed inset-0 z-[100] flex items-center justify-center bg-[#0a0a0a] transition-opacity duration-300 ${
         phase === 'fading' ? 'opacity-0 pointer-events-none' : 'opacity-100'
       }`}
     >
       <div className="logo-intro-wrapper">
         <div className="logo-intro-icon">
-          <Hexagon className="text-black w-8 h-8" strokeWidth={2.5} />
+          <Hexagon className="text-[#00E5CC] w-8 h-8" strokeWidth={2.5} />
         </div>
         <div className="logo-intro-text-mask">
           <span className="logo-intro-text">
@@ -52,14 +51,14 @@ export default function LogoAnimation() {
         .logo-intro-icon {
           width: 80px;
           height: 80px;
-          background: linear-gradient(to top right, #22d3ee, #a855f7);
-          border-radius: 16px;
+          background: #0a0a0a;
+          border: 2px solid #00E5CC;
+          box-shadow: 4px 4px 0 #FF2D6B;
           display: flex;
           align-items: center;
           justify-content: center;
           flex-shrink: 0;
-          animation: iconEntry 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards,
-                     iconPulse 2.5s ease-out forwards;
+          animation: iconEntry 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
           transform: scale(0) rotate(-180deg);
           opacity: 0;
         }
@@ -75,13 +74,14 @@ export default function LogoAnimation() {
           white-space: nowrap;
           font-size: 32px;
           font-weight: 700;
+          font-family: 'Syne', sans-serif;
           letter-spacing: 0.1em;
           text-transform: uppercase;
-          color: white;
+          color: #F5F0E8;
         }
 
         .logo-intro-text-accent {
-          color: #22d3ee;
+          color: #00E5CC;
         }
 
         @keyframes iconEntry {
@@ -105,28 +105,9 @@ export default function LogoAnimation() {
           }
         }
 
-        @keyframes iconPulse {
-          0% {
-            box-shadow: 0 0 0px rgba(139, 92, 246, 0);
-          }
-          40% {
-            box-shadow: 0 0 60px rgba(139, 92, 246, 0.6), 0 0 120px rgba(34, 211, 238, 0.3);
-          }
-          70% {
-            box-shadow: 0 0 40px rgba(139, 92, 246, 0.4), 0 0 80px rgba(34, 211, 238, 0.2);
-          }
-          100% {
-            box-shadow: 0 0 20px rgba(139, 92, 246, 0.3), 0 0 40px rgba(34, 211, 238, 0.15);
-          }
-        }
-
         @keyframes revealText {
-          0% {
-            max-width: 0;
-          }
-          100% {
-            max-width: 600px;
-          }
+          0% { max-width: 0; }
+          100% { max-width: 600px; }
         }
       `}</style>
     </div>

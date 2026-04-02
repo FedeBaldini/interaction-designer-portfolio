@@ -1,7 +1,6 @@
 'use client';
 
 import { Palette, Monitor, Zap } from 'lucide-react';
-import AestheticGlassBox from '@/components/ui/AestheticGlassBox';
 
 const services = [
   {
@@ -9,18 +8,21 @@ const services = [
     title: 'Visual Design',
     description:
       'Crafting pixel-perfect UIs with a focus on typography, color theory, and geometric harmony.',
+    color: '#00E5CC',
   },
   {
     icon: Monitor,
     title: 'Interaction',
     description:
       'Bringing static designs to life with fluid animations, micro-interactions, and React logic.',
+    color: '#FF2D6B',
   },
   {
     icon: Zap,
     title: 'Brand Identity',
     description:
       'Forging memorable digital brands that tell a story through logo design and visual systems.',
+    color: '#F5F0E8',
   },
 ];
 
@@ -30,15 +32,22 @@ export default function ServicesGrid() {
       {services.map((service) => {
         const Icon = service.icon;
         return (
-          <AestheticGlassBox key={service.title} className="group p-5 sm:p-6 md:p-8">
-            <div className="relative z-10">
-              <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center mb-4 text-cyan-400">
-                <Icon className="w-6 h-6" />
-              </div>
-              <h3 className="text-xl font-bold mb-2 text-white">{service.title}</h3>
-              <p className="text-white/80 text-sm leading-relaxed">{service.description}</p>
+          <div
+            key={service.title}
+            className="bg-[#0a0a0a] border-2 border-[#F5F0E8]/10 group p-5 sm:p-6 md:p-8 transition-colors duration-300"
+            style={{ ['--hover-color' as string]: service.color }}
+            onMouseEnter={(e) => (e.currentTarget.style.borderColor = service.color)}
+            onMouseLeave={(e) => (e.currentTarget.style.borderColor = 'rgba(245,240,232,0.1)')}
+          >
+            <div
+              className="w-14 h-14 bg-[#0a0a0a] border-2 flex items-center justify-center mb-4 transition-colors duration-300"
+              style={{ borderColor: service.color, color: service.color }}
+            >
+              <Icon className="w-7 h-7" />
             </div>
-          </AestheticGlassBox>
+            <h3 className="text-xl font-black font-champ uppercase mb-2 text-[#F5F0E8]">{service.title}</h3>
+            <p className="text-[#F5F0E8]/80 text-sm leading-relaxed font-mono">{service.description}</p>
+          </div>
         );
       })}
     </div>

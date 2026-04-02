@@ -12,7 +12,7 @@ export default function AestheticGlassBox({
   className = '',
 }: AestheticGlassBoxProps) {
   return (
-    <div className={`aesthetic-glass-box ${className}`}>
+    <div className={`punk-box ${className}`}>
       {children}
     </div>
   );

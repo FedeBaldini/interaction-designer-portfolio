@@ -27,126 +27,108 @@ export default function ProjectContent({ project }: ProjectContentProps) {
 
   return (
     <div>
-      {/* Back Button */}
-      <motion.div
-        initial={{ opacity: 0, x: -20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.5, ease }}
-      >
-        <Link
-          href="/projects"
-          className="inline-flex items-center gap-2 text-white/60 hover:text-white mb-6 transition-colors rounded-lg"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          Back to Projects
-        </Link>
-      </motion.div>
-
-      {/* Hero Section */}
+      {/* Hero — Full bleed, behind header */}
       <motion.div
         ref={heroRef}
-        className="relative w-full min-h-[65vh] sm:min-h-[70vh] md:min-h-[75vh] lg:min-h-[85vh] overflow-hidden rounded-2xl sm:rounded-3xl mb-10 sm:mb-14"
-        initial={{ opacity: 0, scale: 0.97 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.8, delay: 0.15, ease }}
+        className="relative w-screen h-[60vh] sm:h-[65vh] md:h-[70vh] lg:h-[75vh] overflow-hidden border-b-2 border-[#F5F0E8]/10 -mt-20 sm:-mt-24 md:-mt-28 lg:-mt-32"
+        style={{ marginLeft: 'calc(-50vw + 50%)', marginRight: 'calc(-50vw + 50%)' }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, delay: 0.1, ease }}
       >
-        {/* Background Image with parallax + slow zoom on load */}
+        {/* Back button overlay */}
+        <Link
+          href="/projects"
+          className="absolute top-24 sm:top-28 md:top-32 lg:top-36 left-4 sm:left-6 lg:left-8 z-20 inline-flex items-center gap-2 text-[#F5F0E8]/70 hover:text-[#00E5CC] transition-colors font-mono uppercase text-sm tracking-wider bg-[#0a0a0a]/60 px-3 py-1.5"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          Back
+        </Link>
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent z-10" />
+        <div className="absolute inset-0 bg-black/30 mix-blend-multiply z-10" />
         <motion.div
           className="absolute inset-[-15%]"
           style={{ y: heroY }}
-          initial={{ scale: 1.1 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 6, ease: [0.25, 0.1, 0.25, 1] }}
         >
           <Image
             src={project.image}
             alt={project.title}
             fill
-            className="object-cover"
+            className="object-cover contrast-125 saturate-50"
             priority
           />
         </motion.div>
-
-        {/* Gradient overlays */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/30 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a]/40 to-transparent" />
-
-        {/* Content over image */}
-        <div className="absolute inset-0 flex flex-col justify-end p-6 sm:p-8 md:p-10 lg:p-14">
-          {/* Tags */}
-          <div className="flex flex-wrap gap-2 sm:gap-3 text-cyan-400 text-xs sm:text-sm font-bold tracking-[0.15em] uppercase mb-4">
-            {project.tags.map((tag, i) => (
-              <motion.span
-                key={tag}
-                className="border border-cyan-500/30 px-3 py-1 rounded-full bg-cyan-900/20 backdrop-blur-sm"
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.5 + i * 0.08, ease }}
-              >
-                {tag}
-              </motion.span>
-            ))}
-          </div>
-
-          {/* Title + Description */}
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 md:gap-8">
-            <motion.h1
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-[0.95] text-white"
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.3, ease }}
-            >
-              {project.title}
-            </motion.h1>
-            <motion.p
-              className="text-sm sm:text-base md:text-lg text-white/70 font-light max-w-md md:text-right md:pb-1"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5, ease }}
-            >
-              {project.desc}
-            </motion.p>
-          </div>
-
-          {/* Info row */}
-          <motion.div
-            className="flex flex-wrap gap-6 sm:gap-8 md:gap-12 mt-6 sm:mt-8 pt-6 border-t border-white/10"
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.65, ease }}
-          >
-            <div>
-              <span className="text-white/70 text-xs font-bold uppercase tracking-widest block mb-1">Year</span>
-              <span className="text-white text-lg font-medium">{project.year}</span>
-            </div>
-            <div>
-              <span className="text-white/70 text-xs font-bold uppercase tracking-widest block mb-1">Role</span>
-              <span className="text-white text-lg font-medium">{project.role}</span>
-            </div>
-            <div>
-              <span className="text-white/70 text-xs font-bold uppercase tracking-widest block mb-1">Tools</span>
-              <span className="text-white/80 text-base">{project.tools.join(', ')}</span>
-            </div>
-          </motion.div>
-        </div>
       </motion.div>
 
-      {/* Content — each section animates on scroll */}
+      {/* Editorial Header — overlapping hero */}
+      <div className="-mt-28 sm:-mt-32 relative z-20 mb-16">
+        {/* Tags */}
+        <motion.div
+          className="flex flex-wrap gap-2 sm:gap-3 font-mono text-xs font-bold tracking-[0.2em] uppercase mb-4"
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.3, ease }}
+        >
+          {project.tags.map((tag) => (
+            <span key={tag} className="border border-[#FF2D6B] px-2 py-0.5 bg-[#0a0a0a] text-[#FF2D6B]">
+              {tag}
+            </span>
+          ))}
+        </motion.div>
+
+        {/* Title */}
+        <motion.h1
+          className="text-5xl sm:text-6xl md:text-7xl lg:text-[7rem] font-champ font-black leading-[1.05] mb-8 text-[#F5F0E8] uppercase"
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.3, ease }}
+        >
+          {project.title}
+        </motion.h1>
+
+        {/* Info Grid with borders */}
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-3 gap-0 border-y-2 border-[#F5F0E8]/20 bg-[#0a0a0a]"
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.5, ease }}
+        >
+          <div className="p-5 sm:p-6 border-b-2 md:border-b-0 md:border-r-2 border-[#F5F0E8]/20">
+            <h4 className="text-[#00E5CC] font-mono text-xs font-black uppercase tracking-widest mb-1">Year</h4>
+            <p className="text-xl font-mono text-[#F5F0E8]">{project.year}</p>
+          </div>
+          <div className="p-5 sm:p-6 border-b-2 md:border-b-0 md:border-r-2 border-[#F5F0E8]/20">
+            <h4 className="text-[#00E5CC] font-mono text-xs font-black uppercase tracking-widest mb-1">Role</h4>
+            <p className="text-xl font-mono text-[#F5F0E8] uppercase">{project.role}</p>
+          </div>
+          <div className="p-5 sm:p-6">
+            <h4 className="text-[#00E5CC] font-mono text-xs font-black uppercase tracking-widest mb-1">Tools</h4>
+            <p className="text-sm font-mono text-[#F5F0E8]/80 uppercase">{project.tools.join(' / ')}</p>
+          </div>
+        </motion.div>
+      </div>
+
+      {/* Content — editorial grid layout */}
       <AnimatedProseContent html={project.content} />
 
       {/* Video Section */}
       {showVideo && (
         <motion.div
-          className="mt-16"
+          className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 border-t-2 border-[#F5F0E8]/10 pt-16 mt-16"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.7, ease }}
         >
-          <h3 className="text-2xl font-bold mb-8 border-b-2 border-cyan-500 pb-2 inline-block">
-            App Prototype
-          </h3>
-          <div className="flex justify-center mt-8">
+          <div className="md:col-span-4">
+            <h3 className="font-champ font-black text-3xl sm:text-4xl md:text-5xl uppercase leading-[0.95] text-[#00E5CC]">
+              The<br />Outcome
+            </h3>
+          </div>
+          <div className="md:col-span-8">
+            <p className="text-lg sm:text-xl text-[#F5F0E8]/80 font-light mb-10">
+              {project.desc}
+            </p>
             <VideoPlayer
               src="/images/Bommie_Prototipo.mp4"
               poster="/images/Cover_Prototipo.png"

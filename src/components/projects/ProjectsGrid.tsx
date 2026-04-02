@@ -16,7 +16,7 @@ export default function ProjectsGrid({ projects }: ProjectsGridProps) {
       {/* Header */}
       <div className="text-center mb-10">
         <motion.h1
-          className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6"
+          className="text-3xl sm:text-4xl md:text-5xl font-black font-champ uppercase mb-4 sm:mb-6"
           initial={prefersReducedMotion ? false : { opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
@@ -24,7 +24,7 @@ export default function ProjectsGrid({ projects }: ProjectsGridProps) {
           Projects
         </motion.h1>
         <motion.div
-          className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-purple-500 mx-auto rounded-full"
+          className="w-24 h-1 bg-[#00E5CC] mx-auto"
           initial={prefersReducedMotion ? false : { scaleX: 0 }}
           animate={{ scaleX: 1 }}
           transition={{ duration: 0.6, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}

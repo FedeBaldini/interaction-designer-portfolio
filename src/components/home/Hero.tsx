@@ -7,47 +7,47 @@ export default function Hero() {
   return (
     <div className="relative z-10 max-w-4xl mx-auto pt-10 text-center">
       {/* Status Badge */}
-      <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 mb-4 sm:mb-6 rounded-full border border-cyan-500/30 bg-cyan-900/10 backdrop-blur-sm shadow-[0_0_15px_rgba(6,182,212,0.1)]">
-        <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
-        <span className="text-cyan-300 text-xs sm:text-sm tracking-widest uppercase font-medium">
-          Available for freelance
-        </span>
+      <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 border-2 border-[#00E5CC] font-mono text-xs sm:text-sm tracking-widest uppercase text-[#00E5CC]">
+        <span className="w-2 h-2 bg-[#00E5CC] animate-pulse" />
+        Available for freelance
       </div>
 
       {/* Main Title */}
       <div className="relative">
-        <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold tracking-tighter leading-none mb-8 sm:mb-10 md:mb-12 relative z-10 uppercase">
-          <span className="block text-transparent bg-clip-text bg-gradient-to-b from-white to-white/40 drop-shadow-2xl mb-2">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tighter leading-none mb-8 sm:mb-10 md:mb-12 relative z-10 uppercase font-champ">
+          <span className="block text-[#F5F0E8] mb-2">
             INTERACTION
           </span>
-          <span className="block text-cyan-400 transform filter drop-shadow-[0_0_25px_rgba(6,182,212,0.5)]">
+          <span className="block" style={{ WebkitTextStroke: '2px #FF2D6B', color: 'transparent' }}>
             DESIGNER
           </span>
         </h1>
       </div>
 
       {/* Subtitle */}
-      <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/80 max-w-2xl mx-auto leading-relaxed px-2 sm:px-0">
-        Blending <span className="text-cyan-300 font-semibold">Geometric Precision</span> with{' '}
-        <span className="text-purple-200 font-semibold">Liquid Motion</span> to craft immersive
-        digital experiences.
-      </p>
+      <div className="bg-[#0a0a0a]/80 border-2 border-[#F5F0E8]/10 p-8 md:p-10 max-w-2xl mx-auto relative">
+        <div className="absolute top-0 left-0 w-1 h-full bg-[#00E5CC]" />
+        <p className="text-base sm:text-lg md:text-xl text-[#F5F0E8]/80 font-mono text-left leading-relaxed pl-4">
+          Blending <span className="text-[#00E5CC] font-bold">Geometric Precision</span> with{' '}
+          <span className="text-[#FF2D6B] font-bold">Liquid Motion</span> to craft immersive
+          digital experiences.
+        </p>
+      </div>
 
       {/* CTA Buttons */}
       <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mt-8 sm:mt-10 px-4 sm:px-0">
         <Link
           href="/projects"
-          className="group relative px-8 py-4 bg-white text-black rounded-full font-bold overflow-hidden transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(255,255,255,0.3)] cursor-pointer z-50"
+          className="group relative px-8 py-4 bg-[#00E5CC] text-[#0a0a0a] font-bold font-mono uppercase tracking-wider overflow-hidden transition-all hover:bg-[#0a0a0a] hover:text-[#00E5CC] cursor-pointer z-50 border-2 border-[#00E5CC] shadow-[6px_6px_0px_#FF2D6B]"
         >
           <span className="relative z-10 flex items-center gap-2 justify-center">
             Explore Work{' '}
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </span>
-          <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         </Link>
         <Link
           href="/story"
-          className="px-8 py-4 border border-white/20 rounded-full font-bold hover:bg-white/10 hover:border-white/40 transition-all cursor-pointer z-50 text-center"
+          className="px-8 py-4 border-2 border-[#F5F0E8] font-bold font-mono uppercase tracking-wider hover:bg-[#F5F0E8] hover:text-[#0a0a0a] transition-all cursor-pointer z-50 text-center"
         >
           My Journey
         </Link>
