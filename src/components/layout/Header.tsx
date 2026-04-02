@@ -94,7 +94,7 @@ export default function Header() {
         {/* Let's Talk Button: Visible ONLY on Desktop */}
         <Link
           href="/contact"
-          className="hidden md:flex items-center gap-2 px-5 py-2 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-600 text-sm font-bold hover:shadow-[0_0_20px_rgba(6,182,212,0.5)] transition-all transform hover:-translate-y-0.5 cursor-pointer"
+          className="hidden md:flex items-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-600 text-sm font-bold hover:shadow-[0_0_20px_rgba(6,182,212,0.5)] transition-all transform hover:-translate-y-0.5 cursor-pointer"
         >
           Let&apos;s Talk <ArrowRight className="w-3 h-3" />
         </Link>
