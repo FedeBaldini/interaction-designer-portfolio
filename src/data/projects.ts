@@ -16,19 +16,19 @@ export const projects: Project[] = [
       <div>
         <h3>Brief</h3>
         <p>Creare un e-commerce dedicato ai surfisti, con una piattaforma principale basata su un'app mobile che trasmetta un senso di maggiore sicurezza durante la pratica del surf.</p>
-        <img src="https://images.unsplash.com/photo-1505118380757-91f5f5632de0?auto=format&fit=crop&q=80&w=800" class="inline-img w-full h-96 object-cover mt-8" alt="Surf" />
+        <img src="https://images.unsplash.com/photo-1505118380757-91f5f5632de0?auto=format&fit=crop&q=80&w=800" class="inline-img w-full h-96 object-cover mt-8" alt="Aerial view of turquoise ocean waves breaking on a sandy shore" />
       </div>
       <div class="grid md:grid-cols-2 gap-12 items-start">
         <div>
           <h3>The Challenge</h3>
           <p>One of the main challenges was to integrate real-time data tracking without overwhelming the user. Surfers need quick information, not complex dashboards. We simplified the data visualization into easy-to-read, circular metrics that mimic the shape of waves.</p>
         </div>
-        <img src="https://images.unsplash.com/photo-1526336024174-e58f5cdd8e13?auto=format&fit=crop&q=80&w=600" class="inline-img w-full h-full object-cover" alt="Challenge" />
+        <img src="https://images.unsplash.com/photo-1526336024174-e58f5cdd8e13?auto=format&fit=crop&q=80&w=600" class="inline-img w-full h-full object-cover" alt="Surfer navigating a wave, representing the design challenge of simplifying complex data" />
       </div>
       <div>
         <h3>Processo</h3>
         <p>Il progetto è stato sviluppato in diverse fasi. Inizialmente, abbiamo scelto il nome <b>"Bommie"</b>, ispirato al termine <i>"Bombora"</i>, che rappresenta una grande onda nel gergo surfistico.<br/><br/>Successivamente, abbiamo realizzato l'<b>ecosystem map</b> e la <b>flow chart</b>, per poi passare alla ricerca dei competitor e delle comparables. Abbiamo definito le <b>proto-personas</b> e identificato i take-out principali da includere nel progetto.<br/><br/>L'applicazione finale include una funzionalità premium che consente l'accesso a un <b>sistema SOS</b> con chiamate d'emergenza e videocamere installate nelle spiagge per monitorare la sicurezza. Abbiamo inoltre creato una pagina Instagram, il merchandising e sviluppato una parte del sito web.</p>
-        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1000" class="inline-img w-full h-80 object-cover mt-8" alt="Process" />
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1000" class="inline-img w-full h-80 object-cover mt-8" alt="Data dashboard showing the Bommie design process and analytics" />
       </div>
       <div>
         <h3>Target</h3>
@@ -53,7 +53,7 @@ export const projects: Project[] = [
         <p>Design a physical product that helps young people manage their emotional wellbeing through tangible interaction.</p>
       </div>
       <div class="grid md:grid-cols-2 gap-12 items-start">
-        <img src="https://images.unsplash.com/photo-1583209814683-c023dd293cc6?auto=format&fit=crop&q=80&w=600" class="inline-img w-full h-full object-cover" alt="Box Soul" />
+        <img src="https://images.unsplash.com/photo-1583209814683-c023dd293cc6?auto=format&fit=crop&q=80&w=600" class="inline-img w-full h-full object-cover" alt="Physical prototype of the Box Soul tactile stress-relief device" />
         <div>
           <h3>The Challenge</h3>
           <p>The main challenge was creating an intuitive physical interface that doesn't require screens or complex interactions, making emotional regulation accessible during moments of stress.</p>
@@ -62,7 +62,7 @@ export const projects: Project[] = [
       <div>
         <h3>The Concept</h3>
         <p>Box Soul is a companion device that responds to touch and pressure, providing calming feedback through light, vibration, and sound. It learns from user patterns to provide personalized comfort.</p>
-        <img src="https://images.unsplash.com/photo-1528698827591-e19ccd7bc23d?auto=format&fit=crop&q=80&w=1000" class="inline-img w-full h-80 object-cover mt-8" alt="Concept" />
+        <img src="https://images.unsplash.com/photo-1528698827591-e19ccd7bc23d?auto=format&fit=crop&q=80&w=1000" class="inline-img w-full h-80 object-cover mt-8" alt="Box Soul companion device concept showing calming light feedback" />
       </div>
     </div>`
   },
@@ -83,7 +83,7 @@ export const projects: Project[] = [
         <p>The project involves the creation of the ending credits for the movie <i>Nanny McPhee</i> (2005 version).</p>
       </div>
       <div class="grid md:grid-cols-2 gap-12 items-start">
-        <img src="https://images.unsplash.com/photo-1635324234782-3233b8a40237?auto=format&fit=crop&q=80&w=600" class="inline-img w-full h-full object-cover" alt="Tata Matilda" />
+        <img src="https://images.unsplash.com/photo-1635324234782-3233b8a40237?auto=format&fit=crop&q=80&w=600" class="inline-img w-full h-full object-cover" alt="Illustrated frames from the Nanny McPhee ending credits animation" />
         <div>
           <h3>Video Dynamics</h3>
           <p>From a graphic design perspective, the video features <b>2D style elements</b> with uncertain strokes and color palettes reminiscent of <b>children's drawings</b>.<br/><br/>Furthermore, the subjects used include: windows, doors, and <b>iconic objects</b> highlighted within the film. In this case, the credit sequences should be viewed as a playful journey retracing the film's plot.</p>
@@ -92,7 +92,7 @@ export const projects: Project[] = [
       <div>
         <h3>Sequence Concept</h3>
         <p>The path is defined by elements moving from one zone of the scene to another. It is precisely these elements that recount the events unfolding within <i>Nanny McPhee</i>.<br/><br/>Various elements evoke nostalgic moments in contrast to the cheerful ones recalling the <b>disasters caused by the children</b>. To provide a break in the narration, a characteristic <b>dark moment</b> is also inserted.</p>
-        <img src="https://images.unsplash.com/photo-1531685218760-8fddbc2427a7?auto=format&fit=crop&q=80&w=1000" class="inline-img w-full h-80 object-cover mt-8" alt="Sequence" />
+        <img src="https://images.unsplash.com/photo-1531685218760-8fddbc2427a7?auto=format&fit=crop&q=80&w=1000" class="inline-img w-full h-80 object-cover mt-8" alt="Storyboard frames from the Tata Matilda ending credits sequence" />
       </div>
     </div>`
   },
@@ -113,7 +113,7 @@ export const projects: Project[] = [
         <p>The goal of the project is to tell the story of graphic design through graphic design itself.</p>
       </div>
       <div class="grid md:grid-cols-2 gap-12 items-start">
-        <img src="https://images.unsplash.com/photo-1595113316349-9fa4eb24f884?auto=format&fit=crop&q=80&w=600" class="inline-img w-full h-full object-cover" alt="Krono" />
+        <img src="https://images.unsplash.com/photo-1595113316349-9fa4eb24f884?auto=format&fit=crop&q=80&w=600" class="inline-img w-full h-full object-cover" alt="Krono Graphic board game cards layout and typography" />
         <div>
           <h3>Theme</h3>
           <p>I tried to build my thesis project by exploring time and its changes, hence the name <i>Krono</i>, inspired by <i>Chronos</i>, "the passing of time," combined with the word <i>Graphic</i>. As a medium, I chose the board game, one of the oldest methods for learning notions while having fun.<br/><br/>Starting from this concept, I decided to transmit and disseminate the history of graphic design through this communicative medium.</p>
@@ -122,7 +122,7 @@ export const projects: Project[] = [
       <div>
         <h3>Game Design</h3>
         <p>To create the game, I designed the <b>logo</b>, the <b>corporate identity</b>, the <b>packaging</b>, the <b>rulebook</b>, the <b>scorepad</b>, and the <b>cards</b>. The cards feature an image of a graphic work on one side and the date on the other, representing the focal point of this game based on the timeline of graphic works. Each card also includes three key pieces of information: the <b>name of the designer</b>, the <b>work</b>, and the <b>client</b>.<br/><br/>To develop the game, I first conducted research to determine which historical periods to consider, starting from <b>1875</b>, the year poster art and visual advertising began to define themselves as graphic design.</p>
-        <img src="https://images.unsplash.com/photo-1605806616949-1e87b487bc2a?auto=format&fit=crop&q=80&w=1000" class="inline-img w-full h-80 object-cover mt-8" alt="Game Design" />
+        <img src="https://images.unsplash.com/photo-1605806616949-1e87b487bc2a?auto=format&fit=crop&q=80&w=1000" class="inline-img w-full h-80 object-cover mt-8" alt="Krono Graphic board game packaging, cards, and rulebook design" />
       </div>
       <div>
         <h3>Target</h3>
@@ -147,7 +147,7 @@ export const projects: Project[] = [
         <p>Creation of a monthly magazine with a free theme, including the design of covers for issue 1 and issue 2.</p>
       </div>
       <div class="grid md:grid-cols-2 gap-12 items-start">
-        <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80&w=600" class="inline-img w-full h-auto object-cover" alt="Unspoken" />
+        <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80&w=600" class="inline-img w-full h-auto object-cover" alt="Unspoken magazine cover and editorial layout spreads" />
         <div>
           <h3>Theme</h3>
           <p>The goal of this magazine is to allow young people to inform themselves without shame about sex, its precautions, and the scientific aspects related to it. Issue zero, the one fully realized, is dedicated precisely to "taboos," and we decided to divide it into different sections to tell the story in the best way possible.<br/><br/>The name of the magazine, <i>Unspoken</i>, aims precisely to highlight what we instead want to tell openly.</p>
@@ -156,7 +156,7 @@ export const projects: Project[] = [
       <div>
         <h3>Approach</h3>
         <p>We chose a <b>colloquial tone of voice</b>, but with scientific traits. In some pages, in fact, there are puns and jokes, as in the case of the names attributed to sex toys. Everything is accompanied by illustrations that make a topic usually considered embarrassing something normal and everyday.<br/><br/>To realize this project, we conducted various researches and involved several people to interview, to allow young people to compare notes and obtain more detailed information on the topics covered.</p>
-        <img src="https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&q=80&w=1000" class="inline-img w-full h-80 object-cover mt-8" alt="Approach" />
+        <img src="https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&q=80&w=1000" class="inline-img w-full h-80 object-cover mt-8" alt="Open book showing the colloquial editorial approach of Unspoken magazine" />
       </div>
       <div>
         <h3>Target</h3>
@@ -181,7 +181,7 @@ export const projects: Project[] = [
         <p>The hypothesis is to set up an exhibition themed around the female image, told through 10 statues in a millennial chronology ranging from prehistory, in ten stages, up to contemporary times.</p>
       </div>
       <div class="grid md:grid-cols-2 gap-12 items-start">
-        <img src="https://images.unsplash.com/photo-1497211419994-1423958a9668?auto=format&fit=crop&q=80&w=600" class="inline-img w-full h-full object-cover" alt="Sospese" />
+        <img src="https://images.unsplash.com/photo-1497211419994-1423958a9668?auto=format&fit=crop&q=80&w=600" class="inline-img w-full h-full object-cover" alt="Conical exhibition structures for the Sospese immersive installation" />
         <div>
           <h3>Exhibition Concept</h3>
           <p>In a historical period where the theme of women is at the center of discussions, where they are not yet considered equal to men and, finally, in an era where they must be afraid to leave the house due to the lack of respect shown towards them, the exhibition <i>"Sospese, La storia dell'arte in 10 donne"</i> (Suspended, Art History in 10 Women) aims to trigger a reaction, an unconscious reasoning in the viewer.<br/><br/>Through the use of large conical structures and a dark environment that contrasts with the beams of light exiting the structures, people experiencing the exhibition will be projected into a space-time limbo that is broken the moment they enter the individual islands.</p>
@@ -190,7 +190,7 @@ export const projects: Project[] = [
       <div>
         <h3>Experience</h3>
         <p>The works of art will be narrated through videos, and spectators will be immersed in the context through speakers playing evocative sounds typical of the era and geographical area to which the statues belong.<br/><br/>The goal is to recount, through art, the historical and social context in which women, direct or indirect subjects of the works, lived. The mental path we want to trigger is: the women in question were treated in that way, what about today? What role and what rights do they have?</p>
-        <img src="https://images.unsplash.com/photo-1507643179173-617d65455131?auto=format&fit=crop&q=80&w=1000" class="inline-img w-full h-80 object-cover mt-8" alt="Experience" />
+        <img src="https://images.unsplash.com/photo-1507643179173-617d65455131?auto=format&fit=crop&q=80&w=1000" class="inline-img w-full h-80 object-cover mt-8" alt="Visitor experiencing the immersive light and sound exhibition space" />
       </div>
     </div>`
   },
@@ -215,12 +215,12 @@ export const projects: Project[] = [
           <h3>The Challenge</h3>
           <p>Handling massive datasets while maintaining visual clarity and artistic expression. The goal was to find patterns in chaos and present them beautifully.</p>
         </div>
-        <img src="https://images.unsplash.com/photo-1534972195531-d756b9bfa9f2?auto=format&fit=crop&q=80&w=600" class="inline-img w-full h-full object-cover" alt="Data Viz" />
+        <img src="https://images.unsplash.com/photo-1534972195531-d756b9bfa9f2?auto=format&fit=crop&q=80&w=600" class="inline-img w-full h-full object-cover" alt="Code-generated data visualization of alien sighting patterns" />
       </div>
       <div>
         <h3>Data as Art</h3>
         <p>Using Vibe Coding algorithms and P5.js, we transformed raw data into flowing, organic visualizations that invite exploration and discovery.</p>
-        <img src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&q=80&w=1000" class="inline-img w-full h-80 object-cover mt-8" alt="Data Art" />
+        <img src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&q=80&w=1000" class="inline-img w-full h-80 object-cover mt-8" alt="Organic flowing visualization transforming raw data into art" />
       </div>
     </div>`
   },
@@ -241,7 +241,7 @@ export const projects: Project[] = [
         <p>Create a dynamic brand identity for an emerging tech company that conveys innovation, trust, and forward-thinking design.</p>
       </div>
       <div class="grid md:grid-cols-2 gap-12 items-start">
-        <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&q=80&w=600" class="inline-img w-full h-full object-cover" alt="Lumina Brand" />
+        <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&q=80&w=600" class="inline-img w-full h-full object-cover" alt="Lumina brand identity system with generative logo variations" />
         <div>
           <h3>The Challenge</h3>
           <p>Developing a visual system that works across digital and physical touchpoints while maintaining consistency and memorability.</p>
@@ -250,7 +250,7 @@ export const projects: Project[] = [
       <div>
         <h3>Dynamic Branding</h3>
         <p>Lumina is a brand that never stays still. The identity system uses generative algorithms to create infinite variations while maintaining brand recognition.</p>
-        <img src="https://images.unsplash.com/photo-1555449377-5463130a50c0?auto=format&fit=crop&q=80&w=1000" class="inline-img w-full h-80 object-cover mt-8" alt="Dynamic Brand" />
+        <img src="https://images.unsplash.com/photo-1555449377-5463130a50c0?auto=format&fit=crop&q=80&w=1000" class="inline-img w-full h-80 object-cover mt-8" alt="Dynamic branding applications showing Lumina identity across touchpoints" />
       </div>
     </div>`
   }

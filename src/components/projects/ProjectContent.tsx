@@ -4,7 +4,7 @@ import { useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
 import { Project } from '@/types';
 import VideoPlayer from '@/components/ui/VideoPlayer';
 import AnimatedProseContent from '@/components/ui/AnimatedProseContent';
@@ -17,12 +17,13 @@ const ease = [0.25, 0.1, 0.25, 1];
 
 export default function ProjectContent({ project }: ProjectContentProps) {
   const showVideo = project.slug === 'bommie-surf';
+  const prefersReducedMotion = useReducedMotion();
   const heroRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress: heroScroll } = useScroll({
     target: heroRef,
     offset: ['start start', 'end start'],
   });
-  const heroY = useTransform(heroScroll, [0, 1], ['0%', '15%']);
+  const heroY = useTransform(heroScroll, [0, 1], prefersReducedMotion ? ['0%', '0%'] : ['0%', '15%']);
 
   return (
     <div>
@@ -115,15 +116,15 @@ export default function ProjectContent({ project }: ProjectContentProps) {
             transition={{ duration: 0.6, delay: 0.65, ease }}
           >
             <div>
-              <span className="text-white/40 text-xs font-bold uppercase tracking-widest block mb-1">Year</span>
+              <span className="text-white/70 text-xs font-bold uppercase tracking-widest block mb-1">Year</span>
               <span className="text-white text-lg font-medium">{project.year}</span>
             </div>
             <div>
-              <span className="text-white/40 text-xs font-bold uppercase tracking-widest block mb-1">Role</span>
+              <span className="text-white/70 text-xs font-bold uppercase tracking-widest block mb-1">Role</span>
               <span className="text-white text-lg font-medium">{project.role}</span>
             </div>
             <div>
-              <span className="text-white/40 text-xs font-bold uppercase tracking-widest block mb-1">Tools</span>
+              <span className="text-white/70 text-xs font-bold uppercase tracking-widest block mb-1">Tools</span>
               <span className="text-white/80 text-base">{project.tools.join(', ')}</span>
             </div>
           </motion.div>

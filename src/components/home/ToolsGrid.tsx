@@ -24,7 +24,7 @@ export default function ToolsGrid() {
   return (
     <div className="w-full max-w-5xl">
       {/* Section Title */}
-      <div className="text-sm font-bold text-white/40 uppercase tracking-widest mb-8 flex items-center justify-center gap-4">
+      <div className="text-sm font-bold text-white/70 uppercase tracking-widest mb-8 flex items-center justify-center gap-4">
         <span className="h-[1px] w-12 bg-white/10" />
         My Knowledge
         <span className="h-[1px] w-12 bg-white/10" />
@@ -50,7 +50,7 @@ export default function ToolsGrid() {
               <div className="w-full overflow-hidden max-h-0 opacity-0 group-hover:max-h-20 group-hover:opacity-100 transition-all duration-500 ease-in-out">
                 <div className="pt-3 pb-1">
                   <div className="flex justify-between items-end mb-2 px-1">
-                    <span className="text-[10px] font-bold tracking-[0.2em] text-white/40">
+                    <span className="text-[10px] font-bold tracking-[0.2em] text-white/70">
                       CAPACITY
                     </span>
                     <span className={`text-xs font-bold font-mono ${colors.text}`}>

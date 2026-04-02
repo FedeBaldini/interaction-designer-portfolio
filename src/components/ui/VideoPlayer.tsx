@@ -55,8 +55,7 @@ export default function VideoPlayer({ src, poster, className = '' }: VideoPlayer
       {/* Video Wrapper */}
       <div
         ref={wrapperRef}
-        className={`relative w-full max-w-full sm:max-w-2xl md:max-w-3xl lg:max-w-4xl aspect-video rounded-lg sm:rounded-xl overflow-hidden border border-white/10 shadow-2xl bg-black transition-all duration-500 group ${isExpanded ? 'video-expanded' : 'cursor-zoom-in'} ${className}`}
-        onClick={toggleExpand}
+        className={`relative w-full max-w-full sm:max-w-2xl md:max-w-3xl lg:max-w-4xl aspect-video rounded-lg sm:rounded-xl overflow-hidden border border-white/10 shadow-2xl bg-black transition-all duration-500 group ${isExpanded ? 'video-expanded' : ''} ${className}`}
       >
         {/* Video */}
         <video
@@ -72,7 +71,7 @@ export default function VideoPlayer({ src, poster, className = '' }: VideoPlayer
         {/* Expand Button (Top Left) */}
         <button
           onClick={toggleExpand}
-          className="absolute top-2 left-2 sm:top-4 sm:left-4 z-30 p-1.5 sm:p-2 bg-black/50 backdrop-blur-md rounded-full text-white hover:bg-cyan-500 hover:text-black transition-colors"
+          className="absolute top-2 left-2 sm:top-4 sm:left-4 z-30 p-2.5 min-w-[44px] min-h-[44px] bg-black/50 backdrop-blur-md rounded-full text-white hover:bg-cyan-500 hover:text-black transition-colors flex items-center justify-center"
           aria-label={isExpanded ? 'Close fullscreen' : 'Open fullscreen'}
         >
           <span className="material-symbols-outlined text-xl sm:text-2xl">

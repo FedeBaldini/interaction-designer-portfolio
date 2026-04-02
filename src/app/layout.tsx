@@ -17,7 +17,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="it">
+    <html lang="en">
       <head>
         {/* eslint-disable-next-line @next/next/no-page-custom-font */}
         <link
@@ -26,10 +26,13 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-[#050505] text-white font-sans overflow-x-hidden selection:bg-cyan-500 selection:text-black relative">
+        <a href="#main-content" className="skip-to-content">
+          Skip to main content
+        </a>
         <LogoAnimation />
         <Background />
         <Header />
-        <main className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-24 md:py-28 lg:py-32 min-h-screen flex flex-col items-center">
+        <main id="main-content" className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-24 md:py-28 lg:py-32 min-h-screen flex flex-col items-center">
           <div className="w-full max-w-7xl">{children}</div>
         </main>
         <ScrollToTop />

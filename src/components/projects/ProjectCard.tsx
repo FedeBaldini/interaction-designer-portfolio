@@ -37,12 +37,12 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2 group-hover:text-cyan-200 transition-colors">
             {project.title}
           </h3>
-          <p className="text-white/60 line-clamp-2">{project.desc}</p>
+          <p className="text-white/70 line-clamp-2">{project.desc}</p>
         </div>
 
         {/* CTA */}
-        <div className="mt-4 sm:mt-6 flex items-center text-xs sm:text-sm font-medium text-white/40 group-hover:text-white transition-colors">
-          Tap to reveal{' '}
+        <div className="mt-4 sm:mt-6 flex items-center text-xs sm:text-sm font-medium text-white/70 group-hover:text-white transition-colors">
+          View project{' '}
           <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
         </div>
       </div>

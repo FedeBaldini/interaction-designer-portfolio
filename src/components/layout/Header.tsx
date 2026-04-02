@@ -36,8 +36,8 @@ export default function Header() {
         }}
       >
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-3 cursor-pointer group">
-          <div className="w-8 h-8 bg-gradient-to-tr from-cyan-400 to-purple-500 rounded-lg flex items-center justify-center transform group-hover:rotate-12 transition-transform">
+        <Link href="/" className="flex items-center gap-3 cursor-pointer group" aria-label="Home — Interaction Designer">
+          <div className="w-10 h-10 bg-gradient-to-tr from-cyan-400 to-purple-500 rounded-lg flex items-center justify-center transform group-hover:rotate-12 transition-transform">
             <Hexagon className="text-black w-4 h-4" />
           </div>
           <span className="text-lg font-bold tracking-widest hidden md:block uppercase">
@@ -57,7 +57,7 @@ export default function Header() {
                 className={`relative px-4 py-2 rounded-xl transition-all duration-300 ${
                   active
                     ? 'bg-white text-black shadow-lg'
-                    : 'text-white/70 hover:text-white hover:bg-white/5'
+                    : 'text-white/80 hover:text-white hover:bg-white/5'
                 }`}
               >
                 <span className="relative z-10 flex items-center gap-2">
@@ -74,7 +74,7 @@ export default function Header() {
             className={`relative px-4 py-2 rounded-xl transition-all duration-300 md:hidden ${
               pathname === '/contact'
                 ? 'bg-white text-black shadow-lg'
-                : 'text-white/70 hover:text-white hover:bg-white/5'
+                : 'text-white/80 hover:text-white hover:bg-white/5'
             }`}
           >
             <span className="relative z-10 flex items-center gap-2">

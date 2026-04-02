@@ -10,29 +10,44 @@ export default function ContactPage() {
         <div className="relative z-10">
           {/* Header */}
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold">Let&apos;s Create Together</h1>
-          <p className="text-white/60">
+          <p className="text-white/80">
             Have a project that needs a touch of liquid geometry?
           </p>
 
           {/* Form */}
-          <form className="space-y-3 sm:space-y-4 text-left mt-4 sm:mt-6">
-            <input
-              type="text"
-              name="name"
-              className="w-full bg-white/5 border border-white/10 rounded-lg p-3 text-white focus:outline-none focus:border-cyan-400 transition-colors placeholder:text-white/40"
-              placeholder="Name"
-            />
-            <input
-              type="email"
-              name="email"
-              className="w-full bg-white/5 border border-white/10 rounded-lg p-3 text-white focus:outline-none focus:border-cyan-400 transition-colors placeholder:text-white/40"
-              placeholder="Email"
-            />
-            <textarea
-              name="message"
-              className="w-full bg-white/5 border border-white/10 rounded-lg p-3 text-white focus:outline-none focus:border-cyan-400 transition-colors h-32 resize-none placeholder:text-white/40"
-              placeholder="Message"
-            />
+          <form className="space-y-3 sm:space-y-4 text-left mt-4 sm:mt-6" aria-label="Contact form">
+            <div>
+              <label htmlFor="name" className="block text-sm font-medium text-white/80 mb-1">Name</label>
+              <input
+                id="name"
+                type="text"
+                name="name"
+                required
+                className="w-full bg-white/5 border border-white/10 rounded-lg p-3 text-white focus:border-cyan-400 transition-colors placeholder:text-white/50"
+                placeholder="Your name"
+              />
+            </div>
+            <div>
+              <label htmlFor="email" className="block text-sm font-medium text-white/80 mb-1">Email</label>
+              <input
+                id="email"
+                type="email"
+                name="email"
+                required
+                className="w-full bg-white/5 border border-white/10 rounded-lg p-3 text-white focus:border-cyan-400 transition-colors placeholder:text-white/50"
+                placeholder="your@email.com"
+              />
+            </div>
+            <div>
+              <label htmlFor="message" className="block text-sm font-medium text-white/80 mb-1">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                required
+                className="w-full bg-white/5 border border-white/10 rounded-lg p-3 text-white focus:border-cyan-400 transition-colors h-32 resize-none placeholder:text-white/50"
+                placeholder="Tell me about your project..."
+              />
+            </div>
             <button
               type="submit"
               className="w-full py-4 bg-gradient-to-r from-cyan-600 to-blue-600 rounded-lg font-bold hover:shadow-lg hover:shadow-cyan-500/30 transition-all"
@@ -47,7 +62,7 @@ export default function ContactPage() {
               href="https://github.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white/50 hover:text-white cursor-pointer transition-colors"
+              className="text-white/70 hover:text-white cursor-pointer transition-colors"
               aria-label="GitHub"
             >
               <Github className="w-6 h-6" />
@@ -56,14 +71,14 @@ export default function ContactPage() {
               href="https://linkedin.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white/50 hover:text-white cursor-pointer transition-colors"
+              className="text-white/70 hover:text-white cursor-pointer transition-colors"
               aria-label="LinkedIn"
             >
               <Linkedin className="w-6 h-6" />
             </a>
             <a
               href="mailto:hello@example.com"
-              className="text-white/50 hover:text-white cursor-pointer transition-colors"
+              className="text-white/70 hover:text-white cursor-pointer transition-colors"
               aria-label="Email"
             >
               <Mail className="w-6 h-6" />

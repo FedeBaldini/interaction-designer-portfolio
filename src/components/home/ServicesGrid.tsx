@@ -36,7 +36,7 @@ export default function ServicesGrid() {
                 <Icon className="w-6 h-6" />
               </div>
               <h3 className="text-xl font-bold mb-2 text-white">{service.title}</h3>
-              <p className="text-white/70 text-sm leading-relaxed">{service.description}</p>
+              <p className="text-white/80 text-sm leading-relaxed">{service.description}</p>
             </div>
           </AestheticGlassBox>
         );

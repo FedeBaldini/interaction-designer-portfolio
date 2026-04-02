@@ -7,6 +7,13 @@ export default function LogoAnimation() {
   const [phase, setPhase] = useState<'visible' | 'fading' | 'done'>('visible');
 
   useEffect(() => {
+    // Skip animation for users who prefer reduced motion
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) {
+      setPhase('done');
+      return;
+    }
+
     const fadeTimer = setTimeout(() => setPhase('fading'), 1950);
     const doneTimer = setTimeout(() => setPhase('done'), 2250);
 

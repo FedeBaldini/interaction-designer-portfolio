@@ -1,7 +1,7 @@
 'use client';
 
 import { ReactNode } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 
 interface SlideRevealProps {
   children: ReactNode;
@@ -23,7 +23,12 @@ export default function SlideReveal({
   className = '',
   direction = 'up',
 }: SlideRevealProps) {
+  const prefersReducedMotion = useReducedMotion();
   const offset = offsets[direction];
+
+  if (prefersReducedMotion) {
+    return <div className={className}>{children}</div>;
+  }
 
   return (
     <motion.div

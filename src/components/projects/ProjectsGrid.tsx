@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { Project } from '@/types';
 import ProjectCard from './ProjectCard';
 
@@ -9,13 +9,15 @@ interface ProjectsGridProps {
 }
 
 export default function ProjectsGrid({ projects }: ProjectsGridProps) {
+  const prefersReducedMotion = useReducedMotion();
+
   return (
     <section className="pt-10">
       {/* Header */}
       <div className="text-center mb-10">
         <motion.h1
           className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6"
-          initial={{ opacity: 0, y: 25 }}
+          initial={prefersReducedMotion ? false : { opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
         >
@@ -23,7 +25,7 @@ export default function ProjectsGrid({ projects }: ProjectsGridProps) {
         </motion.h1>
         <motion.div
           className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-purple-500 mx-auto rounded-full"
-          initial={{ scaleX: 0 }}
+          initial={prefersReducedMotion ? false : { scaleX: 0 }}
           animate={{ scaleX: 1 }}
           transition={{ duration: 0.6, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
         />
@@ -34,7 +36,7 @@ export default function ProjectsGrid({ projects }: ProjectsGridProps) {
         {projects.map((project, i) => (
           <motion.div
             key={project.id}
-            initial={{ opacity: 0, y: 40 }}
+            initial={prefersReducedMotion ? false : { opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-60px' }}
             transition={{

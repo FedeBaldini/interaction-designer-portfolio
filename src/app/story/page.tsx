@@ -69,7 +69,7 @@ export default function StoryPage() {
             <div className="p-3 bg-cyan-500/10 rounded-xl border border-cyan-500/20 text-cyan-400">
               <GraduationCap className="w-7 h-7" />
             </div>
-            <h3 className="text-2xl sm:text-3xl font-bold">The Path</h3>
+            <h2 className="text-2xl sm:text-3xl font-bold">The Path</h3>
           </div>
           {educationItems.map((item) => (
             <TimelineCard key={item.title} item={item} />
@@ -82,7 +82,7 @@ export default function StoryPage() {
             <div className="p-3 bg-purple-500/10 rounded-xl border border-purple-500/20 text-purple-400">
               <Briefcase className="w-7 h-7" />
             </div>
-            <h3 className="text-2xl sm:text-3xl font-bold">Experience</h3>
+            <h2 className="text-2xl sm:text-3xl font-bold">Experience</h3>
           </div>
           {experienceItems.map((item) => (
             <TimelineCard key={item.title} item={item} />
