@@ -3,6 +3,7 @@ import './globals.css';
 import Header from '@/components/layout/Header';
 import Background from '@/components/layout/Background';
 import ScrollToTop from '@/components/layout/ScrollToTop';
+import LogoAnimation from '@/components/layout/LogoAnimation';
 
 export const metadata: Metadata = {
   title: 'Interaction Designer | Portfolio',
@@ -25,6 +26,7 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-[#050505] text-white font-sans overflow-x-hidden selection:bg-cyan-500 selection:text-black relative">
+        <LogoAnimation />
         <Background />
         <Header />
         <main className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-24 md:py-28 lg:py-32 min-h-screen flex flex-col items-center">
