@@ -64,30 +64,30 @@ export default function StoryPage() {
       {/* Timeline Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 md:gap-12">
         {/* Education */}
-        <div className="space-y-8">
+        <section aria-labelledby="education-heading" className="space-y-8">
           <div className="flex items-center gap-4 mb-6">
             <div className="p-3 bg-cyan-500/10 rounded-xl border border-cyan-500/20 text-cyan-400">
               <GraduationCap className="w-7 h-7" />
             </div>
-            <h2 className="text-2xl sm:text-3xl font-bold">The Path</h3>
+            <h2 id="education-heading" className="text-2xl sm:text-3xl font-bold">The Path</h2>
           </div>
           {educationItems.map((item) => (
             <TimelineCard key={item.title} item={item} />
           ))}
-        </div>
+        </section>
 
         {/* Experience */}
-        <div className="space-y-8">
+        <section aria-labelledby="experience-heading" className="space-y-8">
           <div className="flex items-center gap-4 mb-6">
             <div className="p-3 bg-purple-500/10 rounded-xl border border-purple-500/20 text-purple-400">
               <Briefcase className="w-7 h-7" />
             </div>
-            <h2 className="text-2xl sm:text-3xl font-bold">Experience</h3>
+            <h2 id="experience-heading" className="text-2xl sm:text-3xl font-bold">Experience</h2>
           </div>
           {experienceItems.map((item) => (
             <TimelineCard key={item.title} item={item} />
           ))}
-        </div>
+        </section>
       </div>
     </section>
   );

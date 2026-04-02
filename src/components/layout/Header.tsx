@@ -46,41 +46,49 @@ export default function Header() {
         </Link>
 
         {/* Central Nav */}
-        <nav className="flex items-center gap-1 sm:gap-2 md:gap-3 lg:gap-4">
-          {navItems.map((item) => {
-            const Icon = item.icon;
-            const active = isActive(item.href);
-            return (
+        <nav aria-label="Main navigation">
+          <ul className="flex items-center gap-1 sm:gap-2 md:gap-3 lg:gap-4 list-none m-0 p-0">
+            {navItems.map((item) => {
+              const Icon = item.icon;
+              const active = isActive(item.href);
+              return (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    aria-current={active ? 'page' : undefined}
+                    className={`relative px-4 py-2 rounded-xl transition-all duration-300 block ${
+                      active
+                        ? 'bg-white text-black shadow-lg'
+                        : 'text-white/80 hover:text-white hover:bg-white/5'
+                    }`}
+                  >
+                    <span className="relative z-10 flex items-center gap-2">
+                      <Icon className="w-4 h-4" />
+                      <span className="hidden lg:block text-sm font-medium">{item.label}</span>
+                    </span>
+                  </Link>
+                </li>
+              );
+            })}
+
+            {/* Contact Icon: Visible ONLY on Mobile */}
+            <li className="md:hidden">
               <Link
-                key={item.href}
-                href={item.href}
-                className={`relative px-4 py-2 rounded-xl transition-all duration-300 ${
-                  active
+                href="/contact"
+                aria-current={pathname === '/contact' ? 'page' : undefined}
+                aria-label="Contact"
+                className={`relative px-4 py-2 rounded-xl transition-all duration-300 block ${
+                  pathname === '/contact'
                     ? 'bg-white text-black shadow-lg'
                     : 'text-white/80 hover:text-white hover:bg-white/5'
                 }`}
               >
                 <span className="relative z-10 flex items-center gap-2">
-                  <Icon className="w-4 h-4" />
-                  <span className="hidden lg:block text-sm font-medium">{item.label}</span>
+                  <Mail className="w-4 h-4" />
                 </span>
               </Link>
-            );
-          })}
-
-          {/* Contact Icon: Visible ONLY on Mobile */}
-          <Link
-            href="/contact"
-            className={`relative px-4 py-2 rounded-xl transition-all duration-300 md:hidden ${
-              pathname === '/contact'
-                ? 'bg-white text-black shadow-lg'
-                : 'text-white/80 hover:text-white hover:bg-white/5'
-            }`}
-          >
-            <span className="relative z-10 flex items-center gap-2">
-              <Mail className="w-4 h-4" />
-            </span>
-          </Link>
+            </li>
+          </ul>
         </nav>
 
         {/* Let's Talk Button: Visible ONLY on Desktop */}

@@ -29,7 +29,7 @@ export default function Hero() {
       {/* Subtitle */}
       <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/80 max-w-2xl mx-auto leading-relaxed px-2 sm:px-0">
         Blending <span className="text-cyan-300 font-semibold">Geometric Precision</span> with{' '}
-        <span className="text-purple-300 font-semibold">Liquid Motion</span> to craft immersive
+        <span className="text-purple-200 font-semibold">Liquid Motion</span> to craft immersive
         digital experiences.
       </p>
 

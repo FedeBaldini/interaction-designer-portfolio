@@ -16,13 +16,13 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       <div className="absolute inset-0 bg-gradient-to-br from-cyan-500 to-purple-600 rounded-3xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500" />
 
       {/* Card */}
-      <div className="glass-card interactive h-full flex flex-col justify-between overflow-hidden relative rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8">
+      <article className="glass-card interactive h-full flex flex-col justify-between overflow-hidden relative rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8">
         {/* Image Container */}
         <div className="relative h-40 sm:h-48 md:h-56 lg:h-64 mb-4 sm:mb-6 rounded-xl sm:rounded-2xl overflow-hidden">
           <div className="absolute inset-0 bg-black/20 z-10 group-hover:bg-transparent transition-colors duration-500" />
           <Image
             src={project.image}
-            alt={project.title}
+            alt={`${project.title} — ${project.category} project cover`}
             fill
             className="object-cover transform group-hover:scale-110 transition-transform duration-700"
             sizes="(max-width: 768px) 100vw, 50vw"
@@ -45,7 +45,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           View project{' '}
           <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
         </div>
-      </div>
+      </article>
     </Link>
   );
 }

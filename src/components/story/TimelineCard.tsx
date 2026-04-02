@@ -21,7 +21,7 @@ export default function TimelineCard({ item }: TimelineCardProps) {
           {item.period}
         </span>
         <h4 className="text-lg sm:text-xl font-bold mt-3">{item.title}</h4>
-        <p className="text-white/60 text-sm font-medium">{item.subtitle}</p>
+        <p className="text-white/80 text-sm font-medium">{item.subtitle}</p>
       </div>
     </AestheticGlassBox>
   );

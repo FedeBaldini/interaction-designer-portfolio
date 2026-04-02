@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useCallback } from 'react';
+import { useState, useRef, useCallback, useEffect } from 'react';
 
 interface VideoPlayerProps {
   src: string;
@@ -36,10 +36,20 @@ export default function VideoPlayer({ src, poster, className = '' }: VideoPlayer
     setIsPlaying(false);
   }, []);
 
-  const handleBackdropClick = useCallback(() => {
+  const closeExpanded = useCallback(() => {
     if (isExpanded) {
       setIsExpanded(false);
     }
+  }, [isExpanded]);
+
+  // Close fullscreen with Escape key
+  useEffect(() => {
+    if (!isExpanded) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setIsExpanded(false);
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
   }, [isExpanded]);
 
   return (
@@ -48,7 +58,7 @@ export default function VideoPlayer({ src, poster, className = '' }: VideoPlayer
       {isExpanded && (
         <div
           className="fixed inset-0 bg-black/90 backdrop-blur-md z-[9000] transition-opacity duration-300"
-          onClick={handleBackdropClick}
+          onClick={closeExpanded}
         />
       )}
 

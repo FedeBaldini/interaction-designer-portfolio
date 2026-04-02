@@ -11,12 +11,12 @@ function getColorClasses(level: number) {
   } else if (level > 35) {
     return {
       bg: 'bg-indigo-400',
-      text: 'text-indigo-400',
+      text: 'text-indigo-300',
     };
   }
   return {
     bg: 'bg-fuchsia-400',
-    text: 'text-fuchsia-400',
+    text: 'text-fuchsia-300',
   };
 }
 

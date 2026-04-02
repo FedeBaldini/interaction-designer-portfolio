@@ -23,7 +23,7 @@ export default function ContactPage() {
                 type="text"
                 name="name"
                 required
-                className="w-full bg-white/5 border border-white/10 rounded-lg p-3 text-white focus:border-cyan-400 transition-colors placeholder:text-white/50"
+                className="w-full bg-white/5 border border-white/10 rounded-lg p-3 text-white focus:border-cyan-400 transition-colors placeholder:text-white/60"
                 placeholder="Your name"
               />
             </div>
@@ -34,7 +34,7 @@ export default function ContactPage() {
                 type="email"
                 name="email"
                 required
-                className="w-full bg-white/5 border border-white/10 rounded-lg p-3 text-white focus:border-cyan-400 transition-colors placeholder:text-white/50"
+                className="w-full bg-white/5 border border-white/10 rounded-lg p-3 text-white focus:border-cyan-400 transition-colors placeholder:text-white/60"
                 placeholder="your@email.com"
               />
             </div>
@@ -44,7 +44,7 @@ export default function ContactPage() {
                 id="message"
                 name="message"
                 required
-                className="w-full bg-white/5 border border-white/10 rounded-lg p-3 text-white focus:border-cyan-400 transition-colors h-32 resize-none placeholder:text-white/50"
+                className="w-full bg-white/5 border border-white/10 rounded-lg p-3 text-white focus:border-cyan-400 transition-colors h-32 resize-none placeholder:text-white/60"
                 placeholder="Tell me about your project..."
               />
             </div>
