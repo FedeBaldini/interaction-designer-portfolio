@@ -11,7 +11,7 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <Link href={`/projects/${project.id}`} className="group relative cursor-pointer block">
+    <Link href={`/projects/${project.slug}`} className="group relative cursor-pointer block">
       {/* Glow Effect */}
       <div className="absolute inset-0 bg-gradient-to-br from-cyan-500 to-purple-600 rounded-3xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500" />
 

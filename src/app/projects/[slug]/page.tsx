@@ -2,23 +2,23 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
-import { projects, getProjectById } from '@/data/projects';
+import { projects, getProjectBySlug } from '@/data/projects';
 import GlassCard from '@/components/ui/GlassCard';
 import VideoPlayer from '@/components/ui/VideoPlayer';
 
 interface ProjectPageProps {
-  params: Promise<{ id: string }>;
+  params: Promise<{ slug: string }>;
 }
 
 export function generateStaticParams() {
   return projects.map((project) => ({
-    id: project.id.toString(),
+    slug: project.slug,
   }));
 }
 
 export async function generateMetadata({ params }: ProjectPageProps) {
-  const { id } = await params;
-  const project = getProjectById(parseInt(id));
+  const { slug } = await params;
+  const project = getProjectBySlug(slug);
   if (!project) {
     return { title: 'Project Not Found' };
   }
@@ -29,14 +29,14 @@ export async function generateMetadata({ params }: ProjectPageProps) {
 }
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
-  const { id } = await params;
-  const project = getProjectById(parseInt(id));
+  const { slug } = await params;
+  const project = getProjectBySlug(slug);
 
   if (!project) {
     notFound();
   }
 
-  const showVideo = project.id === 1;
+  const showVideo = project.slug === 'bommie-surf';
 
   return (
     <div className="animate-fade-in-up">

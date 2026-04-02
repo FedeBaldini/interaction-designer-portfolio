@@ -3,6 +3,7 @@ import { Project } from '@/types';
 export const projects: Project[] = [
   {
     id: 1,
+    slug: "bommie-surf",
     title: "Bommie Surf",
     category: "Web Design",
     year: "2023",
@@ -37,6 +38,7 @@ export const projects: Project[] = [
   },
   {
     id: 2,
+    slug: "box-soul",
     title: "Box Soul",
     category: "Tangible Interfaces",
     year: "2026",
@@ -66,6 +68,7 @@ export const projects: Project[] = [
   },
   {
     id: 3,
+    slug: "tata-matilda",
     title: "Tata Matilda",
     category: "Video Design",
     year: "2023",
@@ -95,6 +98,7 @@ export const projects: Project[] = [
   },
   {
     id: 4,
+    slug: "krono-graphic",
     title: "Krono Graphic",
     category: "Board Game",
     year: "2024",
@@ -128,6 +132,7 @@ export const projects: Project[] = [
   },
   {
     id: 5,
+    slug: "unspoken",
     title: "Unspoken",
     category: "Editorial Design",
     year: "2024",
@@ -161,6 +166,7 @@ export const projects: Project[] = [
   },
   {
     id: 6,
+    slug: "sospese",
     title: "Sospese",
     category: "Exhibition Design",
     year: "2023",
@@ -190,6 +196,7 @@ export const projects: Project[] = [
   },
   {
     id: 7,
+    slug: "alien-save-the-queen",
     title: "Alien Save The Queen",
     category: "Data Visualization",
     year: "2025",
@@ -219,6 +226,7 @@ export const projects: Project[] = [
   },
   {
     id: 8,
+    slug: "lumina",
     title: "Lumina",
     category: "Brand Identity",
     year: "2024",
@@ -248,6 +256,6 @@ export const projects: Project[] = [
   }
 ];
 
-export function getProjectById(id: number): Project | undefined {
-  return projects.find(p => p.id === id);
+export function getProjectBySlug(slug: string): Project | undefined {
+  return projects.find(p => p.slug === slug);
 }
