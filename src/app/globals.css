@@ -271,15 +271,16 @@ body {
   overflow: visible;
 }
 
-/* Global focus-visible styles */
+/* Global focus-visible styles — uses box-shadow to follow border-radius */
 *:focus-visible {
-  outline: 2px solid #06b6d4;
-  outline-offset: 2px;
+  outline: none;
+  box-shadow: 0 0 0 2px #050505, 0 0 0 4px #06b6d4;
 }
 
-/* Remove outline for mouse clicks but keep for keyboard */
+/* Remove focus ring for mouse clicks but keep for keyboard */
 *:focus:not(:focus-visible) {
   outline: none;
+  box-shadow: none;
 }
 
 /* --- REDUCED MOTION --- */
