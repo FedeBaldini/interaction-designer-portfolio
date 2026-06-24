@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform, useReducedMotion } from 'framer-motion';
 import { ArrowLeft, X } from 'lucide-react';
 import type { Project } from '@/data/projects';
@@ -17,6 +17,31 @@ export default function ProjectDetail({
   next: Pick<Project, 'num' | 'title' | 'category' | 'slug'>;
 }) {
   const [lightbox, setLightbox] = useState<string | null>(null);
+  const lightboxCloseRef = useRef<HTMLButtonElement>(null);
+  const lastFocusedRef = useRef<HTMLElement | null>(null);
+
+  const openLightbox = (src: string) => {
+    lastFocusedRef.current = (document.activeElement as HTMLElement) ?? null;
+    setLightbox(src);
+  };
+  const closeLightbox = () => {
+    setLightbox(null);
+    lastFocusedRef.current?.focus?.();
+  };
+
+  // Move focus into the dialog on open, close on Escape, restore focus on close.
+  useEffect(() => {
+    if (!lightbox) return;
+    lightboxCloseRef.current?.focus();
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setLightbox(null);
+        lastFocusedRef.current?.focus?.();
+      }
+    };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [lightbox]);
 
   const heroRef = useRef<HTMLButtonElement>(null);
   const reduce = useReducedMotion();
@@ -89,8 +114,8 @@ export default function ProjectDetail({
               ref={heroRef}
               className="w-full overflow-hidden block group mb-10"
               style={{ background: C.card }}
-              onClick={() => setLightbox(imgs[0])}
-              aria-label="Open hero image"
+              onClick={() => openLightbox(imgs[0])}
+              aria-label="Open hero image in full screen"
             >
               <motion.div style={reduce ? undefined : { scale: heroScale }}>
                 <ImageWithFallback
@@ -124,9 +149,9 @@ export default function ProjectDetail({
                 <div className="border-t py-8" style={{ borderColor: C.border }}>
                   <div className="grid grid-cols-12 gap-6">
                     <div className="col-span-12 sm:col-span-4">
-                      <p style={{ ...sans, fontSize: '0.72rem', color: C.muted, letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+                      <h2 style={{ ...sans, fontSize: '0.72rem', color: C.muted, letterSpacing: '0.08em', textTransform: 'uppercase' }}>
                         {s.title}
-                      </p>
+                      </h2>
                     </div>
                     <div className="col-span-12 sm:col-span-8">
                       <p style={{ ...sans, fontSize: '0.95rem', lineHeight: 1.8, color: C.muted }}>{s.body}</p>
@@ -140,10 +165,10 @@ export default function ProjectDetail({
                     {[imgs[1], imgs[2]].map((src, n) => (
                       <button
                         key={n}
-                        onClick={() => setLightbox(src)}
+                        onClick={() => openLightbox(src)}
                         className="w-full overflow-hidden block group"
                         style={{ background: C.card }}
-                        aria-label="Open image"
+                        aria-label={`Open ${project.title} detail ${n + 1} in full screen`}
                       >
                         <ImageWithFallback
                           src={src}
@@ -160,16 +185,16 @@ export default function ProjectDetail({
 
             {/* Bottom gallery */}
             {imgs.length > 3 && (
-              <GalleryCarousel images={imgs.slice(3)} onOpen={(src) => setLightbox(src)} />
+              <GalleryCarousel images={imgs.slice(3)} onOpen={openLightbox} />
             )}
           </motion.div>
 
           {/* Sidebar */}
           <motion.div {...fadeUp(0.2)} className="md:col-span-4">
             <div className="sticky top-24">
-              <p style={{ ...sans, fontSize: '0.72rem', color: C.muted, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '1rem' }}>
+              <h2 style={{ ...sans, fontSize: '0.72rem', color: C.muted, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '1rem' }}>
                 Deliverables
-              </p>
+              </h2>
               <div>
                 {project.deliverables.map((d, i) => (
                   <div key={d} className="flex items-start gap-3 py-3 border-b" style={{ borderColor: C.border }}>
@@ -183,9 +208,9 @@ export default function ProjectDetail({
 
               {project.tools.length > 0 && (
                 <div className="mt-10 pt-8 border-t" style={{ borderColor: C.border }}>
-                  <p style={{ ...sans, fontSize: '0.72rem', color: C.muted, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '1rem' }}>
+                  <h2 style={{ ...sans, fontSize: '0.72rem', color: C.muted, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '1rem' }}>
                     Tools
-                  </p>
+                  </h2>
                   <div className="flex flex-wrap gap-2">
                     {project.tools.map((tool) => (
                       <span
@@ -200,9 +225,9 @@ export default function ProjectDetail({
               )}
 
               <div className="mt-10 pt-8 border-t" style={{ borderColor: C.border }}>
-                <p style={{ ...sans, fontSize: '0.72rem', color: C.muted, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '1rem' }}>
+                <h2 style={{ ...sans, fontSize: '0.72rem', color: C.muted, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '1rem' }}>
                   Next
-                </p>
+                </h2>
                 <Link href={`/work/${next.slug}`} className="group flex flex-col gap-1 w-full text-left">
                   <span style={{ ...mono, fontSize: '0.62rem', color: C.muted }}>{next.num}</span>
                   <span
@@ -223,13 +248,16 @@ export default function ProjectDetail({
       <AnimatePresence>
         {lightbox && (
           <motion.div
+            role="dialog"
+            aria-modal="true"
+            aria-label={`${project.title} — full screen image`}
             className="fixed inset-0 flex items-center justify-center z-[9990] px-6"
             style={{ background: 'rgba(28,25,22,0.92)', backdropFilter: 'blur(4px)' }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            onClick={() => setLightbox(null)}
+            onClick={closeLightbox}
           >
             <motion.div
               className="relative max-w-5xl w-full"
@@ -239,12 +267,13 @@ export default function ProjectDetail({
               transition={{ duration: 0.35, ease: easeOut }}
               onClick={(e) => e.stopPropagation()}
             >
-              <ImageWithFallback src={lightbox} alt="" className="w-full object-contain" style={{ maxHeight: '85vh' }} />
+              <ImageWithFallback src={lightbox} alt={project.title} className="w-full object-contain" style={{ maxHeight: '85vh' }} />
               <button
-                onClick={() => setLightbox(null)}
+                ref={lightboxCloseRef}
+                onClick={closeLightbox}
                 className="absolute top-3 right-3 w-8 h-8 flex items-center justify-center"
                 style={{ background: C.bg }}
-                aria-label="Close"
+                aria-label="Close full screen image"
               >
                 <X size={14} color={C.fg} />
               </button>

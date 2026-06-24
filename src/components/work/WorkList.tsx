@@ -74,10 +74,10 @@ export default function WorkList() {
         </motion.div>
 
         {/* List */}
-        <div>
+        <ul>
           <AnimatePresence mode="popLayout">
             {list.map((p, i) => (
-              <motion.div
+              <motion.li
                 key={p.id}
                 layout
                 initial={{ opacity: 0, y: 12 }}
@@ -117,10 +117,10 @@ export default function WorkList() {
                     <ArrowUpRight size={14} color={C.muted} className="shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" />
                   </div>
                 </Link>
-              </motion.div>
+              </motion.li>
             ))}
           </AnimatePresence>
-        </div>
+        </ul>
       </div>
     </div>
   );

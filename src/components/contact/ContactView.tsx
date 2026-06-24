@@ -67,8 +67,10 @@ export default function ContactView() {
                     </span>
                     <ArrowUpRight
                       size={13}
+                      aria-hidden="true"
                       className="opacity-0 -translate-y-0.5 transition-all group-hover:opacity-100 group-hover:translate-y-0"
                     />
+                    {r.external && <span className="sr-only"> (opens in a new tab)</span>}
                   </a>
                 ) : (
                   <span style={{ ...sans, fontSize: '0.95rem', color: C.fg }}>{r.v}</span>

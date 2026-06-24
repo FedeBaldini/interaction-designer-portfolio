@@ -9,16 +9,16 @@ import { C, serif, sans, mono, fadeUp } from '@/lib/theme';
 export default function ProjectsPreview() {
   return (
     <section className="max-w-6xl mx-auto px-6 md:px-10 py-16">
-      <motion.p
+      <motion.h2
         {...fadeUp(0)}
         style={{ ...sans, fontSize: '0.72rem', color: C.muted, letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '2rem' }}
       >
         Selected Projects
-      </motion.p>
+      </motion.h2>
 
-      <div>
+      <ul>
         {PROJECTS.slice(0, 5).map((p, i) => (
-          <motion.div key={p.id} {...fadeUp(i * 0.06)}>
+          <motion.li key={p.id} {...fadeUp(i * 0.06)}>
             <Link href={`/work/${p.slug}`} className="block w-full text-left group">
               <div
                 className="flex items-baseline justify-between py-4 border-b transition-colors duration-200"
@@ -48,9 +48,9 @@ export default function ProjectsPreview() {
                 </div>
               </div>
             </Link>
-          </motion.div>
+          </motion.li>
         ))}
-      </div>
+      </ul>
 
       <div className="mt-8">
         <Link

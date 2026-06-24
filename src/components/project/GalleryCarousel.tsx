@@ -22,9 +22,9 @@ export default function GalleryCarousel({
   return (
     <div className="mt-10">
       <div className="flex items-center justify-between mb-4">
-        <p style={{ ...sans, fontSize: '0.72rem', color: C.muted, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+        <h2 style={{ ...sans, fontSize: '0.72rem', color: C.muted, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
           Gallery
-        </p>
+        </h2>
         <div className="flex items-center gap-4">
           <span style={{ ...mono, fontSize: '0.62rem', color: C.muted }}>
             {idx + 1} / {images.length}
@@ -73,6 +73,7 @@ export default function GalleryCarousel({
             <button
               key={i}
               onClick={() => setIdx(i)}
+              aria-current={i === idx ? 'true' : undefined}
               style={{
                 width: i === idx ? 20 : 6,
                 height: 6,
