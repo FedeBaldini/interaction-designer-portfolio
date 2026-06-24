@@ -1,57 +1,57 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { ArrowUpRight } from 'lucide-react';
+import { C, serif, sans, fadeUp, easeOut } from '@/lib/theme';
 
 export default function Hero() {
   return (
-    <div className="relative z-10 max-w-4xl mx-auto pt-10 text-center">
-      {/* Status Badge */}
-      <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 mb-4 sm:mb-6 rounded-full border border-cyan-500/30 bg-cyan-900/10 backdrop-blur-sm shadow-[0_0_15px_rgba(6,182,212,0.1)]">
-        <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
-        <span className="text-cyan-300 text-xs sm:text-sm tracking-widest uppercase font-medium">
-          Available for freelance
-        </span>
-      </div>
+    <section className="max-w-6xl mx-auto px-6 md:px-10 pt-24 pb-20 md:pt-36 md:pb-28">
+      <motion.p
+        {...fadeUp(0)}
+        style={{ ...sans, fontSize: '0.82rem', color: C.muted, letterSpacing: '0.04em', marginBottom: '1.5rem' }}
+      >
+        Graphic &amp; Interaction Designer
+      </motion.p>
 
-      {/* Main Title */}
-      <div className="relative">
-        <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold tracking-tighter leading-none mb-8 sm:mb-10 md:mb-12 relative z-10 uppercase">
-          <span className="block text-transparent bg-clip-text bg-gradient-to-b from-white to-white/40 drop-shadow-2xl mb-2">
-            INTERACTION
-          </span>
-          <span className="block text-cyan-400 transform filter drop-shadow-[0_0_25px_rgba(6,182,212,0.5)]">
-            DESIGNER
-          </span>
-        </h1>
-      </div>
-
-      {/* Subtitle */}
-      <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/80 max-w-2xl mx-auto leading-relaxed px-2 sm:px-0">
-        Blending <span className="text-cyan-300 font-semibold">Geometric Precision</span> with{' '}
-        <span className="text-purple-200 font-semibold">Liquid Motion</span> to craft immersive
-        digital experiences.
-      </p>
-
-      {/* CTA Buttons */}
-      <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mt-8 sm:mt-10 px-4 sm:px-0">
-        <Link
-          href="/projects"
-          className="group relative px-8 py-4 bg-white text-black rounded-full font-bold overflow-hidden transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(255,255,255,0.3)] cursor-pointer z-50"
+      <div className="overflow-hidden mb-8">
+        <motion.h1
+          initial={{ y: 80 }}
+          animate={{ y: 0 }}
+          transition={{ duration: 0.9, ease: easeOut }}
+          style={{
+            ...serif,
+            fontSize: 'clamp(3.5rem, 8vw, 6.5rem)',
+            color: C.fg,
+            lineHeight: 1.02,
+            letterSpacing: '-0.02em',
+          }}
         >
-          <span className="relative z-10 flex items-center gap-2 justify-center">
-            Explore Work{' '}
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </span>
-          <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-        </Link>
-        <Link
-          href="/story"
-          className="px-8 py-4 border border-white/20 rounded-full font-bold hover:bg-white/10 hover:border-white/40 transition-all cursor-pointer z-50 text-center"
-        >
-          My Journey
-        </Link>
+          Chiara Baldini
+        </motion.h1>
       </div>
-    </div>
+
+      <motion.div {...fadeUp(0.25)} className="grid grid-cols-1 md:grid-cols-2 gap-8 items-end">
+        <p style={{ ...sans, fontSize: '1rem', lineHeight: 1.75, color: C.muted, maxWidth: '38ch' }}>
+          Dynamic and energetic designer I thrive on connecting with new people and believe in active
+          listening as a catalyst for continuous growth. Currently exploring prototyping and interaction
+          design at SUPSI.
+        </p>
+        <div className="flex md:justify-end">
+          <Link
+            href="/work"
+            className="group flex items-center gap-2"
+            style={{ ...sans, fontSize: '0.85rem', color: C.fg, borderBottom: `1px solid ${C.fg}`, paddingBottom: '2px' }}
+          >
+            Selected Work
+            <ArrowUpRight
+              size={14}
+              className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+            />
+          </Link>
+        </div>
+      </motion.div>
+    </section>
   );
 }

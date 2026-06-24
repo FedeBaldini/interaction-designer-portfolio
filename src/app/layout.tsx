@@ -1,44 +1,57 @@
 import type { Metadata } from 'next';
+import { Gloock, DM_Sans, DM_Mono } from 'next/font/google';
 import './globals.css';
-import Header from '@/components/layout/Header';
-import Background from '@/components/layout/Background';
-import ScrollToTop from '@/components/layout/ScrollToTop';
-import LogoAnimation from '@/components/layout/LogoAnimation';
+import Nav from '@/components/Nav';
+import Footer from '@/components/Footer';
+
+const gloock = Gloock({
+  weight: '400',
+  subsets: ['latin'],
+  variable: '--font-serif',
+  display: 'swap',
+});
+
+const dmSans = DM_Sans({
+  subsets: ['latin'],
+  variable: '--font-sans',
+  display: 'swap',
+});
+
+const dmMono = DM_Mono({
+  weight: ['400', '500'],
+  subsets: ['latin'],
+  variable: '--font-mono',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
-  title: 'Interaction Designer | Portfolio',
+  metadataBase: new URL('https://chiarabaldini.com'),
+  title: {
+    default: 'Chiara Baldini — Graphic & Interaction Designer',
+    template: '%s — Chiara Baldini',
+  },
   description:
-    'Blending Geometric Precision with Liquid Motion to craft immersive digital experiences.',
+    'Portfolio of Chiara Baldini, a graphic and interaction designer exploring prototyping and interaction design at SUPSI. Selected work across branding, editorial, packaging, motion, and physical computing.',
+  openGraph: {
+    title: 'Chiara Baldini — Graphic & Interaction Designer',
+    description:
+      'Selected work across branding, editorial, packaging, motion, and physical computing.',
+    type: 'website',
+  },
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
-      <head>
-        {/* eslint-disable-next-line @next/next/no-page-custom-font */}
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap"
-        />
-      </head>
-      <body className="bg-[#050505] text-white font-sans overflow-x-hidden selection:bg-cyan-500 selection:text-black relative">
-        <a href="#main-content" className="skip-to-content">
+    <html lang="en" className={`${gloock.variable} ${dmSans.variable} ${dmMono.variable}`}>
+      <body>
+        <a href="#main" className="skip-to-content">
           Skip to main content
         </a>
-        <LogoAnimation />
-        <Background />
-        <Header />
-        <main id="main-content" className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-24 md:py-28 lg:py-32 min-h-screen flex flex-col items-center">
-          <div className="w-full max-w-7xl">{children}</div>
-        </main>
-        <footer className="relative z-10 text-center py-8 text-white/60 text-sm border-t border-white/5">
-          <p>&copy; {new Date().getFullYear()} Interaction Designer. All rights reserved.</p>
-        </footer>
-        <ScrollToTop />
+        <Nav />
+        <main id="main">{children}</main>
+        <Footer />
       </body>
     </html>
   );

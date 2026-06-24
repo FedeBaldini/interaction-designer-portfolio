@@ -1,261 +1,402 @@
-import { Project } from '@/types';
+export interface ProjectSection {
+  title: string;
+  body: string;
+}
 
-export const projects: Project[] = [
+export interface Project {
+  id: number;
+  slug: string;
+  num: string;
+  title: string;
+  category: string;
+  year: string;
+  image: string;
+  client: string;
+  duration: string;
+  tags: string[];
+  description: string;
+  deliverables: string[];
+  tools: string[];
+  sections: ProjectSection[];
+  /** Ordered gallery images. [0] hero, [1]/[2] paired feature, [3..] carousel/strip. */
+  localImages?: string[];
+  /** True when localImages are real project mockups (vs. remote placeholders). */
+  hasLocalGallery?: boolean;
+}
+
+/** Local mockups copied into /public/portfolio. */
+const p = (file: string) => `/portfolio/${file}`;
+
+// Remote placeholder photography — swapped for real shots per project later.
+const PH = {
+  surf1: 'https://images.unsplash.com/photo-1502680390469-be75c86b636f?w=900&h=700&fit=crop&auto=format',
+  surf2: 'https://images.unsplash.com/photo-1473116763249-2faaef81ccda?w=900&h=700&fit=crop&auto=format',
+  surf3: 'https://images.unsplash.com/photo-1530870110042-98b2cb110834?w=900&h=700&fit=crop&auto=format',
+  wood1: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=900&h=700&fit=crop&auto=format',
+  calm1: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=900&h=700&fit=crop&auto=format',
+  calm2: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=900&h=700&fit=crop&auto=format',
+};
+
+export const PROJECTS: Project[] = [
+  // ── 01 BOMMIE SURF ──────────────────────────────────────────────────────────
   {
     id: 1,
-    slug: "bommie-surf",
-    title: "Bommie Surf",
-    category: "Web Design",
-    year: "2023",
-    role: "UI/UX Designer",
-    tools: ["Figma", "Illustrator", "After Effects"],
-    tags: ["React", "WebGL", "D3.js"],
-    image: "https://images.unsplash.com/photo-1502680390469-be75c86b636f?auto=format&fit=crop&q=80&w=1000",
-    desc: "A e-commerce mobile app to made the security for surfer more available.",
-    content: `<div class="space-y-16">
-      <div>
-        <h3>Brief</h3>
-        <p>Creare un e-commerce dedicato ai surfisti, con una piattaforma principale basata su un'app mobile che trasmetta un senso di maggiore sicurezza durante la pratica del surf.</p>
-        <img src="https://images.unsplash.com/photo-1505118380757-91f5f5632de0?auto=format&fit=crop&q=80&w=800" class="inline-img w-full h-96 object-cover mt-8" alt="Aerial view of turquoise ocean waves breaking on a sandy shore" />
-      </div>
-      <div class="grid md:grid-cols-2 gap-12 items-start">
-        <div>
-          <h3>The Challenge</h3>
-          <p>One of the main challenges was to integrate real-time data tracking without overwhelming the user. Surfers need quick information, not complex dashboards. We simplified the data visualization into easy-to-read, circular metrics that mimic the shape of waves.</p>
-        </div>
-        <img src="https://images.unsplash.com/photo-1526336024174-e58f5cdd8e13?auto=format&fit=crop&q=80&w=600" class="inline-img w-full h-full object-cover" alt="Surfer navigating a wave, representing the design challenge of simplifying complex data" />
-      </div>
-      <div>
-        <h3>Processo</h3>
-        <p>Il progetto è stato sviluppato in diverse fasi. Inizialmente, abbiamo scelto il nome <b>"Bommie"</b>, ispirato al termine <i>"Bombora"</i>, che rappresenta una grande onda nel gergo surfistico.<br/><br/>Successivamente, abbiamo realizzato l'<b>ecosystem map</b> e la <b>flow chart</b>, per poi passare alla ricerca dei competitor e delle comparables. Abbiamo definito le <b>proto-personas</b> e identificato i take-out principali da includere nel progetto.<br/><br/>L'applicazione finale include una funzionalità premium che consente l'accesso a un <b>sistema SOS</b> con chiamate d'emergenza e videocamere installate nelle spiagge per monitorare la sicurezza. Abbiamo inoltre creato una pagina Instagram, il merchandising e sviluppato una parte del sito web.</p>
-        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1000" class="inline-img w-full h-80 object-cover mt-8" alt="Data dashboard showing the Bommie design process and analytics" />
-      </div>
-      <div>
-        <h3>Target</h3>
-        <p>Il target principale sono i surfisti, ma il progetto si rivolge anche a scuole di surf e spiagge che potranno installare e sfruttare i sistemi di sicurezza offerti da Bommie.</p>
-      </div>
-    </div>`
+    slug: 'bommie-surf',
+    num: '01',
+    title: 'Bommie Surf',
+    category: 'Web & App Design',
+    year: '2024',
+    image: p('iPhone_16_Pro.jpg'),
+    client: 'Bommie Surf',
+    duration: '12 weeks',
+    tags: ['UX Design', 'Mobile App', 'E-commerce', 'Branding'],
+    description:
+      "A mobile-centric e-commerce platform dedicated to surfers of all levels. The platform offers high-quality surf products alongside a Premium tier featuring a direct SOS system, live webcams, and weather maps — designed to ensure a safe and exciting sports experience.",
+    deliverables: [
+      'Brand identity & logo system',
+      'Mobile app (iOS & Android)',
+      'Web e-commerce platform',
+      'Instagram editorial plan',
+      '3-year growth roadmap',
+    ],
+    tools: ['Figma', 'After Effects', 'Illustrator'],
+    hasLocalGallery: true,
+    localImages: [
+      p('iPhone_16_Pro.jpg'),
+      p('Risorsa_1_1.jpg'),
+      p('AppBommie.png'),
+      p('SitoWeb.png'),
+      p('Free_iPhone_11_Pro_Mockup_1.png'),
+      PH.surf1,
+      PH.surf2,
+      PH.surf3,
+    ],
+    sections: [
+      { title: 'Brief', body: "The goal was to create a mobile-centric e-commerce platform dedicated to surfers of all levels — from beginners to professionals, as well as surf schools and beach facilities utilizing the brand's safety systems. The platform needed to feel as energetic and community-driven as the sport itself." },
+      { title: 'Challenges', body: 'The primary challenge was designing an ecosystem capable of addressing a highly diverse audience. It needed to cater equally to individual surfers seeking gear, to professionals looking for performance equipment, and to surf schools managing safety protocols for groups. A single interface had to serve all three without feeling generic to any.' },
+      { title: 'Concept & Branding', body: "The team chose the name \"Bommie,\" inspired by surfing slang for a large wave that breaks over a submerged reef. The logo incorporates two 'm' letters designed to mimic ocean waves, paired with the Shaka greeting hand gesture woven into the letterforms — all anchored by the bold payoff \"Extremize your surf\" in gold." },
+      { title: 'Research & UX', body: "The structural phase included competitor research and the creation of proto-personas to understand user needs across skill levels. Temporal ecosystem maps and detailed flowcharts were developed to define the app's logical flow and hierarchy. The Premium tier — with its SOS system, surf spot webcams, and real-time weather maps — was validated through user testing with active surfers." },
+    ],
   },
+  // ── 02 UNSPOKEN ─────────────────────────────────────────────────────────────
   {
     id: 2,
-    slug: "box-soul",
-    title: "Box Soul",
-    category: "Tangible Interfaces",
-    year: "2026",
-    role: "Product Interaction Designer",
-    tools: ["Arduino", "C++", "Fusion 360", "Stampa 3D", "Laser Cut"],
-    tags: ["CSS3", "Figma", "Design System"],
-    image: "https://images.unsplash.com/photo-1596464716127-f2a82984de30?auto=format&fit=crop&q=80&w=1000",
-    desc: "An object to helps Gen Z manage stress and emotions through tactile interaction.",
-    content: `<div class="space-y-16">
-      <div>
-        <h3>The Brief</h3>
-        <p>Design a physical product that helps young people manage their emotional wellbeing through tangible interaction.</p>
-      </div>
-      <div class="grid md:grid-cols-2 gap-12 items-start">
-        <img src="https://images.unsplash.com/photo-1583209814683-c023dd293cc6?auto=format&fit=crop&q=80&w=600" class="inline-img w-full h-full object-cover" alt="Physical prototype of the Box Soul tactile stress-relief device" />
-        <div>
-          <h3>The Challenge</h3>
-          <p>The main challenge was creating an intuitive physical interface that doesn't require screens or complex interactions, making emotional regulation accessible during moments of stress.</p>
-        </div>
-      </div>
-      <div>
-        <h3>The Concept</h3>
-        <p>Box Soul is a companion device that responds to touch and pressure, providing calming feedback through light, vibration, and sound. It learns from user patterns to provide personalized comfort.</p>
-        <img src="https://images.unsplash.com/photo-1528698827591-e19ccd7bc23d?auto=format&fit=crop&q=80&w=1000" class="inline-img w-full h-80 object-cover mt-8" alt="Box Soul companion device concept showing calming light feedback" />
-      </div>
-    </div>`
+    slug: 'unspoken',
+    num: '02',
+    title: 'Unspoken',
+    category: 'Editorial Design',
+    year: '2024',
+    image: p('Magazine_Mockup_1.png'),
+    client: 'Academic Project',
+    duration: '10 weeks',
+    tags: ['Editorial', 'Magazine', 'Layout', 'Illustration'],
+    description:
+      'A monthly magazine designed to dismantle taboos by offering young people a shame-free platform to learn about sex, safety, and related scientific aspects. The editorial identity balances a conversational tone with scientific accuracy — using wordplay, humor, and original illustration to reframe the subject as normal, everyday reality.',
+    deliverables: [
+      'Issue Zero — complete layout',
+      'Cover design Issue 1',
+      'Cover design Issue 2',
+      'Editorial identity system',
+      'Illustration direction',
+    ],
+    tools: ['InDesign', 'Procreate'],
+    hasLocalGallery: true,
+    localImages: [
+      p('Magazine_Mockup_1.png'),
+      p('ArtaleBaldiniVerdicaro_Tabu_.png'),
+      p('Magazine_Mockup_3.png'),
+      p('ArtaleBaldiniVerdicaro_Tabu_2.png'),
+      p('Magazine_Mockup_6.png'),
+      p('ArtaleBaldiniVerdicaro_Tabu_3.png'),
+      p('Magazine_Mockup_7.png'),
+      p('ArtaleBaldiniVerdicaro_Tabu_4.png'),
+    ],
+    sections: [
+      { title: 'Brief', body: 'The project required the conceptualization and design of a monthly magazine based on an open theme. The deliverable included the complete layout of Issue Zero alongside the cover designs for Issues 1 and 2. The only constraint: the result had to feel like a real, commercially viable publication.' },
+      { title: 'Concept & Tone', body: 'Named Unspoken — quello che non si dice del sesso — the magazine aims to dismantle taboos by offering young people a shame-free space to learn about sex, safety precautions, and their scientific dimensions. The editorial identity deliberately balances a conversational, peer-to-peer approach with factual accuracy: humor and wordplay sit alongside Freud, consent frameworks, and product guides, treating the subject as a normal, everyday reality rather than a source of embarrassment.' },
+      { title: 'Process & Target', body: 'The content strategy was driven by extensive research and direct interviews with the target demographic, ensuring the magazine addresses real questions with detailed, relatable information. While primarily aimed at readers aged 14 to 30, the accessible format — bold typography, editorial illustration, clear information hierarchy — is designed to engage a much broader audience. Each article balances editorial playfulness with editorial rigour.' },
+      { title: 'Issue Zero', body: 'Issue Zero — titled Tabù — covers consent and healthy relationships, the psychosexual development of desire (Pillole di scienza), sex-themed board games reviewed as consumer products (Giochi da tavolo ispirati al sesso), and a sex toy guide written with the tone of a lifestyle product review. The issue establishes the full editorial grammar: psychedelic display type, clean body columns, original character illustration, and a recurring cast of icons and infographics.' },
+    ],
   },
+  // ── 03 KRONO GRAPHIC ────────────────────────────────────────────────────────
   {
     id: 3,
-    slug: "tata-matilda",
-    title: "Tata Matilda",
-    category: "Video Design",
-    year: "2023",
-    role: "Motion Designer",
-    tools: ["After Effects", "Illustrator", "Premiere", "Procreate"],
-    tags: ["Swift", "ARKit", "Firebase"],
-    image: "https://images.unsplash.com/photo-1502082553048-f009c371b9b5?auto=format&fit=crop&q=80&w=1000",
-    desc: "Ending titles for the movie Nanny McPhee. Designed to be playful and reminiscent of children's drawings.",
-    content: `<div class="space-y-16">
-      <div>
-        <h3>The Brief</h3>
-        <p>The project involves the creation of the ending credits for the movie <i>Nanny McPhee</i> (2005 version).</p>
-      </div>
-      <div class="grid md:grid-cols-2 gap-12 items-start">
-        <img src="https://images.unsplash.com/photo-1635324234782-3233b8a40237?auto=format&fit=crop&q=80&w=600" class="inline-img w-full h-full object-cover" alt="Illustrated frames from the Nanny McPhee ending credits animation" />
-        <div>
-          <h3>Video Dynamics</h3>
-          <p>From a graphic design perspective, the video features <b>2D style elements</b> with uncertain strokes and color palettes reminiscent of <b>children's drawings</b>.<br/><br/>Furthermore, the subjects used include: windows, doors, and <b>iconic objects</b> highlighted within the film. In this case, the credit sequences should be viewed as a playful journey retracing the film's plot.</p>
-        </div>
-      </div>
-      <div>
-        <h3>Sequence Concept</h3>
-        <p>The path is defined by elements moving from one zone of the scene to another. It is precisely these elements that recount the events unfolding within <i>Nanny McPhee</i>.<br/><br/>Various elements evoke nostalgic moments in contrast to the cheerful ones recalling the <b>disasters caused by the children</b>. To provide a break in the narration, a characteristic <b>dark moment</b> is also inserted.</p>
-        <img src="https://images.unsplash.com/photo-1531685218760-8fddbc2427a7?auto=format&fit=crop&q=80&w=1000" class="inline-img w-full h-80 object-cover mt-8" alt="Storyboard frames from the Tata Matilda ending credits sequence" />
-      </div>
-    </div>`
+    slug: 'krono-graphic',
+    num: '03',
+    title: 'Krono Graphic',
+    category: 'Brand & Game Design',
+    year: '2024',
+    image: p('MockUp_PatternCRTE.png'),
+    client: 'Thesis Project',
+    duration: '16 weeks',
+    tags: ['Brand Identity', 'Packaging', 'Game Design', 'App Design'],
+    description:
+      'A board game that tells the history of graphic design through graphic design. Combining "Chronos" — the passage of time — with "Graphic," the project delivers a complete visual ecosystem: logo, brand identity, packaging, playing cards, rulebook, scorepad, and a digital companion app.',
+    deliverables: [
+      'Brand identity & logo',
+      'Game box packaging',
+      'Playing card deck',
+      'Rulebook design',
+      'Scorepad',
+      'Digital companion app (iOS)',
+    ],
+    tools: ['Illustrator', 'Photoshop', 'Hand work'],
+    hasLocalGallery: true,
+    localImages: [
+      p('MockUp_PatternCRTE.png'),
+      p('Box_Mockups_3.png'),
+      p('MockUp_Carte_1.png'),
+      p('3.png'),
+      p('Free_Notepad_Mockup_5.png'),
+      p('GamePage.png'),
+      p('Home.png'),
+      p('Lega.png'),
+    ],
+    sections: [
+      { title: 'Brief', body: 'The core objective of this thesis project is to tell the story of graphic design through graphic design itself. A board game was chosen as the medium — a traditional and engaging format for educational divulgation, capable of making visual culture accessible and entertaining for a wide audience.' },
+      { title: 'Concept & Name', body: 'The project explores the evolution of visual communication, combining the concept of Chronos — the passage of time — with the word Graphic to create the name Krono. Historical research began from 1875, the era that defined modern poster design and visual advertising, tracing the discipline\'s development through to the present day.' },
+      { title: 'The Cards', body: 'The core gameplay is built around a historical timeline. Each playing card features a prominent graphic artwork on its face — a Porsche logo, a political manifesto, a film poster, a landmark campaign — while the reverse reveals key data: the year, the designer\'s name, the artwork title, and the client. Players must place cards correctly on the timeline to score points.' },
+      { title: 'Digital Extension', body: "The physical game is extended by a companion app offering offline solo play, online multiplayer, and a league system with ranked tiers. The app mirrors the board game's visual identity — the wavy red pattern, the bold white logotype — and adds player profiles, card collections, and a global leaderboard. The digital layer transforms a classroom tool into a living, competitive platform for design culture." },
+    ],
   },
+  // ── 04 THE MYTHOLOGICAL TRANSCEIVER ─────────────────────────────────────────
   {
     id: 4,
-    slug: "krono-graphic",
-    title: "Krono Graphic",
-    category: "Board Game",
-    year: "2024",
-    role: "Graphic Designer",
-    tools: ["Illustrator", "InDesign", "Photoshop"],
-    tags: ["Vue", "GSAP", "Three.js"],
-    image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&q=80&w=1000",
-    desc: "A board game by a designer for designers! Test your kerning skills.",
-    content: `<div class="space-y-16">
-      <div>
-        <h3>Brief</h3>
-        <p>The goal of the project is to tell the story of graphic design through graphic design itself.</p>
-      </div>
-      <div class="grid md:grid-cols-2 gap-12 items-start">
-        <img src="https://images.unsplash.com/photo-1595113316349-9fa4eb24f884?auto=format&fit=crop&q=80&w=600" class="inline-img w-full h-full object-cover" alt="Krono Graphic board game cards layout and typography" />
-        <div>
-          <h3>Theme</h3>
-          <p>I tried to build my thesis project by exploring time and its changes, hence the name <i>Krono</i>, inspired by <i>Chronos</i>, "the passing of time," combined with the word <i>Graphic</i>. As a medium, I chose the board game, one of the oldest methods for learning notions while having fun.<br/><br/>Starting from this concept, I decided to transmit and disseminate the history of graphic design through this communicative medium.</p>
-        </div>
-      </div>
-      <div>
-        <h3>Game Design</h3>
-        <p>To create the game, I designed the <b>logo</b>, the <b>corporate identity</b>, the <b>packaging</b>, the <b>rulebook</b>, the <b>scorepad</b>, and the <b>cards</b>. The cards feature an image of a graphic work on one side and the date on the other, representing the focal point of this game based on the timeline of graphic works. Each card also includes three key pieces of information: the <b>name of the designer</b>, the <b>work</b>, and the <b>client</b>.<br/><br/>To develop the game, I first conducted research to determine which historical periods to consider, starting from <b>1875</b>, the year poster art and visual advertising began to define themselves as graphic design.</p>
-        <img src="https://images.unsplash.com/photo-1605806616949-1e87b487bc2a?auto=format&fit=crop&q=80&w=1000" class="inline-img w-full h-80 object-cover mt-8" alt="Krono Graphic board game packaging, cards, and rulebook design" />
-      </div>
-      <div>
-        <h3>Target</h3>
-        <p>The target audience is specific, as it is a game designed for graphic designers. However, the idea is that it can also be distributed during open days at graphic design schools and adapted to different fields, such as photography, interior design, and other sectors related to the creative world.</p>
-      </div>
-    </div>`
+    slug: 'the-mythological-transceiver',
+    num: '04',
+    title: 'The Mythological Transceiver',
+    category: 'Prototyping & Interaction',
+    year: '2026',
+    image: p('Gemini_Generated_Image_8209lu8209lu8209.png'),
+    client: 'SUPSI — Academic Project',
+    duration: '8 weeks',
+    tags: ['Physical Prototyping', 'Installation', 'Raspberry Pi', 'Concept Art'],
+    description:
+      'An immersive installation that translates the invisible into tangible visual experience — exploring the intersection of modern 5G technology and archaic Alpine folklore. The device repurposes the camera as a sensory extension capable of detecting signals beyond the visible spectrum, converting digital noise and data glitches into the physical footprints of supernatural manifestations.',
+    deliverables: [
+      'Physical device (Fusion 360 + fabrication)',
+      'Raspberry Pi signal system',
+      'Oscilloscope & thermal camera integration',
+      'Exhibition installation',
+      'Project editorial',
+    ],
+    tools: ['Fusion 360', 'Raspberry Pi', 'Coding', 'Hand work'],
+    hasLocalGallery: true,
+    localImages: [
+      p('Gemini_Generated_Image_8209lu8209lu8209.png'),
+      p('Screenshot_2026-06-21_alle_12.56.59.png'),
+      p('IMG_0291.jpg'),
+      p('IMG_0292.jpg'),
+      p('IMG_0329.jpg'),
+      'https://images.unsplash.com/photo-1518770660439-4636190af475?w=900&h=700&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=900&h=700&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=900&h=700&fit=crop&auto=format',
+    ],
+    sections: [
+      { title: 'Brief', body: 'The objective is to translate the abstract and the invisible into a tangible visual experience. The work explores the intersection between modern technology and archaic folklore, utilizing the narrative framework of 5G conspiracy theories to spark a deeper reflection on human perception. The challenge: creating an aesthetic bridge between contemporary electromagnetic frequencies and the dormant legends of the Ticinese Alps.' },
+      { title: 'Process', body: "We approached the camera not as a recording tool, but as a sensory extension device capable of detecting signals beyond the visible spectrum. The design process focused on translating the conceptual 'burning' of ethereal entities by high-frequency waves into a specific visual language. By intentionally manipulating signal interference, we converted digital noise and data glitches into the physical footprints of supernatural manifestations." },
+      { title: 'The Device', body: 'The physical object is a vertical pole mounting three active screens: an oscilloscope display rendering live sine wave data, a thermal imaging camera detecting heat signatures, and a data telemetry readout. Built with Fusion 360 for structural design, hand fabrication for assembly, and a Raspberry Pi as the computational core, the object exists at the exact boundary between scientific instrument and ritual artifact.' },
+      { title: 'Outcome', body: 'The result is an immersive installation that elevates technological paranoia into a contemporary mythology. By visualizing the invisible friction between the digital and the spiritual, the Transceiver offers a unique perspective on how modern signals reshape our perception of the environment — turning electronic distortion into a compelling narrative of forced spiritual awakening.' },
+    ],
   },
+  // ── 05 SOUL BOX ─────────────────────────────────────────────────────────────
   {
     id: 5,
-    slug: "unspoken",
-    title: "Unspoken",
-    category: "Editorial Design",
-    year: "2024",
-    role: "Editorial Designer",
-    tools: ["InDesign", "Procreate", "Illustrator"],
-    tags: ["InDesign", "Typography", "Print"],
-    image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&q=80&w=1000",
-    desc: "Un progetto editoriale che dà voce al silenzio.",
-    content: `<div class="space-y-16">
-      <div>
-        <h3>Brief</h3>
-        <p>Creation of a monthly magazine with a free theme, including the design of covers for issue 1 and issue 2.</p>
-      </div>
-      <div class="grid md:grid-cols-2 gap-12 items-start">
-        <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80&w=600" class="inline-img w-full h-auto object-cover" alt="Unspoken magazine cover and editorial layout spreads" />
-        <div>
-          <h3>Theme</h3>
-          <p>The goal of this magazine is to allow young people to inform themselves without shame about sex, its precautions, and the scientific aspects related to it. Issue zero, the one fully realized, is dedicated precisely to "taboos," and we decided to divide it into different sections to tell the story in the best way possible.<br/><br/>The name of the magazine, <i>Unspoken</i>, aims precisely to highlight what we instead want to tell openly.</p>
-        </div>
-      </div>
-      <div>
-        <h3>Approach</h3>
-        <p>We chose a <b>colloquial tone of voice</b>, but with scientific traits. In some pages, in fact, there are puns and jokes, as in the case of the names attributed to sex toys. Everything is accompanied by illustrations that make a topic usually considered embarrassing something normal and everyday.<br/><br/>To realize this project, we conducted various researches and involved several people to interview, to allow young people to compare notes and obtain more detailed information on the topics covered.</p>
-        <img src="https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&q=80&w=1000" class="inline-img w-full h-80 object-cover mt-8" alt="Open book showing the colloquial editorial approach of Unspoken magazine" />
-      </div>
-      <div>
-        <h3>Target</h3>
-        <p>The target audience for this magazine ranges from 14 to 25/30 years old, although it is not so restricted and can include a wider audience.</p>
-      </div>
-    </div>`
+    slug: 'soul-box',
+    num: '05',
+    title: 'Soul Box',
+    category: 'Prototyping & Interaction',
+    year: '2025',
+    image: p('Orizzontale-1.jpg'),
+    client: 'Academic Project',
+    duration: '10 weeks',
+    tags: ['Arduino', 'Physical Computing', 'Interaction Design', 'Laser Cut'],
+    description:
+      'A mindfulness tool designed to help users disconnect from stress. Enclosed in a 25×25 cm cubic structure, Soul Box mediates between technology and psychological well-being through nine physical pillars representing core life values — each triggering an immersive sequence of ambient lights and sounds when placed inside the cube.',
+    deliverables: [
+      'Physical cube device (25×25 cm)',
+      '9 laser-engraved wooden pillars',
+      'Arduino interaction system',
+      'Ambient light & sound sequences',
+      'Fusion 360 structural design',
+    ],
+    tools: ['Arduino', 'Fusion 360', 'Laser Cut', '3D Printing'],
+    hasLocalGallery: true,
+    localImages: [
+      p('Orizzontale-1.jpg'),
+      p('Orizzontale-4.jpg'),
+      p('Orizzontale-2.jpg'),
+      p('Orizzontale-3.jpg'),
+      p('Verticale-5.jpg'),
+      PH.calm1,
+      PH.wood1,
+      PH.calm2,
+    ],
+    sections: [
+      { title: 'Brief', body: 'Design and development of a tangible interactive device based on Arduino technology. The objective was to create a physical object capable of mediating between technology and psychological well-being, enclosed in a 25×25 cm cubic structure acting as a multi-sensory interface.' },
+      { title: 'Concept', body: 'Soul Box is a mindfulness tool designed to help users disconnect from stress. The experience revolves around nine physical pillars representing core life values — Love, Family, Health, and six others identified through user research. Placing a pillar inside the cube triggers an immersive sequence of ambient lights and sounds, guiding the user into a meditative state. The physical act of depositing a value into the box symbolizes making space for what truly matters in daily life.' },
+      { title: 'Research & Process', body: 'Research identified the 9 fundamental life values through user interviews and surveys. Prototyping focused on laser-engraved wooden pillars with unique tactile textures corresponding to their specific themes — each pillar is immediately distinguishable by touch alone, without needing to read labels. The interaction is intentionally slow and analog: powered by Arduino, the system resists the impatience of digital interfaces.' },
+      { title: 'Interaction', body: 'The physical act of placing a pillar into the opening of the cube is the entire interaction. There are no buttons, no screens, no menus. The RFID chip embedded in each pillar identifies which value has been deposited, and the Arduino system responds with a unique combination of warm LED lighting and a curated ambient sound sequence. The ritual slowness of the interaction is the design.' },
+    ],
   },
+  // ── 06 TATA MATILDA ─────────────────────────────────────────────────────────
   {
     id: 6,
-    slug: "sospese",
-    title: "Sospese",
-    category: "Exhibition Design",
-    year: "2023",
-    role: "Spatial Designer",
-    tools: ["Cinema 4D", "Illustrator", "Photoshop"],
-    tags: ["Rhino", "Keyshot", "Spatial"],
-    image: "https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?auto=format&fit=crop&q=80&w=1000",
-    desc: "Allestimento immersivo che sfida la gravità.",
-    content: `<div class="space-y-16">
-      <div>
-        <h3>Brief</h3>
-        <p>The hypothesis is to set up an exhibition themed around the female image, told through 10 statues in a millennial chronology ranging from prehistory, in ten stages, up to contemporary times.</p>
-      </div>
-      <div class="grid md:grid-cols-2 gap-12 items-start">
-        <img src="https://images.unsplash.com/photo-1497211419994-1423958a9668?auto=format&fit=crop&q=80&w=600" class="inline-img w-full h-full object-cover" alt="Conical exhibition structures for the Sospese immersive installation" />
-        <div>
-          <h3>Exhibition Concept</h3>
-          <p>In a historical period where the theme of women is at the center of discussions, where they are not yet considered equal to men and, finally, in an era where they must be afraid to leave the house due to the lack of respect shown towards them, the exhibition <i>"Sospese, La storia dell'arte in 10 donne"</i> (Suspended, Art History in 10 Women) aims to trigger a reaction, an unconscious reasoning in the viewer.<br/><br/>Through the use of large conical structures and a dark environment that contrasts with the beams of light exiting the structures, people experiencing the exhibition will be projected into a space-time limbo that is broken the moment they enter the individual islands.</p>
-        </div>
-      </div>
-      <div>
-        <h3>Experience</h3>
-        <p>The works of art will be narrated through videos, and spectators will be immersed in the context through speakers playing evocative sounds typical of the era and geographical area to which the statues belong.<br/><br/>The goal is to recount, through art, the historical and social context in which women, direct or indirect subjects of the works, lived. The mental path we want to trigger is: the women in question were treated in that way, what about today? What role and what rights do they have?</p>
-        <img src="https://images.unsplash.com/photo-1507643179173-617d65455131?auto=format&fit=crop&q=80&w=1000" class="inline-img w-full h-80 object-cover mt-8" alt="Visitor experiencing the immersive light and sound exhibition space" />
-      </div>
-    </div>`
+    slug: 'tata-matilda',
+    num: '06',
+    title: 'Tata Matilda',
+    category: 'Motion & Video',
+    year: '2025',
+    image: 'https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=900&h=700&fit=crop&auto=format',
+    client: 'Academic Project',
+    duration: '6 weeks',
+    tags: ['Motion Graphics', 'After Effects', 'Illustration', 'Title Design'],
+    description:
+      'Animated ending titles for the 2005 film Nanny McPhee (Tata Matilda). The sequence adopts a charming 2D aesthetic with irregular hand-drawn strokes and children\'s-drawing color palettes — conceived as a playful journey that retraces the film\'s plot through elements moving dynamically across the screen.',
+    deliverables: [
+      'Animated title sequence',
+      'Frame-by-frame illustration',
+      'Motion storyboard',
+      'Sound-synced animation',
+      'Final export (DCP)',
+    ],
+    tools: ['Procreate', 'After Effects', 'Illustrator', 'Photoshop'],
+    localImages: [
+      'https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=900&h=700&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1615387879035-c38e73f99a9d?w=900&h=700&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=900&h=700&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1578301978018-3005759f48f7?w=900&h=700&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1464275830024-d8a7c22de9c5?w=900&h=700&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=900&h=700&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1502014822147-9f0e4a4f1b8f?w=900&h=700&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=900&h=700&fit=crop&auto=format',
+    ],
+    sections: [
+      { title: 'Brief', body: 'The project required the conceptualization and design of animated ending titles for the 2005 film Nanny McPhee (Tata Matilda). The deliverable included the complete animated sequence — from the first credit to the last — designed to feel like a natural, joyful epilogue to the film\'s visual world.' },
+      { title: 'Visual Style', body: "The graphic design adopts a charming 2D aesthetic characterized by irregular, hand-drawn strokes and color palettes reminiscent of children's drawings. The compositions prominently feature iconic objects, windows, and doors that are central to the movie's setting — recalling the Victorian domestic chaos of the Brown household without quoting it directly." },
+      { title: 'Motion & Narrative', body: "Conceived as a 'playful journey,' the title sequence retraces the movie's plot through elements moving dynamically across the screen. The visual storytelling relies on these moving elements to create a rhythm that contrasts nostalgic and cheerful moments, often illustrating the children's mischievous disasters. To add depth and break the narrative flow, a characteristic dark moment is intentionally integrated into the sequence." },
+      { title: 'Process', body: "The sequence was illustrated frame by frame in Procreate, establishing the hand-drawn quality before moving into After Effects for animation and compositing. Illustrator and Photoshop were used for asset refinement and color work. The final pacing was calibrated against the film's closing musical theme, ensuring that key visual beats land on rhythmic accents in the score." },
+    ],
   },
+  // ── 07 SOSPESE ──────────────────────────────────────────────────────────────
   {
     id: 7,
-    slug: "alien-save-the-queen",
-    title: "Alien Save The Queen",
-    category: "Data Visualization",
-    year: "2025",
-    role: "Interaction Designer",
-    tools: ["Gemini", "Spread Sheet", "Illustrator", "Figma"],
-    tags: ["Vibe Coding", "P5.js", "Data Art"],
-    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1000",
-    desc: "Un'esplorazione dati trasformata in arte visiva interattiva.",
-    content: `<div class="space-y-16">
-      <div>
-        <h3>The Brief</h3>
-        <p>Visualize a complex dataset about alien sightings in an engaging and artistic way that tells a compelling story.</p>
-      </div>
-      <div class="grid md:grid-cols-2 gap-12 items-start">
-        <div>
-          <h3>The Challenge</h3>
-          <p>Handling massive datasets while maintaining visual clarity and artistic expression. The goal was to find patterns in chaos and present them beautifully.</p>
-        </div>
-        <img src="https://images.unsplash.com/photo-1534972195531-d756b9bfa9f2?auto=format&fit=crop&q=80&w=600" class="inline-img w-full h-full object-cover" alt="Code-generated data visualization of alien sighting patterns" />
-      </div>
-      <div>
-        <h3>Data as Art</h3>
-        <p>Using Vibe Coding algorithms and P5.js, we transformed raw data into flowing, organic visualizations that invite exploration and discovery.</p>
-        <img src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&q=80&w=1000" class="inline-img w-full h-80 object-cover mt-8" alt="Organic flowing visualization transforming raw data into art" />
-      </div>
-    </div>`
+    slug: 'sospese',
+    num: '07',
+    title: 'Sospese',
+    category: 'Exhibition Design',
+    year: '2025',
+    image: 'https://images.unsplash.com/photo-1554907984-15263bfd63bd?w=900&h=700&fit=crop&auto=format',
+    client: 'Academic Project',
+    duration: '8 weeks',
+    tags: ['Exhibition Design', 'Spatial Design', 'Cinema 4D', 'Lighting'],
+    description:
+      'Exhibition design for a showcase dedicated to the evolution of the female image across 10 statues, tracing a chronological journey from prehistory to the contemporary era. The spatial narrative immerses visitors in a space-time limbo — darkness interrupted by crisp beams of light from large conical structures, each defining an isolated island for a single artwork.',
+    deliverables: [
+      'Spatial layout & floor plan',
+      '10 lighting cone structures',
+      'Per-era video content',
+      'Soundscape design',
+      'Cinema 4D visualizations',
+    ],
+    tools: ['Cinema 4D', 'Illustrator'],
+    localImages: [
+      'https://images.unsplash.com/photo-1554907984-15263bfd63bd?w=900&h=700&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1580136607897-b66bf3eff5b5?w=900&h=700&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1549887534-1541e9326642?w=900&h=700&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?w=900&h=700&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1518998053901-5348d3961a04?w=900&h=700&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1547826039-bfc35e0f1ea8?w=900&h=700&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1561485132-59468537c95d?w=900&h=700&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1565438978212-89f3f7e2ab03?w=900&h=700&fit=crop&auto=format',
+    ],
+    sections: [
+      { title: 'Brief', body: 'Exhibition design for a showcase dedicated to the evolution of the female image. The spatial narrative explores this transformation through 10 statues, tracing a chronological journey from prehistory to the contemporary era — each piece a document of how women were seen, idealized, and objectified across time and culture.' },
+      { title: 'Concept', body: 'In an era where women\'s roles, rights, and safety remain critical and debated issues, Sospese — Suspended — invites profound reflection. The title refers both to the statues physically suspended in space and to the unresolved question they pose: how were these women treated in the past, and what is their condition today? Through art, the exhibition aims to trigger an unconscious dialogue within the viewer, allowing history to speak without commentary.' },
+      { title: 'Spatial Experience', body: 'The layout projects the visitor into a space-time limbo: an environment immersed in near-total darkness, in sharp contrast with the crisp beams of light emitted by large conical structures. These shapes define dedicated islands for the individual artworks. The cone becomes a threshold — outside, isolation and silence; inside, a complete sensory world.' },
+      { title: 'Sensory Design', body: 'Upon entering each illuminated island, the isolation breaks to make way for an immersive narrative: video displays and evocative soundscapes — specifically designed for the era and geographical area of each statue — envelop the viewer in a multisensory and emotional experience. A Minoan fertility figure receives a different sonic world than a Baroque allegory or a 1970s feminist sculpture. The sound and image never explain; they contextualize.' },
+    ],
   },
+  // ── 08 MIX&MATCH ────────────────────────────────────────────────────────────
   {
     id: 8,
-    slug: "lumina",
-    title: "Lumina",
-    category: "Brand Identity",
-    year: "2024",
-    role: "Brand Designer",
-    tools: ["Illustrator", "After Effects", "Photoshop"],
-    tags: ["After Effects", "Illustrator", "Branding"],
-    image: "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&q=80&w=1000",
-    desc: "Identità dinamica per un brand tech emergente.",
-    content: `<div class="space-y-16">
-      <div>
-        <h3>The Brief</h3>
-        <p>Create a dynamic brand identity for an emerging tech company that conveys innovation, trust, and forward-thinking design.</p>
-      </div>
-      <div class="grid md:grid-cols-2 gap-12 items-start">
-        <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&q=80&w=600" class="inline-img w-full h-full object-cover" alt="Lumina brand identity system with generative logo variations" />
-        <div>
-          <h3>The Challenge</h3>
-          <p>Developing a visual system that works across digital and physical touchpoints while maintaining consistency and memorability.</p>
-        </div>
-      </div>
-      <div>
-        <h3>Dynamic Branding</h3>
-        <p>Lumina is a brand that never stays still. The identity system uses generative algorithms to create infinite variations while maintaining brand recognition.</p>
-        <img src="https://images.unsplash.com/photo-1555449377-5463130a50c0?auto=format&fit=crop&q=80&w=1000" class="inline-img w-full h-80 object-cover mt-8" alt="Dynamic branding applications showing Lumina identity across touchpoints" />
-      </div>
-    </div>`
-  }
+    slug: 'mix-match',
+    num: '08',
+    title: 'Mix & Match',
+    category: 'Brand & Packaging',
+    year: '2025',
+    image: 'https://images.unsplash.com/photo-1511537190424-bbbab87ac5eb?w=900&h=700&fit=crop&auto=format',
+    client: 'Illy × Francesco Apreda',
+    duration: '8 weeks',
+    tags: ['Brand Identity', 'Packaging', 'Advertising', 'Social Media'],
+    description:
+      'A new product line for Illy reimagining coffee as a culinary spice. Developed in collaboration with chef and Illy ambassador Francesco Apreda, the line introduces two food products — a ready-to-use seasoning pouch and a versatile spice mix — alongside a complete brand identity, packaging system, and cross-promotional marketing strategy.',
+    deliverables: [
+      'Logo & brand identity',
+      'Packaging (2 SKUs)',
+      'Advertising materials',
+      'Exhibition stand design',
+      'Social media presence',
+    ],
+    tools: ['Illustrator', 'Cinema 4D', 'Photoshop'],
+    localImages: [
+      'https://images.unsplash.com/photo-1511537190424-bbbab87ac5eb?w=900&h=700&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=900&h=700&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=900&h=700&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=900&h=700&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&h=700&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=900&h=700&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=900&h=700&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1543353071-087092ec393a?w=900&h=700&fit=crop&auto=format',
+    ],
+    sections: [
+      { title: 'Brief', body: "The assignment required conceptualizing and designing a new product line for the Illy brand, with a primary focus on brand image and packaging design. The challenge was to extend Illy's premium positioning into an entirely new product category without diluting the brand's identity or confusing its existing coffee audience." },
+      { title: 'Concept', body: 'The project is built around an innovative premise: stepping away from tradition to reimagine coffee as a culinary spice. Developed in collaboration with chef and Illy ambassador Francesco Apreda, the strategy introduces two new food products. The first is a ready-to-use seasoning pouch blending coffee, whole salt, and pink pepper; the second is a versatile spice mix designed to enhance everyday meals — from pasta to grilled proteins.' },
+      { title: 'Brand Identity', body: "The Mix & Match name captures both the product logic (combining coffee with other flavors) and the brand's collaborative spirit (Illy matched with Apreda). The visual identity borrows Illy's disciplined red and white language, then opens it up with warmer, culinary textures — grain, salt crystals, pepper — rendered in a clean contemporary system. The packaging uses die-cut windows to reveal the product's texture as part of the design." },
+      { title: 'Strategy & Outcome', body: "Beyond the physical packaging, the project integrates a cross-promotional marketing strategy offering reciprocal discounts between Illy products and Chef Apreda's restaurant. The final deliverable encompasses the complete Mix & Match brand identity — logo, advertising materials, exhibition stands, and a dedicated social media presence — designed to fully support the product launch across retail, hospitality, and digital channels." },
+    ],
+  },
+  // ── 09 ZOETROPE ─────────────────────────────────────────────────────────────
+  {
+    id: 9,
+    slug: 'zoetrope',
+    num: '09',
+    title: 'Zoetrope',
+    category: 'Prototyping & Interaction',
+    year: '2025',
+    image: 'https://images.unsplash.com/photo-1535378917042-10a22c95931a?w=900&h=700&fit=crop&auto=format',
+    client: 'Academic Project',
+    duration: '10 weeks',
+    tags: ['Laser Cut', '3D Printing', 'Raspberry Pi Pico', 'Fusion 360'],
+    description:
+      'A functional reinvention of the historical zoetrope optical toy — transformed into an interactive device that blends analog mechanics, digital fabrication, and modern electronics. The final object offers dual-mode interaction: a mechanical side wheel for manual rotation control and a front button panel managing volume, track playback, and multimedia functions synchronized to the optical illusion.',
+    deliverables: [
+      'Laser-cut outer cylinder',
+      '3D-printed base & mechanics',
+      'Raspberry Pi Pico integration',
+      'Potentiometer & speaker system',
+      'Front button control panel',
+    ],
+    tools: ['Laser Cut', 'Fusion 360', '3D Printing', 'Arduino'],
+    localImages: [
+      'https://images.unsplash.com/photo-1535378917042-10a22c95931a?w=900&h=700&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=900&h=700&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1565515267236-c06a0e9f837f?w=900&h=700&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=900&h=700&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1518770660439-4636190af475?w=900&h=700&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1581092335397-9583eb92d232?w=900&h=700&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1564769662533-4f00a87b4056?w=900&h=700&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1555664424-778a1e5e1b48?w=900&h=700&fit=crop&auto=format',
+    ],
+    sections: [
+      { title: 'Brief & Challenge', body: 'The project required designing and building a functional object using laser cutting, 3D printing, and microcontroller integration. The core challenge was to reinvent a historical optical toy — the zoetrope — transforming it into an interactive device that seamlessly blends analog mechanics, digital fabrication, and modern electronics.' },
+      { title: 'Process', body: "The process began with rough cardboard prototyping to study the mechanical connections before committing to final materials. Extensive laser-cutting tests followed to perfect the outer cylinder's proportions and slit spacing. The entire system was modeled in Fusion 360, building outward from the rotating cylinder and inner mechanisms to the final outer casing. Through iterative testing, hardware was optimized: initially 3D-printed bearings were replaced with purchased hardware to guarantee a perfectly stable rotation." },
+      { title: 'Construction', body: "The base, internal mechanics, and side control wheel were 3D printed for structural precision and repeatability. The outer cylinder was laser-cut, its slits calibrated to the animation's frame count and the motor's RPM range. A full-black finish was chosen across all surfaces to maximize visual contrast — ensuring the internal animation strip reads cleanly during rotation without light bleed or surface reflection competing with the illusion." },
+      { title: 'Outcome', body: 'The final device is powered by a Raspberry Pi Pico connected to a potentiometer and speakers, synchronizing the optical illusion with an audio component — animation and sound locked together. Users engage via a mechanical side wheel for manual rotation speed control and a front button panel to manage multimedia functions: volume, track selection, and playback. The object exists simultaneously as a precision-engineered mechanism and a kinetic sculpture.' },
+    ],
+  },
 ];
 
-export function getProjectBySlug(slug: string): Project | undefined {
-  return projects.find(p => p.slug === slug);
+export function getProject(slug: string): Project | undefined {
+  return PROJECTS.find((proj) => proj.slug === slug);
 }

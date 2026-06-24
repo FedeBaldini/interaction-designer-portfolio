@@ -34,3 +34,6 @@ next-env.d.ts
 
 # Old portfolio
 portfolio2.0
+
+# test artifacts
+/test-results/

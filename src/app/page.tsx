@@ -1,13 +1,24 @@
 import Hero from '@/components/home/Hero';
-import ToolsGrid from '@/components/home/ToolsGrid';
-import ServicesGrid from '@/components/home/ServicesGrid';
+import ProjectsPreview from '@/components/home/ProjectsPreview';
+import About from '@/components/home/About';
+import { C } from '@/lib/theme';
+
+function Divider() {
+  return (
+    <div className="max-w-6xl mx-auto px-6 md:px-10">
+      <div style={{ height: '1px', background: C.border }} />
+    </div>
+  );
+}
 
 export default function HomePage() {
   return (
-    <section aria-label="Home" className="flex flex-col items-center text-center space-y-10 sm:space-y-12 md:space-y-14 lg:space-y-16 animate-fade-in-up w-full">
+    <div className="pt-16">
       <Hero />
-      <ToolsGrid />
-      <ServicesGrid />
-    </section>
+      <Divider />
+      <ProjectsPreview />
+      <Divider />
+      <About />
+    </div>
   );
 }
