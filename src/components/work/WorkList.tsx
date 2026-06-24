@@ -9,11 +9,9 @@ import { C, serif, sans, mono, fadeUp, easeOut } from '@/lib/theme';
 
 export default function WorkList() {
   const [filter, setFilter] = useState<string | null>(null);
-  const [hoveredId, setHoveredId] = useState<number | null>(null);
 
   const cats = useMemo(() => [...new Set(PROJECTS.map((p) => p.category))], []);
   const list = filter ? PROJECTS.filter((p) => p.category === filter) : PROJECTS;
-  const preview = PROJECTS.find((p) => p.id === hoveredId) ?? null;
 
   return (
     <div className="pt-16">
@@ -86,8 +84,6 @@ export default function WorkList() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.35, delay: i * 0.03 }}
-                onMouseEnter={() => setHoveredId(p.id)}
-                onMouseLeave={() => setHoveredId(null)}
               >
                 <Link href={`/work/${p.slug}`} className="block w-full text-left group">
                   <div className="flex items-center gap-4 py-5 border-b" style={{ borderColor: C.border }}>
@@ -109,7 +105,6 @@ export default function WorkList() {
                         src={p.image}
                         alt={p.title}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                        style={{ opacity: hoveredId === p.id ? 1 : 0.55, transition: 'opacity 0.4s, transform 0.5s' }}
                       />
                     </div>
 
@@ -127,54 +122,6 @@ export default function WorkList() {
           </AnimatePresence>
         </div>
       </div>
-
-      {/* Hover image panel */}
-      <AnimatePresence>
-        {preview && (
-          <motion.div
-            className="fixed top-0 right-0 bottom-0 pointer-events-none hidden xl:flex flex-col"
-            style={{ width: '36vw', zIndex: 40 }}
-            initial={{ opacity: 0, x: '100%' }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: '20%' }}
-            transition={{ duration: 0.45, ease: easeOut }}
-          >
-            <div className="flex-1 relative overflow-hidden">
-              <motion.img
-                key={preview.id}
-                src={preview.image}
-                alt={preview.title}
-                className="w-full h-full object-cover"
-                initial={{ scale: 1.06 }}
-                animate={{ scale: 1 }}
-                transition={{ duration: 0.55, ease: easeOut }}
-              />
-              <div
-                className="absolute inset-0"
-                style={{ background: 'linear-gradient(to right, #f4efe6 0%, rgba(244,239,230,0.3) 22%, transparent 50%)' }}
-              />
-            </div>
-            <div className="shrink-0 px-7 py-5 border-l border-t" style={{ background: C.card, borderColor: C.border }}>
-              <motion.div
-                key={`i-${preview.id}`}
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3 }}
-              >
-                <p style={{ ...mono, fontSize: '0.62rem', color: C.muted, letterSpacing: '0.1em', marginBottom: '0.3rem' }}>
-                  {preview.num} — {preview.category}
-                </p>
-                <p style={{ ...serif, fontSize: '1.4rem', color: C.fg, lineHeight: 1.1, marginBottom: '0.3rem' }}>
-                  {preview.title}
-                </p>
-                <p style={{ ...sans, fontSize: '0.75rem', color: C.muted }}>
-                  {preview.client} · {preview.year}
-                </p>
-              </motion.div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </div>
   );
 }

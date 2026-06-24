@@ -50,7 +50,7 @@ export default function GalleryCarousel({
         </div>
       </div>
 
-      <div className="relative overflow-hidden" style={{ background: C.card, height: '65vh' }}>
+      <div className="relative overflow-hidden" style={{ height: '65vh' }}>
         <AnimatePresence mode="wait">
           <motion.button
             key={idx}
