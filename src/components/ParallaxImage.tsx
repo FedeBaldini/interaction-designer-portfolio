@@ -44,6 +44,7 @@ export default function ParallaxImage({
       <motion.img
         src={src}
         alt={alt}
+        loading="lazy"
         className={`absolute left-0 w-full object-cover ${imgClassName ?? ''}`}
         style={
           reduce

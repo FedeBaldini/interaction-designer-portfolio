@@ -104,6 +104,9 @@ export default function WorkList() {
                       <img
                         src={p.image}
                         alt={p.title}
+                        width={88}
+                        height={60}
+                        loading="lazy"
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                       />
                     </div>

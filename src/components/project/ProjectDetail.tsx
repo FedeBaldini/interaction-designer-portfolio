@@ -121,6 +121,7 @@ export default function ProjectDetail({
                 <ImageWithFallback
                   src={imgs[0]}
                   alt={project.title}
+                  loading="eager"
                   className="w-full object-contain transition-transform duration-700 group-hover:scale-[1.02]"
                 />
               </motion.div>
