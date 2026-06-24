@@ -7,8 +7,8 @@ import type { CSSProperties } from 'react';
 export const C = {
   bg: '#f4efe6',
   fg: '#1c1916',
-  accent: '#8a6840',
-  muted: '#7a7268',
+  accent: '#7a5a35',
+  muted: '#6b6258',
   border: 'rgba(28,25,22,0.1)',
   card: '#ece7dc',
 } as const;
