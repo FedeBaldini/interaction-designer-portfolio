@@ -1,8 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useRef, useState } from 'react';
+import { motion, AnimatePresence, useScroll, useTransform, useReducedMotion } from 'framer-motion';
 import { ArrowLeft, X } from 'lucide-react';
 import type { Project } from '@/data/projects';
 import { ImageWithFallback } from '@/components/ImageWithFallback';
@@ -17,6 +17,14 @@ export default function ProjectDetail({
   next: Pick<Project, 'num' | 'title' | 'category' | 'slug'>;
 }) {
   const [lightbox, setLightbox] = useState<string | null>(null);
+
+  const heroRef = useRef<HTMLButtonElement>(null);
+  const reduce = useReducedMotion();
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ['start end', 'end start'],
+  });
+  const heroScale = useTransform(scrollYProgress, [0, 1], [1.04, 1.12]);
 
   const imgs = project.localImages?.length ? project.localImages : [project.image];
   const meta = [
@@ -78,16 +86,19 @@ export default function ProjectDetail({
           <motion.div {...fadeUp(0.1)} className="md:col-span-8">
             {/* Hero image */}
             <button
+              ref={heroRef}
               className="w-full overflow-hidden block group mb-10"
               style={{ background: C.card }}
               onClick={() => setLightbox(imgs[0])}
               aria-label="Open hero image"
             >
-              <ImageWithFallback
-                src={imgs[0]}
-                alt={project.title}
-                className="w-full object-contain transition-transform duration-700 group-hover:scale-[1.02]"
-              />
+              <motion.div style={reduce ? undefined : { scale: heroScale }}>
+                <ImageWithFallback
+                  src={imgs[0]}
+                  alt={project.title}
+                  className="w-full object-contain transition-transform duration-700 group-hover:scale-[1.02]"
+                />
+              </motion.div>
             </button>
 
             {/* Description */}

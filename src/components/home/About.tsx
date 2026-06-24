@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import ParallaxImage from '@/components/ParallaxImage';
 import { C, serif, sans, mono } from '@/lib/theme';
 
 const EDUCATION = [
@@ -40,14 +41,12 @@ export default function About() {
         viewport={{ once: true }}
         transition={{ duration: 0.7 }}
       >
-        <div className="relative overflow-hidden" style={{ background: C.card, aspectRatio: '4/5' }}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=700&h=875&fit=crop&auto=format"
-            alt="Chiara Baldini, Graphic & Interaction Designer"
-            className="w-full h-full object-cover"
-          />
-        </div>
+        <ParallaxImage
+          src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=700&h=875&fit=crop&auto=format"
+          alt="Chiara Baldini, Graphic & Interaction Designer"
+          amount={45}
+          style={{ background: C.card, aspectRatio: '4/5' }}
+        />
       </motion.div>
 
       <motion.div

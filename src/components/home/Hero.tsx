@@ -1,13 +1,27 @@
 'use client';
 
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { useRef } from 'react';
+import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import { C, serif, sans, fadeUp, easeOut } from '@/lib/theme';
 
 export default function Hero() {
+  const ref = useRef<HTMLElement>(null);
+  const reduce = useReducedMotion();
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start start', 'end start'],
+  });
+  const y = useTransform(scrollYProgress, [0, 1], [0, -70]);
+  const opacity = useTransform(scrollYProgress, [0, 0.85], [1, 0]);
+
   return (
-    <section className="max-w-6xl mx-auto px-6 md:px-10 pt-24 pb-20 md:pt-36 md:pb-28">
+    <section
+      ref={ref}
+      className="max-w-6xl mx-auto px-6 md:px-10 pt-24 pb-20 md:pt-36 md:pb-28"
+    >
+      <motion.div style={reduce ? undefined : { y, opacity }}>
       <motion.p
         {...fadeUp(0)}
         style={{ ...sans, fontSize: '0.82rem', color: C.muted, letterSpacing: '0.04em', marginBottom: '1.5rem' }}
@@ -51,6 +65,7 @@ export default function Hero() {
             />
           </Link>
         </div>
+      </motion.div>
       </motion.div>
     </section>
   );
