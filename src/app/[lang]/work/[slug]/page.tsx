@@ -22,6 +22,8 @@ export async function generateMetadata({
   const project = getProject(slug, lang);
   if (!project) return { title: 'Project not found' };
 
+  const ogImage = project.image.startsWith('http') ? project.image : `${SITE.url}${project.image}`;
+
   return {
     title: project.title,
     description: project.description,
@@ -29,7 +31,7 @@ export async function generateMetadata({
     openGraph: {
       title: `${project.title} — ${SITE.name}`,
       description: project.description,
-      images: [project.image],
+      images: [ogImage],
     },
   };
 }

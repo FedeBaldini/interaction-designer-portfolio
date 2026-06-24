@@ -7,6 +7,7 @@
  * so they are resolved at runtime by imageDimensions() instead.
  */
 const LOCAL: Record<string, [number, number]> = {
+  'placeholder.svg': [1200, 800],
   '3.png': [3249, 2396],
   'AppBommie.png': [4284, 1995],
   'ArtaleBaldiniVerdicaro_Tabu_.png': [1240, 1754],
