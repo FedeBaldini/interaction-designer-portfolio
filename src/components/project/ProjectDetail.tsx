@@ -16,20 +16,22 @@ export default function ProjectDetail({
   project: Project;
   next: Pick<Project, 'num' | 'title' | 'category' | 'slug'>;
 }) {
-  const [lightbox, setLightbox] = useState<string | null>(null);
+  const [lightbox, setLightbox] = useState<{ src: string; alt: string } | null>(null);
   const lightboxCloseRef = useRef<HTMLButtonElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
   const lastFocusedRef = useRef<HTMLElement | null>(null);
 
-  const openLightbox = (src: string) => {
+  const openLightbox = (src: string, alt: string) => {
     lastFocusedRef.current = (document.activeElement as HTMLElement) ?? null;
-    setLightbox(src);
+    setLightbox({ src, alt });
   };
   const closeLightbox = () => {
     setLightbox(null);
     lastFocusedRef.current?.focus?.();
   };
 
-  // Move focus into the dialog on open, close on Escape, restore focus on close.
+  // Move focus into the dialog on open, close on Escape, trap Tab within the
+  // dialog, and restore focus to the trigger on close.
   useEffect(() => {
     if (!lightbox) return;
     lightboxCloseRef.current?.focus();
@@ -37,6 +39,33 @@ export default function ProjectDetail({
       if (e.key === 'Escape') {
         setLightbox(null);
         lastFocusedRef.current?.focus?.();
+        return;
+      }
+      if (e.key === 'Tab') {
+        const root = dialogRef.current;
+        if (!root) return;
+        const focusable = Array.from(
+          root.querySelectorAll<HTMLElement>(
+            'a[href], button:not([disabled]), input, [tabindex]:not([tabindex="-1"])',
+          ),
+        );
+        if (focusable.length === 0) {
+          e.preventDefault();
+          return;
+        }
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        const active = document.activeElement as HTMLElement | null;
+        if (!root.contains(active)) {
+          e.preventDefault();
+          first.focus();
+        } else if (e.shiftKey && active === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && active === last) {
+          e.preventDefault();
+          first.focus();
+        }
       }
     };
     document.addEventListener('keydown', onKey);
@@ -114,7 +143,7 @@ export default function ProjectDetail({
               ref={heroRef}
               className="w-full overflow-hidden block group mb-10"
               style={{ background: C.card }}
-              onClick={() => openLightbox(imgs[0])}
+              onClick={() => openLightbox(imgs[0], project.title)}
               aria-label="Open hero image in full screen"
             >
               <motion.div style={reduce ? undefined : { scale: heroScale }}>
@@ -166,7 +195,7 @@ export default function ProjectDetail({
                     {[imgs[1], imgs[2]].map((src, n) => (
                       <button
                         key={n}
-                        onClick={() => openLightbox(src)}
+                        onClick={() => openLightbox(src, `${project.title} detail ${n + 1}`)}
                         className="w-full overflow-hidden block group"
                         style={{ background: C.card }}
                         aria-label={`Open ${project.title} detail ${n + 1} in full screen`}
@@ -186,7 +215,7 @@ export default function ProjectDetail({
 
             {/* Bottom gallery */}
             {imgs.length > 3 && (
-              <GalleryCarousel images={imgs.slice(3)} onOpen={openLightbox} />
+              <GalleryCarousel images={imgs.slice(3)} onOpen={openLightbox} label={project.title} />
             )}
           </motion.div>
 
@@ -249,9 +278,10 @@ export default function ProjectDetail({
       <AnimatePresence>
         {lightbox && (
           <motion.div
+            ref={dialogRef}
             role="dialog"
             aria-modal="true"
-            aria-label={`${project.title} — full screen image`}
+            aria-label={lightbox.alt}
             className="fixed inset-0 flex items-center justify-center z-[9990] px-6"
             style={{ background: 'rgba(28,25,22,0.92)', backdropFilter: 'blur(4px)' }}
             initial={{ opacity: 0 }}
@@ -268,7 +298,7 @@ export default function ProjectDetail({
               transition={{ duration: 0.35, ease: easeOut }}
               onClick={(e) => e.stopPropagation()}
             >
-              <ImageWithFallback src={lightbox} alt={project.title} className="w-full object-contain" style={{ maxHeight: '85vh' }} />
+              <ImageWithFallback src={lightbox.src} alt={lightbox.alt} className="w-full object-contain" style={{ maxHeight: '85vh' }} />
               <button
                 ref={lightboxCloseRef}
                 onClick={closeLightbox}
