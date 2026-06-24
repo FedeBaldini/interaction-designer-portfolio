@@ -5,14 +5,32 @@ import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform, useReducedMotion } from 'framer-motion';
 import { ArrowLeft, X } from 'lucide-react';
 import type { Project } from '@/data/projects';
+import type { Locale } from '@/lib/i18n';
 import { ImageWithFallback } from '@/components/ImageWithFallback';
 import GalleryCarousel from '@/components/project/GalleryCarousel';
 import { C, serif, sans, mono, fadeUp, easeOut } from '@/lib/theme';
 
+interface ProjectDict {
+  back: string;
+  client: string;
+  year: string;
+  duration: string;
+  deliverables: string;
+  tools: string;
+  next: string;
+  gallery: string;
+  openImage: string;
+  galleryImageWord: string;
+}
+
 export default function ProjectDetail({
+  lang,
+  dict,
   project,
   next,
 }: {
+  lang: Locale;
+  dict: ProjectDict;
   project: Project;
   next: Pick<Project, 'num' | 'title' | 'category' | 'slug'>;
 }) {
@@ -82,9 +100,9 @@ export default function ProjectDetail({
 
   const imgs = project.localImages?.length ? project.localImages : [project.image];
   const meta = [
-    { l: 'Client', v: project.client },
-    { l: 'Year', v: project.year },
-    { l: 'Duration', v: project.duration },
+    { l: dict.client, v: project.client },
+    { l: dict.year, v: project.year },
+    { l: dict.duration, v: project.duration },
   ];
 
   return (
@@ -93,12 +111,12 @@ export default function ProjectDetail({
         {/* Back */}
         <motion.div {...fadeUp(0)}>
           <Link
-            href="/work"
+            href={`/${lang}/work`}
             className="inline-flex items-center gap-2 mt-10 mb-10 group"
             style={{ ...sans, fontSize: '0.8rem', color: C.muted }}
           >
             <ArrowLeft size={13} className="group-hover:-translate-x-0.5 transition-transform" />
-            Back to Work
+            {dict.back}
           </Link>
         </motion.div>
 
@@ -144,7 +162,7 @@ export default function ProjectDetail({
               className="w-full overflow-hidden block group mb-10"
               style={{ background: C.card }}
               onClick={() => openLightbox(imgs[0], project.title)}
-              aria-label="Open hero image in full screen"
+              aria-label={dict.openImage}
             >
               <motion.div style={reduce ? undefined : { scale: heroScale }}>
                 <ImageWithFallback
@@ -195,14 +213,14 @@ export default function ProjectDetail({
                     {[imgs[1], imgs[2]].map((src, n) => (
                       <button
                         key={n}
-                        onClick={() => openLightbox(src, `${project.title} detail ${n + 1}`)}
+                        onClick={() => openLightbox(src, `${project.title} — ${n + 1}`)}
                         className="w-full overflow-hidden block group"
                         style={{ background: C.card }}
-                        aria-label={`Open ${project.title} detail ${n + 1} in full screen`}
+                        aria-label={dict.openImage}
                       >
                         <ImageWithFallback
                           src={src}
-                          alt={`${project.title} detail ${n + 1}`}
+                          alt={`${project.title} — ${n + 1}`}
                           className="w-full object-contain transition-transform duration-500 group-hover:scale-[1.01]"
                         />
                       </button>
@@ -215,7 +233,14 @@ export default function ProjectDetail({
 
             {/* Bottom gallery */}
             {imgs.length > 3 && (
-              <GalleryCarousel images={imgs.slice(3)} onOpen={openLightbox} label={project.title} />
+              <GalleryCarousel
+                images={imgs.slice(3)}
+                onOpen={openLightbox}
+                label={project.title}
+                galleryWord={dict.gallery}
+                imageWord={dict.galleryImageWord}
+                openLabel={dict.openImage}
+              />
             )}
           </motion.div>
 
@@ -223,7 +248,7 @@ export default function ProjectDetail({
           <motion.div {...fadeUp(0.2)} className="md:col-span-4">
             <div className="sticky top-24">
               <h2 style={{ ...sans, fontSize: '0.72rem', color: C.muted, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '1rem' }}>
-                Deliverables
+                {dict.deliverables}
               </h2>
               <div>
                 {project.deliverables.map((d, i) => (
@@ -239,7 +264,7 @@ export default function ProjectDetail({
               {project.tools.length > 0 && (
                 <div className="mt-10 pt-8 border-t" style={{ borderColor: C.border }}>
                   <h2 style={{ ...sans, fontSize: '0.72rem', color: C.muted, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '1rem' }}>
-                    Tools
+                    {dict.tools}
                   </h2>
                   <div className="flex flex-wrap gap-2">
                     {project.tools.map((tool) => (
@@ -256,9 +281,9 @@ export default function ProjectDetail({
 
               <div className="mt-10 pt-8 border-t" style={{ borderColor: C.border }}>
                 <h2 style={{ ...sans, fontSize: '0.72rem', color: C.muted, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '1rem' }}>
-                  Next
+                  {dict.next}
                 </h2>
-                <Link href={`/work/${next.slug}`} className="group flex flex-col gap-1 w-full text-left">
+                <Link href={`/${lang}/work/${next.slug}`} className="group flex flex-col gap-1 w-full text-left">
                   <span style={{ ...mono, fontSize: '0.62rem', color: C.muted }}>{next.num}</span>
                   <span
                     className="group-hover:border-current transition-colors"

@@ -10,16 +10,25 @@ export default function GalleryCarousel({
   images,
   onOpen,
   label,
+  galleryWord,
+  imageWord,
+  openLabel,
 }: {
   images: string[];
   onOpen: (src: string, alt: string) => void;
   /** Project title, used to build a contextual alt for each slide. */
   label: string;
+  /** Localized "Gallery" heading. */
+  galleryWord: string;
+  /** Localized "gallery image" phrase for alt text. */
+  imageWord: string;
+  /** Localized "open image" aria-label. */
+  openLabel: string;
 }) {
   const [idx, setIdx] = useState(0);
   if (!images.length) return null;
 
-  const altFor = (i: number) => `${label} — gallery image ${i + 1} of ${images.length}`;
+  const altFor = (i: number) => `${label} — ${imageWord} ${i + 1}/${images.length}`;
 
   const prev = () => setIdx((i) => (i - 1 + images.length) % images.length);
   const next = () => setIdx((i) => (i + 1) % images.length);
@@ -28,7 +37,7 @@ export default function GalleryCarousel({
     <div className="mt-10">
       <div className="flex items-center justify-between mb-4">
         <h2 style={{ ...sans, fontSize: '0.72rem', color: C.muted, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
-          Gallery
+          {galleryWord}
         </h2>
         <div className="flex items-center gap-4">
           <span style={{ ...mono, fontSize: '0.62rem', color: C.muted }}>
@@ -65,7 +74,7 @@ export default function GalleryCarousel({
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -30 }}
             transition={{ duration: 0.3, ease: easeOut }}
-            aria-label={`Open ${altFor(idx)} in full screen`}
+            aria-label={openLabel}
           >
             <ImageWithFallback src={images[idx]} alt={altFor(idx)} className="w-full h-full object-contain" />
           </motion.button>

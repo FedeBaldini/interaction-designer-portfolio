@@ -5,8 +5,15 @@ import { useRef } from 'react';
 import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import { C, serif, sans, fadeUp, easeOut } from '@/lib/theme';
+import type { Locale } from '@/lib/i18n';
 
-export default function Hero() {
+interface HeroDict {
+  eyebrow: string;
+  intro: string;
+  cta: string;
+}
+
+export default function Hero({ lang, dict }: { lang: Locale; dict: HeroDict }) {
   const ref = useRef<HTMLElement>(null);
   const reduce = useReducedMotion();
   const { scrollYProgress } = useScroll({
@@ -26,7 +33,7 @@ export default function Hero() {
         {...fadeUp(0)}
         style={{ ...sans, fontSize: '0.82rem', color: C.muted, letterSpacing: '0.04em', marginBottom: '1.5rem' }}
       >
-        Graphic &amp; Interaction Designer
+        {dict.eyebrow}
       </motion.p>
 
       <div className="overflow-hidden mb-8">
@@ -48,17 +55,15 @@ export default function Hero() {
 
       <motion.div {...fadeUp(0.25)} className="grid grid-cols-1 md:grid-cols-2 gap-8 items-end">
         <p style={{ ...sans, fontSize: '1rem', lineHeight: 1.75, color: C.muted, maxWidth: '38ch' }}>
-          Dynamic and energetic designer I thrive on connecting with new people and believe in active
-          listening as a catalyst for continuous growth. Currently exploring prototyping and interaction
-          design at SUPSI.
+          {dict.intro}
         </p>
         <div className="flex md:justify-end">
           <Link
-            href="/work"
+            href={`/${lang}/work`}
             className="group flex items-center gap-2"
             style={{ ...sans, fontSize: '0.85rem', color: C.fg, borderBottom: `1px solid ${C.fg}`, paddingBottom: '2px' }}
           >
-            Selected Work
+            {dict.cta}
             <ArrowUpRight
               size={14}
               className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"

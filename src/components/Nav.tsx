@@ -3,14 +3,16 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { C, serif, sans } from '@/lib/theme';
+import { C, serif, sans, mono } from '@/lib/theme';
+import { locales, type Locale } from '@/lib/i18n';
 
-const LINKS = [
-  { href: '/work', label: 'Work' },
-  { href: '/contact', label: 'Contact' },
-];
+interface NavDict {
+  work: string;
+  contact: string;
+  switchLanguage: string;
+}
 
-export default function Nav() {
+export default function Nav({ lang, dict }: { lang: Locale; dict: NavDict }) {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
 
@@ -20,6 +22,22 @@ export default function Nav() {
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
+
+  const links = [
+    { href: `/${lang}/work`, label: dict.work, match: `/${lang}/work` },
+    { href: `/${lang}/contact`, label: dict.contact, match: `/${lang}/contact` },
+  ];
+
+  // Same page in the other locale: swap the leading /<lang> segment.
+  const swapLocale = (target: Locale) => {
+    const rest = pathname.replace(/^\/(en|it)(?=\/|$)/, '');
+    return `/${target}${rest}` || `/${target}`;
+  };
+
+  const setLocaleCookie = (target: Locale) => {
+    // eslint-disable-next-line react-hooks/immutability -- document.cookie write is the standard API
+    document.cookie = `NEXT_LOCALE=${target}; path=/; max-age=${60 * 60 * 24 * 365}`;
+  };
 
   return (
     <header
@@ -31,18 +49,12 @@ export default function Nav() {
       }}
     >
       <div className="max-w-6xl mx-auto px-6 md:px-10 h-16 flex items-center justify-between">
-        <Link
-          href="/"
-          style={{ ...serif, fontSize: '1rem', color: C.fg, letterSpacing: '0.01em' }}
-        >
+        <Link href={`/${lang}`} style={{ ...serif, fontSize: '1rem', color: C.fg, letterSpacing: '0.01em' }}>
           Chiara Baldini
         </Link>
-        <nav className="flex items-center gap-8">
-          {LINKS.map((link) => {
-            const active =
-              link.href === '/work'
-                ? pathname.startsWith('/work')
-                : pathname === link.href;
+        <nav className="flex items-center gap-6 md:gap-8">
+          {links.map((link) => {
+            const active = pathname.startsWith(link.match);
             return (
               <Link
                 key={link.href}
@@ -59,6 +71,29 @@ export default function Nav() {
               </Link>
             );
           })}
+
+          {/* Language switcher */}
+          <div className="flex items-center gap-1.5" role="group" aria-label={dict.switchLanguage}>
+            {locales.map((loc, i) => (
+              <span key={loc} className="flex items-center gap-1.5">
+                {i > 0 && <span style={{ ...mono, fontSize: '0.62rem', color: C.border }}>/</span>}
+                <Link
+                  href={swapLocale(loc)}
+                  onClick={() => setLocaleCookie(loc)}
+                  aria-current={loc === lang ? 'true' : undefined}
+                  style={{
+                    ...mono,
+                    fontSize: '0.66rem',
+                    letterSpacing: '0.06em',
+                    textTransform: 'uppercase',
+                    color: loc === lang ? C.fg : C.muted,
+                  }}
+                >
+                  {loc}
+                </Link>
+              </span>
+            ))}
+          </div>
         </nav>
       </div>
     </header>

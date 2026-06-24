@@ -4,14 +4,29 @@ import Link from 'next/link';
 import { useMemo, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
-import { PROJECTS } from '@/data/projects';
+import type { Project } from '@/data/projects';
+import type { Locale } from '@/lib/i18n';
 import { C, serif, sans, mono, fadeUp, easeOut } from '@/lib/theme';
 
-export default function WorkList() {
+interface WorkDict {
+  eyebrow: string;
+  title: string;
+  filterAll: string;
+}
+
+export default function WorkList({
+  lang,
+  dict,
+  projects,
+}: {
+  lang: Locale;
+  dict: WorkDict;
+  projects: Project[];
+}) {
   const [filter, setFilter] = useState<string | null>(null);
 
-  const cats = useMemo(() => [...new Set(PROJECTS.map((p) => p.category))], []);
-  const list = filter ? PROJECTS.filter((p) => p.category === filter) : PROJECTS;
+  const cats = useMemo(() => [...new Set(projects.map((p) => p.category))], [projects]);
+  const list = filter ? projects.filter((p) => p.category === filter) : projects;
 
   return (
     <div className="pt-16">
@@ -22,7 +37,7 @@ export default function WorkList() {
             {...fadeUp(0)}
             style={{ ...sans, fontSize: '0.72rem', color: C.muted, letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '1rem' }}
           >
-            Selected Work — 2021–2026
+            {dict.eyebrow}
           </motion.p>
           <div className="overflow-hidden">
             <motion.h1
@@ -31,7 +46,7 @@ export default function WorkList() {
               transition={{ duration: 0.8, ease: easeOut }}
               style={{ ...serif, fontSize: 'clamp(3rem, 7vw, 5rem)', color: C.fg }}
             >
-              Work
+              {dict.title}
             </motion.h1>
           </div>
         </div>
@@ -51,7 +66,7 @@ export default function WorkList() {
               transition: 'all 0.2s',
             }}
           >
-            All
+            {dict.filterAll}
           </button>
           {cats.map((c) => (
             <button
@@ -85,7 +100,7 @@ export default function WorkList() {
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.35, delay: i * 0.03 }}
               >
-                <Link href={`/work/${p.slug}`} className="block w-full text-left group">
+                <Link href={`/${lang}/work/${p.slug}`} className="block w-full text-left group">
                   <div className="flex items-center gap-4 py-5 border-b" style={{ borderColor: C.border }}>
                     <span style={{ ...mono, fontSize: '0.65rem', color: C.muted, width: '2.2rem', flexShrink: 0 }}>
                       {p.num}
