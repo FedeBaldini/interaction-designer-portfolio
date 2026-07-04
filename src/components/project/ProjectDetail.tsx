@@ -16,7 +16,7 @@ interface ProjectDict {
   back: string;
   client: string;
   year: string;
-  duration: string;
+  type: string;
   deliverables: string;
   tools: string;
   next: string;
@@ -106,7 +106,7 @@ export default function ProjectDetail({
   const meta = [
     { l: dict.client, v: project.client },
     { l: dict.year, v: project.year },
-    { l: dict.duration, v: project.duration },
+    { l: dict.type, v: project.team },
   ];
 
   return (
@@ -206,15 +206,20 @@ export default function ProjectDetail({
                     <FilmVideo base={project.film} title={project.title} playLabel={dict.watch} />
                   </div>
                 )}
-                {project.loopVideos?.map((base) => (
-                  <div
-                    key={base}
-                    className="w-full overflow-hidden flex justify-center mb-3 last:mb-0"
-                    style={{ background: C.card, maxHeight: '75vh' }}
-                  >
-                    <LoopVideo base={base} className="max-h-[75vh] w-auto max-w-full object-contain" />
+                {project.loopVideos && project.loopVideos.length === 1 && (
+                  <div className="w-full overflow-hidden flex justify-center" style={{ background: C.card, maxHeight: '75vh' }}>
+                    <LoopVideo base={project.loopVideos[0]} className="max-h-[75vh] w-auto max-w-full object-contain" />
                   </div>
-                ))}
+                )}
+                {project.loopVideos && project.loopVideos.length > 1 && (
+                  <div className="flex gap-3 overflow-x-auto pb-3">
+                    {project.loopVideos.map((base) => (
+                      <div key={base} className="shrink-0 overflow-hidden" style={{ background: C.card, height: '60vh' }}>
+                        <LoopVideo base={base} className="h-full w-auto" />
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
             )}
 

@@ -12,7 +12,6 @@ interface AboutDict {
   experienceLabel: string;
   portraitAlt: string;
   education: { year: string; label: string; detail: string }[];
-  softSkills: { label: string; note: string }[];
   experience: { role: string; company: string; duration: string; note: string }[];
 }
 
@@ -63,19 +62,7 @@ export default function About({ dict }: { dict: AboutDict }) {
               </span>
               <div>
                 <span style={{ ...sans, fontSize: '0.85rem', color: C.fg, fontWeight: 500 }}>{e.label}</span>
-                <span style={{ ...sans, fontSize: '0.82rem', color: C.muted }}> — {e.detail}</span>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Soft skills */}
-        <div className="mb-6">
-          {dict.softSkills.map((s) => (
-            <div key={s.label} className="flex items-start gap-4 py-3 border-b" style={{ borderColor: C.border }}>
-              <div>
-                <span style={{ ...sans, fontSize: '0.85rem', color: C.fg, fontWeight: 500 }}>{s.label}</span>
-                <span style={{ ...sans, fontSize: '0.82rem', color: C.muted }}> — {s.note}</span>
+                <span style={{ ...sans, fontSize: '0.82rem', color: C.muted }}>, {e.detail}</span>
               </div>
             </div>
           ))}

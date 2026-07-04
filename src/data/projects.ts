@@ -18,23 +18,23 @@ interface RawProject {
   image: string;
   localImages?: string[];
   hasLocalGallery?: boolean;
-  /** Self-hosted muted autoplay loops (Level A) — base paths without extension;
+  /** Self-hosted muted autoplay loops (Level A), base paths without extension;
    *  the player appends .webm / .mp4 (sources) and .jpg (poster). */
   loopVideos?: string[];
-  /** Self-hosted click-to-play film with audio — base path without extension
+  /** Self-hosted click-to-play film with audio, base path without extension
    *  (player appends .webm / .mp4 sources and .jpg poster). */
   film?: string;
   tools: string[];
   category: L;
   client: L;
-  duration: L;
+  team: L;
   tags: LA;
   description: L;
   deliverables: LA;
   sections: LocalizedSection[];
 }
 
-/** Resolved project for a single locale — the shape components consume. */
+/** Resolved project for a single locale, the shape components consume. */
 export interface Project {
   id: number;
   slug: string;
@@ -44,16 +44,16 @@ export interface Project {
   image: string;
   localImages?: string[];
   hasLocalGallery?: boolean;
-  /** Self-hosted muted autoplay loops (Level A) — base paths without extension;
+  /** Self-hosted muted autoplay loops (Level A), base paths without extension;
    *  the player appends .webm / .mp4 (sources) and .jpg (poster). */
   loopVideos?: string[];
-  /** Self-hosted click-to-play film with audio — base path without extension
+  /** Self-hosted click-to-play film with audio, base path without extension
    *  (player appends .webm / .mp4 sources and .jpg poster). */
   film?: string;
   tools: string[];
   category: string;
   client: string;
-  duration: string;
+  team: string;
   tags: string[];
   description: string;
   deliverables: string[];
@@ -86,15 +86,15 @@ const RAW_PROJECTS: RawProject[] = [
     ],
     loopVideos: ['/videos/bommie-surf/loop'],
     category: { en: 'Web & App Design', it: 'Web & App Design' },
-    client: { en: 'Bommie Surf', it: 'Bommie Surf' },
-    duration: { en: '12 weeks', it: '12 settimane' },
+    client: { en: 'Academic Project (IED)', it: 'Progetto accademico (IED)' },
+    team: { en: 'Group project', it: 'Progetto di gruppo' },
     tags: {
       en: ['UX Design', 'Mobile App', 'E-commerce', 'Branding'],
       it: ['UX Design', 'App Mobile', 'E-commerce', 'Branding'],
     },
     description: {
-      en: "A mobile-centric e-commerce platform dedicated to surfers of all levels. The platform offers high-quality surf products alongside a Premium tier featuring a direct SOS system, live webcams, and weather maps — designed to ensure a safe and exciting sports experience.",
-      it: "Una piattaforma e-commerce mobile-first dedicata ai surfisti di ogni livello. La piattaforma offre prodotti di alta qualità per il surf affiancati a un livello Premium con sistema SOS diretto, webcam live e mappe meteo — pensata per garantire un’esperienza sportiva sicura ed entusiasmante.",
+      en: "A mobile-centric e-commerce platform dedicated to surfers of all levels. The platform offers high-quality surf products alongside a Premium tier featuring a direct SOS system, live webcams, and weather maps, designed to ensure a safe and exciting sports experience.",
+      it: "Una piattaforma e-commerce mobile-first dedicata ai surfisti di ogni livello. La piattaforma offre prodotti di alta qualità per il surf affiancati a un livello Premium con sistema SOS diretto, webcam live e mappe meteo, pensata per garantire un’esperienza sportiva sicura ed entusiasmante.",
     },
     deliverables: {
       en: ['Brand identity & logo system', 'Mobile app (iOS & Android)', 'Web e-commerce platform', 'Instagram editorial plan', '3-year growth roadmap'],
@@ -104,8 +104,8 @@ const RAW_PROJECTS: RawProject[] = [
       {
         title: { en: 'Brief', it: 'Brief' },
         body: {
-          en: "The goal was to create a mobile-centric e-commerce platform dedicated to surfers of all levels — from beginners to professionals, as well as surf schools and beach facilities utilizing the brand's safety systems. The platform needed to feel as energetic and community-driven as the sport itself.",
-          it: "L’obiettivo era creare una piattaforma e-commerce mobile-first dedicata ai surfisti di ogni livello — dai principianti ai professionisti, oltre alle scuole di surf e agli stabilimenti balneari che utilizzano i sistemi di sicurezza del brand. La piattaforma doveva risultare energica e orientata alla community quanto lo sport stesso.",
+          en: "The goal was to create a mobile-centric e-commerce platform dedicated to surfers of all levels, from beginners to professionals, as well as surf schools and beach facilities utilizing the brand's safety systems. The platform needed to feel as energetic and community-driven as the sport itself.",
+          it: "L’obiettivo era creare una piattaforma e-commerce mobile-first dedicata ai surfisti di ogni livello, dai principianti ai professionisti, oltre alle scuole di surf e agli stabilimenti balneari che utilizzano i sistemi di sicurezza del brand. La piattaforma doveva risultare energica e orientata alla community quanto lo sport stesso.",
         },
       },
       {
@@ -118,15 +118,15 @@ const RAW_PROJECTS: RawProject[] = [
       {
         title: { en: 'Concept & Branding', it: 'Concept e Branding' },
         body: {
-          en: "The team chose the name \"Bommie,\" inspired by surfing slang for a large wave that breaks over a submerged reef. The logo incorporates two 'm' letters designed to mimic ocean waves, paired with the Shaka greeting hand gesture woven into the letterforms — all anchored by the bold payoff \"Extremize your surf\" in gold.",
-          it: "Il team ha scelto il nome \"Bommie\", ispirato allo slang del surf per indicare una grande onda che si infrange su una barriera sommersa. Il logo integra due lettere 'm' disegnate per richiamare le onde dell’oceano, abbinate al gesto di saluto Shaka intrecciato nelle forme delle lettere — il tutto ancorato dal payoff in oro \"Extremize your surf\".",
+          en: "The team chose the name \"Bommie,\" inspired by surfing slang for a large wave that breaks over a submerged reef. The logo incorporates two 'm' letters designed to mimic ocean waves, paired with the Shaka greeting hand gesture woven into the letterforms, all anchored by the bold payoff \"Extremize your surf\" in gold.",
+          it: "Il team ha scelto il nome \"Bommie\", ispirato allo slang del surf per indicare una grande onda che si infrange su una barriera sommersa. Il logo integra due lettere 'm' disegnate per richiamare le onde dell’oceano, abbinate al gesto di saluto Shaka intrecciato nelle forme delle lettere, il tutto ancorato dal payoff in oro \"Extremize your surf\".",
         },
       },
       {
         title: { en: 'Research & UX', it: 'Ricerca e UX' },
         body: {
-          en: "The structural phase included competitor research and the creation of proto-personas to understand user needs across skill levels. Temporal ecosystem maps and detailed flowcharts were developed to define the app's logical flow and hierarchy. The Premium tier — with its SOS system, surf spot webcams, and real-time weather maps — was validated through user testing with active surfers.",
-          it: "La fase strutturale ha incluso l’analisi dei competitor e la creazione di proto-persona per comprendere i bisogni degli utenti ai diversi livelli. Sono state sviluppate mappe temporali dell’ecosistema e flowchart dettagliati per definire il flusso logico e la gerarchia dell’app. Il livello Premium — con sistema SOS, webcam degli spot e mappe meteo in tempo reale — è stato validato tramite user testing con surfisti attivi.",
+          en: "The structural phase included competitor research and the creation of proto-personas to understand user needs across skill levels. Temporal ecosystem maps and detailed flowcharts were developed to define the app's logical flow and hierarchy. The Premium tier, with its SOS system, surf spot webcams, and real-time weather maps, was validated through user testing with active surfers.",
+          it: "La fase strutturale ha incluso l’analisi dei competitor e la creazione di proto-persona per comprendere i bisogni degli utenti ai diversi livelli. Sono state sviluppate mappe temporali dell’ecosistema e flowchart dettagliati per definire il flusso logico e la gerarchia dell’app. Il livello Premium, con sistema SOS, webcam degli spot e mappe meteo in tempo reale, è stato validato tramite user testing con surfisti attivi.",
         },
       },
     ],
@@ -154,19 +154,19 @@ const RAW_PROJECTS: RawProject[] = [
     ],
     loopVideos: ['/videos/unspoken/loop'],
     category: { en: 'Editorial Design', it: 'Design Editoriale' },
-    client: { en: 'Academic Project', it: 'Progetto accademico' },
-    duration: { en: '10 weeks', it: '10 settimane' },
+    client: { en: 'Academic Project (IED)', it: 'Progetto accademico (IED)' },
+    team: { en: 'Group project', it: 'Progetto di gruppo' },
     tags: {
       en: ['Editorial', 'Magazine', 'Layout', 'Illustration'],
       it: ['Editoria', 'Magazine', 'Layout', 'Illustrazione'],
     },
     description: {
-      en: 'A monthly magazine designed to dismantle taboos by offering young people a shame-free platform to learn about sex, safety, and related scientific aspects. The editorial identity balances a conversational tone with scientific accuracy — using wordplay, humor, and original illustration to reframe the subject as normal, everyday reality.',
-      it: 'Un magazine mensile pensato per smontare i tabù, offrendo ai più giovani uno spazio senza vergogna per informarsi su sesso, sicurezza e relativi aspetti scientifici. L’identità editoriale bilancia un tono colloquiale con il rigore scientifico — usando giochi di parole, ironia e illustrazione originale per restituire il tema come una realtà normale e quotidiana.',
+      en: 'A monthly magazine designed to dismantle taboos by offering young people a shame-free platform to learn about sex, safety, and related scientific aspects. The editorial identity balances a conversational tone with scientific accuracy, using wordplay, humor, and original illustration to reframe the subject as normal, everyday reality.',
+      it: 'Un magazine mensile pensato per smontare i tabù, offrendo ai più giovani uno spazio senza vergogna per informarsi su sesso, sicurezza e relativi aspetti scientifici. L’identità editoriale bilancia un tono colloquiale con il rigore scientifico, usando giochi di parole, ironia e illustrazione originale per restituire il tema come una realtà normale e quotidiana.',
     },
     deliverables: {
-      en: ['Issue Zero — complete layout', 'Cover design Issue 1', 'Cover design Issue 2', 'Editorial identity system', 'Illustration direction'],
-      it: ['Numero Zero — layout completo', 'Copertina Numero 1', 'Copertina Numero 2', 'Sistema di identità editoriale', 'Direzione delle illustrazioni'],
+      en: ['Issue Zero, complete layout', 'Cover design Issue 1', 'Cover design Issue 2', 'Editorial identity system', 'Illustration direction'],
+      it: ['Numero Zero, layout completo', 'Copertina Numero 1', 'Copertina Numero 2', 'Sistema di identità editoriale', 'Direzione delle illustrazioni'],
     },
     sections: [
       {
@@ -179,22 +179,22 @@ const RAW_PROJECTS: RawProject[] = [
       {
         title: { en: 'Concept & Tone', it: 'Concept e Tono' },
         body: {
-          en: 'Named Unspoken — quello che non si dice del sesso — the magazine aims to dismantle taboos by offering young people a shame-free space to learn about sex, safety precautions, and their scientific dimensions. The editorial identity deliberately balances a conversational, peer-to-peer approach with factual accuracy: humor and wordplay sit alongside Freud, consent frameworks, and product guides, treating the subject as a normal, everyday reality rather than a source of embarrassment.',
-          it: 'Chiamato Unspoken — quello che non si dice del sesso — il magazine punta a smontare i tabù offrendo ai giovani uno spazio senza vergogna per informarsi su sesso, precauzioni di sicurezza e relative dimensioni scientifiche. L’identità editoriale bilancia volutamente un approccio colloquiale e tra pari con l’accuratezza dei contenuti: ironia e giochi di parole convivono con Freud, i modelli del consenso e le guide ai prodotti, trattando il tema come una realtà quotidiana e non come fonte di imbarazzo.',
+          en: 'Named Unspoken, quello che non si dice del sesso, the magazine aims to dismantle taboos by offering young people a shame-free space to learn about sex, safety precautions, and their scientific dimensions. The editorial identity deliberately balances a conversational, peer-to-peer approach with factual accuracy: humor and wordplay sit alongside Freud, consent frameworks, and product guides, treating the subject as a normal, everyday reality rather than a source of embarrassment.',
+          it: 'Chiamato Unspoken, quello che non si dice del sesso, il magazine punta a smontare i tabù offrendo ai giovani uno spazio senza vergogna per informarsi su sesso, precauzioni di sicurezza e relative dimensioni scientifiche. L’identità editoriale bilancia volutamente un approccio colloquiale e tra pari con l’accuratezza dei contenuti: ironia e giochi di parole convivono con Freud, i modelli del consenso e le guide ai prodotti, trattando il tema come una realtà quotidiana e non come fonte di imbarazzo.',
         },
       },
       {
         title: { en: 'Process & Target', it: 'Processo e Target' },
         body: {
-          en: 'The content strategy was driven by extensive research and direct interviews with the target demographic, ensuring the magazine addresses real questions with detailed, relatable information. While primarily aimed at readers aged 14 to 30, the accessible format — bold typography, editorial illustration, clear information hierarchy — is designed to engage a much broader audience. Each article balances editorial playfulness with editorial rigour.',
-          it: 'La strategia dei contenuti è nata da un’ampia ricerca e da interviste dirette al target di riferimento, così da rispondere a domande reali con informazioni dettagliate e vicine al lettore. Pur rivolgendosi principalmente a un pubblico tra i 14 e i 30 anni, il formato accessibile — tipografia decisa, illustrazione editoriale, gerarchia chiara delle informazioni — è progettato per coinvolgere un pubblico molto più ampio. Ogni articolo bilancia leggerezza editoriale e rigore.',
+          en: 'The content strategy was driven by extensive research and direct interviews with the target demographic, ensuring the magazine addresses real questions with detailed, relatable information. While primarily aimed at readers aged 14 to 30, the accessible format, bold typography, editorial illustration, clear information hierarchy, is designed to engage a much broader audience. Each article balances editorial playfulness with editorial rigour.',
+          it: 'La strategia dei contenuti è nata da un’ampia ricerca e da interviste dirette al target di riferimento, così da rispondere a domande reali con informazioni dettagliate e vicine al lettore. Pur rivolgendosi principalmente a un pubblico tra i 14 e i 30 anni, il formato accessibile, tipografia decisa, illustrazione editoriale, gerarchia chiara delle informazioni, è progettato per coinvolgere un pubblico molto più ampio. Ogni articolo bilancia leggerezza editoriale e rigore.',
         },
       },
       {
         title: { en: 'Issue Zero', it: 'Numero Zero' },
         body: {
-          en: 'Issue Zero — titled Tabù — covers consent and healthy relationships, the psychosexual development of desire (Pillole di scienza), sex-themed board games reviewed as consumer products (Giochi da tavolo ispirati al sesso), and a sex toy guide written with the tone of a lifestyle product review. The issue establishes the full editorial grammar: psychedelic display type, clean body columns, original character illustration, and a recurring cast of icons and infographics.',
-          it: 'Il Numero Zero — intitolato Tabù — affronta il consenso e le relazioni sane, lo sviluppo psicosessuale del desiderio (Pillole di scienza), i giochi da tavolo a tema recensiti come prodotti di consumo (Giochi da tavolo ispirati al sesso) e una guida ai sex toy scritta con il tono di una recensione lifestyle. Il numero definisce l’intera grammatica editoriale: display type psichedelico, colonne di testo pulite, illustrazione di personaggi originali e un cast ricorrente di icone e infografiche.',
+          en: 'Issue Zero, titled Tabù, covers consent and healthy relationships, the psychosexual development of desire (Pillole di scienza), sex-themed board games reviewed as consumer products (Giochi da tavolo ispirati al sesso), and a sex toy guide written with the tone of a lifestyle product review. The issue establishes the full editorial grammar: psychedelic display type, clean body columns, original character illustration, and a recurring cast of icons and infographics.',
+          it: 'Il Numero Zero, intitolato Tabù, affronta il consenso e le relazioni sane, lo sviluppo psicosessuale del desiderio (Pillole di scienza), i giochi da tavolo a tema recensiti come prodotti di consumo (Giochi da tavolo ispirati al sesso) e una guida ai sex toy scritta con il tono di una recensione lifestyle. Il numero definisce l’intera grammatica editoriale: display type psichedelico, colonne di testo pulite, illustrazione di personaggi originali e un cast ricorrente di icone e infografiche.',
         },
       },
     ],
@@ -207,7 +207,7 @@ const RAW_PROJECTS: RawProject[] = [
     num: '03',
     year: '2024',
     image: p('MockUp_PatternCRTE.png'),
-    tools: ['Illustrator', 'Photoshop', 'Hand work'],
+    tools: ['Illustrator', 'Photoshop', 'InDesign', 'Figma', 'Hand Work'],
     hasLocalGallery: true,
     localImages: [
       p('MockUp_PatternCRTE.png'),
@@ -219,16 +219,16 @@ const RAW_PROJECTS: RawProject[] = [
       p('Home.png'),
       p('Lega.png'),
     ],
-    category: { en: 'Brand & Game Design', it: 'Brand & Game Design' },
-    client: { en: 'Thesis Project', it: 'Progetto di tesi' },
-    duration: { en: '16 weeks', it: '16 settimane' },
+    category: { en: 'Board Game Design', it: 'Board Game Design' },
+    client: { en: 'Academic Project (IED)', it: 'Progetto accademico (IED)' },
+    team: { en: 'Single project', it: 'Progetto singolo' },
     tags: {
       en: ['Brand Identity', 'Packaging', 'Game Design', 'App Design'],
       it: ['Brand Identity', 'Packaging', 'Game Design', 'App Design'],
     },
     description: {
-      en: 'A board game that tells the history of graphic design through graphic design. Combining "Chronos" — the passage of time — with "Graphic," the project delivers a complete visual ecosystem: logo, brand identity, packaging, playing cards, rulebook, scorepad, and a digital companion app.',
-      it: 'Un gioco da tavolo che racconta la storia del graphic design attraverso il graphic design. Unendo "Chronos" — lo scorrere del tempo — a "Graphic", il progetto realizza un ecosistema visivo completo: logo, identità di brand, packaging, carte da gioco, regolamento, segnapunti e un’app companion digitale.',
+      en: 'A board game that tells the history of graphic design through graphic design. Combining "Chronos", the passage of time, with "Graphic," the project delivers a complete visual ecosystem: logo, brand identity, packaging, playing cards, rulebook, scorepad, and a digital companion app.',
+      it: 'Un gioco da tavolo che racconta la storia del graphic design attraverso il graphic design. Unendo "Chronos", lo scorrere del tempo, a "Graphic", il progetto realizza un ecosistema visivo completo: logo, identità di brand, packaging, carte da gioco, regolamento, segnapunti e un’app companion digitale.',
     },
     deliverables: {
       en: ['Brand identity & logo', 'Game box packaging', 'Playing card deck', 'Rulebook design', 'Scorepad', 'Digital companion app (iOS)'],
@@ -238,29 +238,29 @@ const RAW_PROJECTS: RawProject[] = [
       {
         title: { en: 'Brief', it: 'Brief' },
         body: {
-          en: 'The core objective of this thesis project is to tell the story of graphic design through graphic design itself. A board game was chosen as the medium — a traditional and engaging format for educational divulgation, capable of making visual culture accessible and entertaining for a wide audience.',
-          it: 'L’obiettivo centrale di questo progetto di tesi è raccontare la storia del graphic design attraverso il graphic design stesso. Il gioco da tavolo è stato scelto come medium — un formato tradizionale e coinvolgente per la divulgazione, capace di rendere la cultura visiva accessibile e divertente per un pubblico ampio.',
+          en: 'The core objective of this thesis project is to tell the story of graphic design through graphic design itself. A board game was chosen as the medium, a traditional and engaging format for educational divulgation, capable of making visual culture accessible and entertaining for a wide audience.',
+          it: 'L’obiettivo centrale di questo progetto di tesi è raccontare la storia del graphic design attraverso il graphic design stesso. Il gioco da tavolo è stato scelto come medium, un formato tradizionale e coinvolgente per la divulgazione, capace di rendere la cultura visiva accessibile e divertente per un pubblico ampio.',
         },
       },
       {
         title: { en: 'Concept & Name', it: 'Concept e Nome' },
         body: {
-          en: "The project explores the evolution of visual communication, combining the concept of Chronos — the passage of time — with the word Graphic to create the name Krono. Historical research began from 1875, the era that defined modern poster design and visual advertising, tracing the discipline's development through to the present day.",
-          it: 'Il progetto esplora l’evoluzione della comunicazione visiva, combinando il concetto di Chronos — lo scorrere del tempo — con la parola Graphic per creare il nome Krono. La ricerca storica parte dal 1875, l’epoca che ha definito il manifesto moderno e la pubblicità visiva, ripercorrendo lo sviluppo della disciplina fino ai giorni nostri.',
+          en: "The project explores the evolution of visual communication, combining the concept of Chronos, the passage of time, with the word Graphic to create the name Krono. Historical research began from 1875, the era that defined modern poster design and visual advertising, tracing the discipline's development through to the present day.",
+          it: 'Il progetto esplora l’evoluzione della comunicazione visiva, combinando il concetto di Chronos, lo scorrere del tempo, con la parola Graphic per creare il nome Krono. La ricerca storica parte dal 1875, l’epoca che ha definito il manifesto moderno e la pubblicità visiva, ripercorrendo lo sviluppo della disciplina fino ai giorni nostri.',
         },
       },
       {
         title: { en: 'The Cards', it: 'Le Carte' },
         body: {
-          en: "The core gameplay is built around a historical timeline. Each playing card features a prominent graphic artwork on its face — a Porsche logo, a political manifesto, a film poster, a landmark campaign — while the reverse reveals key data: the year, the designer's name, the artwork title, and the client. Players must place cards correctly on the timeline to score points.",
-          it: 'Il cuore del gioco si basa su una linea temporale storica. Ogni carta mostra sul fronte un’opera grafica di rilievo — un logo Porsche, un manifesto politico, una locandina, una campagna iconica — mentre sul retro rivela i dati chiave: anno, nome del designer, titolo dell’opera e cliente. I giocatori devono collocare le carte correttamente sulla timeline per fare punti.',
+          en: "The core gameplay is built around a historical timeline. Each playing card features a prominent graphic artwork on its face, a Porsche logo, a political manifesto, a film poster, a landmark campaign, while the reverse reveals key data: the year, the designer's name, the artwork title, and the client. Players must place cards correctly on the timeline to score points.",
+          it: 'Il cuore del gioco si basa su una linea temporale storica. Ogni carta mostra sul fronte un’opera grafica di rilievo, un logo Porsche, un manifesto politico, una locandina, una campagna iconica, mentre sul retro rivela i dati chiave: anno, nome del designer, titolo dell’opera e cliente. I giocatori devono collocare le carte correttamente sulla timeline per fare punti.',
         },
       },
       {
         title: { en: 'Digital Extension', it: 'Estensione Digitale' },
         body: {
-          en: "The physical game is extended by a companion app offering offline solo play, online multiplayer, and a league system with ranked tiers. The app mirrors the board game's visual identity — the wavy red pattern, the bold white logotype — and adds player profiles, card collections, and a global leaderboard. The digital layer transforms a classroom tool into a living, competitive platform for design culture.",
-          it: 'Il gioco fisico è esteso da un’app companion che offre partite singole offline, multiplayer online e un sistema di leghe con tier classificati. L’app riprende l’identità visiva del gioco — il pattern rosso ondulato, il logotipo bianco e deciso — e aggiunge profili giocatore, collezioni di carte e una classifica globale. Il livello digitale trasforma uno strumento didattico in una piattaforma viva e competitiva per la cultura del design.',
+          en: "The physical game is extended by a companion app offering offline solo play, online multiplayer, and a league system with ranked tiers. The app mirrors the board game's visual identity, the wavy red pattern, the bold white logotype, and adds player profiles, card collections, and a global leaderboard. The digital layer transforms a classroom tool into a living, competitive platform for design culture.",
+          it: 'Il gioco fisico è esteso da un’app companion che offre partite singole offline, multiplayer online e un sistema di leghe con tier classificati. L’app riprende l’identità visiva del gioco, il pattern rosso ondulato, il logotipo bianco e deciso, e aggiunge profili giocatore, collezioni di carte e una classifica globale. Il livello digitale trasforma uno strumento didattico in una piattaforma viva e competitiva per la cultura del design.',
         },
       },
     ],
@@ -289,15 +289,15 @@ const RAW_PROJECTS: RawProject[] = [
     ],
     loopVideos: ['/videos/the-mythological-transceiver/loop'],
     category: { en: 'Prototyping & Interaction', it: 'Prototyping & Interaction' },
-    client: { en: 'SUPSI — Academic Project', it: 'SUPSI — Progetto accademico' },
-    duration: { en: '8 weeks', it: '8 settimane' },
+    client: { en: 'Academic Project (SUPSI)', it: 'Progetto accademico (SUPSI)' },
+    team: { en: 'Group project', it: 'Progetto di gruppo' },
     tags: {
       en: ['Physical Prototyping', 'Installation', 'Raspberry Pi', 'Concept Art'],
       it: ['Prototipazione Fisica', 'Installazione', 'Raspberry Pi', 'Concept Art'],
     },
     description: {
-      en: 'An immersive installation that translates the invisible into tangible visual experience — exploring the intersection of modern 5G technology and archaic Alpine folklore. The device repurposes the camera as a sensory extension capable of detecting signals beyond the visible spectrum, converting digital noise and data glitches into the physical footprints of supernatural manifestations.',
-      it: 'Un’installazione immersiva che traduce l’invisibile in esperienza visiva tangibile — esplorando l’incrocio tra la moderna tecnologia 5G e l’arcaico folklore alpino. Il dispositivo reinterpreta la fotocamera come estensione sensoriale capace di rilevare segnali oltre lo spettro visibile, convertendo il rumore digitale e i glitch dei dati nelle impronte fisiche di manifestazioni soprannaturali.',
+      en: 'An immersive installation that translates the invisible into tangible visual experience, exploring the intersection of modern 5G technology and archaic Alpine folklore. The device repurposes the camera as a sensory extension capable of detecting signals beyond the visible spectrum, converting digital noise and data glitches into the physical footprints of supernatural manifestations.',
+      it: 'Un’installazione immersiva che traduce l’invisibile in esperienza visiva tangibile, esplorando l’incrocio tra la moderna tecnologia 5G e l’arcaico folklore alpino. Il dispositivo reinterpreta la fotocamera come estensione sensoriale capace di rilevare segnali oltre lo spettro visibile, convertendo il rumore digitale e i glitch dei dati nelle impronte fisiche di manifestazioni soprannaturali.',
     },
     deliverables: {
       en: ['Physical device (Fusion 360 + fabrication)', 'Raspberry Pi signal system', 'Oscilloscope & thermal camera integration', 'Exhibition installation', 'Project editorial'],
@@ -328,8 +328,8 @@ const RAW_PROJECTS: RawProject[] = [
       {
         title: { en: 'Outcome', it: 'Risultato' },
         body: {
-          en: 'The result is an immersive installation that elevates technological paranoia into a contemporary mythology. By visualizing the invisible friction between the digital and the spiritual, the Transceiver offers a unique perspective on how modern signals reshape our perception of the environment — turning electronic distortion into a compelling narrative of forced spiritual awakening.',
-          it: 'Il risultato è un’installazione immersiva che eleva la paranoia tecnologica a mitologia contemporanea. Visualizzando l’attrito invisibile tra il digitale e lo spirituale, il Transceiver offre una prospettiva unica su come i segnali moderni rimodellino la nostra percezione dell’ambiente — trasformando la distorsione elettronica in una narrazione avvincente di risveglio spirituale forzato.',
+          en: 'The result is an immersive installation that elevates technological paranoia into a contemporary mythology. By visualizing the invisible friction between the digital and the spiritual, the Transceiver offers a unique perspective on how modern signals reshape our perception of the environment, turning electronic distortion into a compelling narrative of forced spiritual awakening.',
+          it: 'Il risultato è un’installazione immersiva che eleva la paranoia tecnologica a mitologia contemporanea. Visualizzando l’attrito invisibile tra il digitale e lo spirituale, il Transceiver offre una prospettiva unica su come i segnali moderni rimodellino la nostra percezione dell’ambiente, trasformando la distorsione elettronica in una narrazione avvincente di risveglio spirituale forzato.',
         },
       },
     ],
@@ -361,15 +361,15 @@ const RAW_PROJECTS: RawProject[] = [
     ],
     loopVideos: ['/videos/soul-box/loop'],
     category: { en: 'Prototyping & Interaction', it: 'Prototyping & Interaction' },
-    client: { en: 'Academic Project', it: 'Progetto accademico' },
-    duration: { en: '10 weeks', it: '10 settimane' },
+    client: { en: 'Academic Project (SUPSI)', it: 'Progetto accademico (SUPSI)' },
+    team: { en: 'Group project', it: 'Progetto di gruppo' },
     tags: {
       en: ['Arduino', 'Physical Computing', 'Interaction Design', 'Laser Cut'],
       it: ['Arduino', 'Physical Computing', 'Interaction Design', 'Taglio Laser'],
     },
     description: {
-      en: 'A mindfulness tool designed to help users disconnect from stress. Enclosed in a 25×25 cm cubic structure, Soul Box mediates between technology and psychological well-being through nine physical pillars representing core life values — each triggering an immersive sequence of ambient lights and sounds when placed inside the cube.',
-      it: 'Uno strumento di mindfulness pensato per aiutare le persone a staccare dallo stress. Racchiuso in una struttura cubica di 25×25 cm, Soul Box fa da mediatore tra tecnologia e benessere psicologico attraverso nove pilastri fisici che rappresentano i valori fondamentali della vita — ognuno innesca, una volta inserito nel cubo, una sequenza immersiva di luci e suoni ambientali.',
+      en: 'A mindfulness tool designed to help users disconnect from stress. Enclosed in a 25×25 cm cubic structure, Soul Box mediates between technology and psychological well-being through nine physical pillars representing core life values, each triggering an immersive sequence of ambient lights and sounds when placed inside the cube.',
+      it: 'Uno strumento di mindfulness pensato per aiutare le persone a staccare dallo stress. Racchiuso in una struttura cubica di 25×25 cm, Soul Box fa da mediatore tra tecnologia e benessere psicologico attraverso nove pilastri fisici che rappresentano i valori fondamentali della vita, ognuno innesca, una volta inserito nel cubo, una sequenza immersiva di luci e suoni ambientali.',
     },
     deliverables: {
       en: ['Physical cube device (25×25 cm)', '9 laser-engraved wooden pillars', 'Arduino interaction system', 'Ambient light & sound sequences', 'Fusion 360 structural design'],
@@ -386,15 +386,15 @@ const RAW_PROJECTS: RawProject[] = [
       {
         title: { en: 'Concept', it: 'Concept' },
         body: {
-          en: 'Soul Box is a mindfulness tool designed to help users disconnect from stress. The experience revolves around nine physical pillars representing core life values — Love, Family, Health, and six others identified through user research. Placing a pillar inside the cube triggers an immersive sequence of ambient lights and sounds, guiding the user into a meditative state. The physical act of depositing a value into the box symbolizes making space for what truly matters in daily life.',
-          it: 'Soul Box è uno strumento di mindfulness pensato per aiutare a staccare dallo stress. L’esperienza ruota attorno a nove pilastri fisici che rappresentano i valori fondamentali della vita — Amore, Famiglia, Salute e altri sei individuati tramite la ricerca con gli utenti. Inserire un pilastro nel cubo innesca una sequenza immersiva di luci e suoni ambientali, accompagnando la persona in uno stato meditativo. L’atto fisico di depositare un valore nella scatola simboleggia il fare spazio a ciò che conta davvero nella vita quotidiana.',
+          en: 'Soul Box is a mindfulness tool designed to help users disconnect from stress. The experience revolves around nine physical pillars representing core life values, Love, Family, Health, and six others identified through user research. Placing a pillar inside the cube triggers an immersive sequence of ambient lights and sounds, guiding the user into a meditative state. The physical act of depositing a value into the box symbolizes making space for what truly matters in daily life.',
+          it: 'Soul Box è uno strumento di mindfulness pensato per aiutare a staccare dallo stress. L’esperienza ruota attorno a nove pilastri fisici che rappresentano i valori fondamentali della vita, Amore, Famiglia, Salute e altri sei individuati tramite la ricerca con gli utenti. Inserire un pilastro nel cubo innesca una sequenza immersiva di luci e suoni ambientali, accompagnando la persona in uno stato meditativo. L’atto fisico di depositare un valore nella scatola simboleggia il fare spazio a ciò che conta davvero nella vita quotidiana.',
         },
       },
       {
         title: { en: 'Research & Process', it: 'Ricerca e Processo' },
         body: {
-          en: 'Research identified the 9 fundamental life values through user interviews and surveys. Prototyping focused on laser-engraved wooden pillars with unique tactile textures corresponding to their specific themes — each pillar is immediately distinguishable by touch alone, without needing to read labels. The interaction is intentionally slow and analog: powered by Arduino, the system resists the impatience of digital interfaces.',
-          it: 'La ricerca ha individuato i 9 valori fondamentali tramite interviste e questionari con gli utenti. La prototipazione si è concentrata su pilastri in legno incisi al laser con texture tattili uniche corrispondenti ai loro temi specifici — ogni pilastro è riconoscibile immediatamente al solo tatto, senza bisogno di leggere etichette. L’interazione è volutamente lenta e analogica: alimentato da Arduino, il sistema resiste all’impazienza delle interfacce digitali.',
+          en: 'Research identified the 9 fundamental life values through user interviews and surveys. Prototyping focused on laser-engraved wooden pillars with unique tactile textures corresponding to their specific themes, each pillar is immediately distinguishable by touch alone, without needing to read labels. The interaction is intentionally slow and analog: powered by Arduino, the system resists the impatience of digital interfaces.',
+          it: 'La ricerca ha individuato i 9 valori fondamentali tramite interviste e questionari con gli utenti. La prototipazione si è concentrata su pilastri in legno incisi al laser con texture tattili uniche corrispondenti ai loro temi specifici, ogni pilastro è riconoscibile immediatamente al solo tatto, senza bisogno di leggere etichette. L’interazione è volutamente lenta e analogica: alimentato da Arduino, il sistema resiste all’impazienza delle interfacce digitali.',
         },
       },
       {
@@ -422,15 +422,15 @@ const RAW_PROJECTS: RawProject[] = [
     ],
     film: '/videos/tata-matilda/film',
     category: { en: 'Motion & Video', it: 'Motion & Video' },
-    client: { en: 'Academic Project', it: 'Progetto accademico' },
-    duration: { en: '6 weeks', it: '6 settimane' },
+    client: { en: 'Academic Project (IED)', it: 'Progetto accademico (IED)' },
+    team: { en: 'Group project', it: 'Progetto di gruppo' },
     tags: {
       en: ['Motion Graphics', 'After Effects', 'Illustration', 'Title Design'],
       it: ['Motion Graphics', 'After Effects', 'Illustrazione', 'Title Design'],
     },
     description: {
-      en: 'Animated ending titles for the 2005 film Nanny McPhee (Tata Matilda). The sequence adopts a charming 2D aesthetic with irregular hand-drawn strokes and children\'s-drawing color palettes — conceived as a playful journey that retraces the film\'s plot through elements moving dynamically across the screen.',
-      it: 'Titoli di coda animati per il film del 2005 Tata Matilda (Nanny McPhee). La sequenza adotta una graziosa estetica 2D con tratti irregolari disegnati a mano e palette da disegno infantile — concepita come un viaggio giocoso che ripercorre la trama del film attraverso elementi che si muovono dinamicamente sullo schermo.',
+      en: 'Animated ending titles for the 2005 film Nanny McPhee (Tata Matilda). The sequence adopts a charming 2D aesthetic with irregular hand-drawn strokes and children\'s-drawing color palettes, conceived as a playful journey that retraces the film\'s plot through elements moving dynamically across the screen.',
+      it: 'Titoli di coda animati per il film del 2005 Tata Matilda (Nanny McPhee). La sequenza adotta una graziosa estetica 2D con tratti irregolari disegnati a mano e palette da disegno infantile, concepita come un viaggio giocoso che ripercorre la trama del film attraverso elementi che si muovono dinamicamente sullo schermo.',
     },
     deliverables: {
       en: ['Animated title sequence', 'Frame-by-frame illustration', 'Motion storyboard', 'Sound-synced animation', 'Final export (DCP)'],
@@ -440,15 +440,15 @@ const RAW_PROJECTS: RawProject[] = [
       {
         title: { en: 'Brief', it: 'Brief' },
         body: {
-          en: 'The project required the conceptualization and design of animated ending titles for the 2005 film Nanny McPhee (Tata Matilda). The deliverable included the complete animated sequence — from the first credit to the last — designed to feel like a natural, joyful epilogue to the film\'s visual world.',
-          it: 'Il progetto richiedeva l’ideazione e la progettazione dei titoli di coda animati per il film del 2005 Tata Matilda (Nanny McPhee). La consegna comprendeva l’intera sequenza animata — dal primo all’ultimo credito — pensata per risultare un epilogo naturale e gioioso del mondo visivo del film.',
+          en: 'The project required the conceptualization and design of animated ending titles for the 2005 film Nanny McPhee (Tata Matilda). The deliverable included the complete animated sequence, from the first credit to the last, designed to feel like a natural, joyful epilogue to the film\'s visual world.',
+          it: 'Il progetto richiedeva l’ideazione e la progettazione dei titoli di coda animati per il film del 2005 Tata Matilda (Nanny McPhee). La consegna comprendeva l’intera sequenza animata, dal primo all’ultimo credito, pensata per risultare un epilogo naturale e gioioso del mondo visivo del film.',
         },
       },
       {
         title: { en: 'Visual Style', it: 'Stile Visivo' },
         body: {
-          en: "The graphic design adopts a charming 2D aesthetic characterized by irregular, hand-drawn strokes and color palettes reminiscent of children's drawings. The compositions prominently feature iconic objects, windows, and doors that are central to the movie's setting — recalling the Victorian domestic chaos of the Brown household without quoting it directly.",
-          it: 'Il design grafico adotta una graziosa estetica 2D caratterizzata da tratti irregolari disegnati a mano e palette che richiamano i disegni dei bambini. Le composizioni mettono in primo piano oggetti iconici, finestre e porte centrali nell’ambientazione del film — evocando il caos domestico vittoriano della casa Brown senza citarlo direttamente.',
+          en: "The graphic design adopts a charming 2D aesthetic characterized by irregular, hand-drawn strokes and color palettes reminiscent of children's drawings. The compositions prominently feature iconic objects, windows, and doors that are central to the movie's setting, recalling the Victorian domestic chaos of the Brown household without quoting it directly.",
+          it: 'Il design grafico adotta una graziosa estetica 2D caratterizzata da tratti irregolari disegnati a mano e palette che richiamano i disegni dei bambini. Le composizioni mettono in primo piano oggetti iconici, finestre e porte centrali nell’ambientazione del film, evocando il caos domestico vittoriano della casa Brown senza citarlo direttamente.',
         },
       },
       {
@@ -486,15 +486,15 @@ const RAW_PROJECTS: RawProject[] = [
     ],
     loopVideos: ['/videos/sospese/loop'],
     category: { en: 'Exhibition Design', it: 'Exhibition Design' },
-    client: { en: 'Academic Project', it: 'Progetto accademico' },
-    duration: { en: '8 weeks', it: '8 settimane' },
+    client: { en: 'Academic Project (IED)', it: 'Progetto accademico (IED)' },
+    team: { en: 'Group project', it: 'Progetto di gruppo' },
     tags: {
       en: ['Exhibition Design', 'Spatial Design', 'Cinema 4D', 'Lighting'],
       it: ['Exhibition Design', 'Spatial Design', 'Cinema 4D', 'Illuminazione'],
     },
     description: {
-      en: 'Exhibition design for a showcase dedicated to the evolution of the female image across 10 statues, tracing a chronological journey from prehistory to the contemporary era. The spatial narrative immerses visitors in a space-time limbo — darkness interrupted by crisp beams of light from large conical structures, each defining an isolated island for a single artwork.',
-      it: 'Progetto espositivo per una mostra dedicata all’evoluzione dell’immagine femminile attraverso 10 statue, ripercorrendo un viaggio cronologico dalla preistoria all’epoca contemporanea. La narrazione spaziale immerge i visitatori in un limbo spazio-temporale — buio interrotto da nitidi fasci di luce emessi da grandi strutture coniche, ciascuna a definire un’isola isolata per una singola opera.',
+      en: 'Exhibition design for a showcase dedicated to the evolution of the female image across 10 statues, tracing a chronological journey from prehistory to the contemporary era. The spatial narrative immerses visitors in a space-time limbo, darkness interrupted by crisp beams of light from large conical structures, each defining an isolated island for a single artwork.',
+      it: 'Progetto espositivo per una mostra dedicata all’evoluzione dell’immagine femminile attraverso 10 statue, ripercorrendo un viaggio cronologico dalla preistoria all’epoca contemporanea. La narrazione spaziale immerge i visitatori in un limbo spazio-temporale, buio interrotto da nitidi fasci di luce emessi da grandi strutture coniche, ciascuna a definire un’isola isolata per una singola opera.',
     },
     deliverables: {
       en: ['Spatial layout & floor plan', '10 lighting cone structures', 'Per-era video content', 'Soundscape design', 'Cinema 4D visualizations'],
@@ -504,29 +504,29 @@ const RAW_PROJECTS: RawProject[] = [
       {
         title: { en: 'Brief', it: 'Brief' },
         body: {
-          en: 'Exhibition design for a showcase dedicated to the evolution of the female image. The spatial narrative explores this transformation through 10 statues, tracing a chronological journey from prehistory to the contemporary era — each piece a document of how women were seen, idealized, and objectified across time and culture.',
-          it: 'Progetto espositivo per una mostra dedicata all’evoluzione dell’immagine femminile. La narrazione spaziale esplora questa trasformazione attraverso 10 statue, ripercorrendo un viaggio cronologico dalla preistoria all’epoca contemporanea — ogni opera è un documento di come le donne siano state viste, idealizzate e oggettificate nel tempo e nelle culture.',
+          en: 'Exhibition design for a showcase dedicated to the evolution of the female image. The spatial narrative explores this transformation through 10 statues, tracing a chronological journey from prehistory to the contemporary era, each piece a document of how women were seen, idealized, and objectified across time and culture.',
+          it: 'Progetto espositivo per una mostra dedicata all’evoluzione dell’immagine femminile. La narrazione spaziale esplora questa trasformazione attraverso 10 statue, ripercorrendo un viaggio cronologico dalla preistoria all’epoca contemporanea, ogni opera è un documento di come le donne siano state viste, idealizzate e oggettificate nel tempo e nelle culture.',
         },
       },
       {
         title: { en: 'Concept', it: 'Concept' },
         body: {
-          en: "In an era where women's roles, rights, and safety remain critical and debated issues, Sospese — Suspended — invites profound reflection. The title refers both to the statues physically suspended in space and to the unresolved question they pose: how were these women treated in the past, and what is their condition today? Through art, the exhibition aims to trigger an unconscious dialogue within the viewer, allowing history to speak without commentary.",
+          en: "In an era where women's roles, rights, and safety remain critical and debated issues, Sospese, Suspended, invites profound reflection. The title refers both to the statues physically suspended in space and to the unresolved question they pose: how were these women treated in the past, and what is their condition today? Through art, the exhibition aims to trigger an unconscious dialogue within the viewer, allowing history to speak without commentary.",
           it: 'In un’epoca in cui ruoli, diritti e sicurezza delle donne restano temi critici e dibattuti, Sospese invita a una riflessione profonda. Il titolo si riferisce sia alle statue fisicamente sospese nello spazio sia alla domanda irrisolta che pongono: come venivano trattate queste donne in passato e qual è la loro condizione oggi? Attraverso l’arte, la mostra punta a innescare un dialogo inconscio nel visitatore, lasciando parlare la storia senza commenti.',
         },
       },
       {
         title: { en: 'Spatial Experience', it: 'Esperienza Spaziale' },
         body: {
-          en: 'The layout projects the visitor into a space-time limbo: an environment immersed in near-total darkness, in sharp contrast with the crisp beams of light emitted by large conical structures. These shapes define dedicated islands for the individual artworks. The cone becomes a threshold — outside, isolation and silence; inside, a complete sensory world.',
-          it: 'Il layout proietta il visitatore in un limbo spazio-temporale: un ambiente immerso in un buio quasi totale, in netto contrasto con i nitidi fasci di luce emessi dalle grandi strutture coniche. Queste forme definiscono isole dedicate alle singole opere. Il cono diventa una soglia — fuori, isolamento e silenzio; dentro, un mondo sensoriale completo.',
+          en: 'The layout projects the visitor into a space-time limbo: an environment immersed in near-total darkness, in sharp contrast with the crisp beams of light emitted by large conical structures. These shapes define dedicated islands for the individual artworks. The cone becomes a threshold, outside, isolation and silence; inside, a complete sensory world.',
+          it: 'Il layout proietta il visitatore in un limbo spazio-temporale: un ambiente immerso in un buio quasi totale, in netto contrasto con i nitidi fasci di luce emessi dalle grandi strutture coniche. Queste forme definiscono isole dedicate alle singole opere. Il cono diventa una soglia, fuori, isolamento e silenzio; dentro, un mondo sensoriale completo.',
         },
       },
       {
         title: { en: 'Sensory Design', it: 'Design Sensoriale' },
         body: {
-          en: 'Upon entering each illuminated island, the isolation breaks to make way for an immersive narrative: video displays and evocative soundscapes — specifically designed for the era and geographical area of each statue — envelop the viewer in a multisensory and emotional experience. A Minoan fertility figure receives a different sonic world than a Baroque allegory or a 1970s feminist sculpture. The sound and image never explain; they contextualize.',
-          it: 'Entrando in ogni isola illuminata, l’isolamento si spezza per lasciare spazio a una narrazione immersiva: schermi video e paesaggi sonori evocativi — progettati specificamente per l’epoca e l’area geografica di ciascuna statua — avvolgono il visitatore in un’esperienza multisensoriale ed emotiva. Una figura di fertilità minoica riceve un mondo sonoro diverso da un’allegoria barocca o da una scultura femminista degli anni Settanta. Suono e immagine non spiegano mai; contestualizzano.',
+          en: 'Upon entering each illuminated island, the isolation breaks to make way for an immersive narrative: video displays and evocative soundscapes, specifically designed for the era and geographical area of each statue, envelop the viewer in a multisensory and emotional experience. A Minoan fertility figure receives a different sonic world than a Baroque allegory or a 1970s feminist sculpture. The sound and image never explain; they contextualize.',
+          it: 'Entrando in ogni isola illuminata, l’isolamento si spezza per lasciare spazio a una narrazione immersiva: schermi video e paesaggi sonori evocativi, progettati specificamente per l’epoca e l’area geografica di ciascuna statua, avvolgono il visitatore in un’esperienza multisensoriale ed emotiva. Una figura di fertilità minoica riceve un mondo sonoro diverso da un’allegoria barocca o da una scultura femminista degli anni Settanta. Suono e immagine non spiegano mai; contestualizzano.',
         },
       },
     ],
@@ -552,15 +552,15 @@ const RAW_PROJECTS: RawProject[] = [
       '/portfolio/mix-match/website.png',
     ],
     category: { en: 'Brand & Packaging', it: 'Brand & Packaging' },
-    client: { en: 'Illy × Francesco Apreda', it: 'Illy × Francesco Apreda' },
-    duration: { en: '8 weeks', it: '8 settimane' },
+    client: { en: 'Academic Project (IED)', it: 'Progetto accademico (IED)' },
+    team: { en: 'Group project', it: 'Progetto di gruppo' },
     tags: {
       en: ['Brand Identity', 'Packaging', 'Advertising', 'Social Media'],
       it: ['Brand Identity', 'Packaging', 'Pubblicità', 'Social Media'],
     },
     description: {
-      en: 'A new product line for Illy reimagining coffee as a culinary spice. Developed in collaboration with chef and Illy ambassador Francesco Apreda, the line introduces two food products — a ready-to-use seasoning pouch and a versatile spice mix — alongside a complete brand identity, packaging system, and cross-promotional marketing strategy.',
-      it: 'Una nuova linea di prodotti per Illy che reinventa il caffè come spezia culinaria. Sviluppata in collaborazione con lo chef e ambassador Illy Francesco Apreda, la linea introduce due prodotti alimentari — una bustina di condimento pronto all’uso e un mix di spezie versatile — insieme a un’identità di brand completa, un sistema di packaging e una strategia di marketing cross-promozionale.',
+      en: 'A new product line for Illy reimagining coffee as a culinary spice. Developed in collaboration with chef and Illy ambassador Francesco Apreda, the line introduces two food products, a ready-to-use seasoning pouch and a versatile spice mix, alongside a complete brand identity, packaging system, and cross-promotional marketing strategy.',
+      it: 'Una nuova linea di prodotti per Illy che reinventa il caffè come spezia culinaria. Sviluppata in collaborazione con lo chef e ambassador Illy Francesco Apreda, la linea introduce due prodotti alimentari, una bustina di condimento pronto all’uso e un mix di spezie versatile, insieme a un’identità di brand completa, un sistema di packaging e una strategia di marketing cross-promozionale.',
     },
     deliverables: {
       en: ['Logo & brand identity', 'Packaging (2 SKUs)', 'Advertising materials', 'Exhibition stand design', 'Social media presence'],
@@ -577,22 +577,22 @@ const RAW_PROJECTS: RawProject[] = [
       {
         title: { en: 'Concept', it: 'Concept' },
         body: {
-          en: 'The project is built around an innovative premise: stepping away from tradition to reimagine coffee as a culinary spice. Developed in collaboration with chef and Illy ambassador Francesco Apreda, the strategy introduces two new food products. The first is a ready-to-use seasoning pouch blending coffee, whole salt, and pink pepper; the second is a versatile spice mix designed to enhance everyday meals — from pasta to grilled proteins.',
-          it: 'Il progetto si fonda su una premessa innovativa: allontanarsi dalla tradizione per reinventare il caffè come spezia culinaria. Sviluppata in collaborazione con lo chef e ambassador Illy Francesco Apreda, la strategia introduce due nuovi prodotti alimentari. Il primo è una bustina di condimento pronta all’uso che mescola caffè, sale integrale e pepe rosa; il secondo è un mix di spezie versatile pensato per esaltare i piatti di tutti i giorni — dalla pasta alle proteine alla griglia.',
+          en: 'The project is built around an innovative premise: stepping away from tradition to reimagine coffee as a culinary spice. Developed in collaboration with chef and Illy ambassador Francesco Apreda, the strategy introduces two new food products. The first is a ready-to-use seasoning pouch blending coffee, whole salt, and pink pepper; the second is a versatile spice mix designed to enhance everyday meals, from pasta to grilled proteins.',
+          it: 'Il progetto si fonda su una premessa innovativa: allontanarsi dalla tradizione per reinventare il caffè come spezia culinaria. Sviluppata in collaborazione con lo chef e ambassador Illy Francesco Apreda, la strategia introduce due nuovi prodotti alimentari. Il primo è una bustina di condimento pronta all’uso che mescola caffè, sale integrale e pepe rosa; il secondo è un mix di spezie versatile pensato per esaltare i piatti di tutti i giorni, dalla pasta alle proteine alla griglia.',
         },
       },
       {
         title: { en: 'Brand Identity', it: 'Brand Identity' },
         body: {
-          en: "The Mix & Match name captures both the product logic (combining coffee with other flavors) and the brand's collaborative spirit (Illy matched with Apreda). The visual identity borrows Illy's disciplined red and white language, then opens it up with warmer, culinary textures — grain, salt crystals, pepper — rendered in a clean contemporary system. The packaging uses die-cut windows to reveal the product's texture as part of the design.",
-          it: 'Il nome Mix & Match cattura sia la logica del prodotto (combinare il caffè con altri sapori) sia lo spirito collaborativo del brand (Illy abbinata ad Apreda). L’identità visiva riprende il linguaggio rigoroso bianco e rosso di Illy, per poi aprirlo a texture più calde e culinarie — grana, cristalli di sale, pepe — rese in un sistema contemporaneo e pulito. Il packaging usa finestre fustellate per rivelare la texture del prodotto come parte del design.',
+          en: "The Mix & Match name captures both the product logic (combining coffee with other flavors) and the brand's collaborative spirit (Illy matched with Apreda). The visual identity borrows Illy's disciplined red and white language, then opens it up with warmer, culinary textures, grain, salt crystals, pepper, rendered in a clean contemporary system. The packaging uses die-cut windows to reveal the product's texture as part of the design.",
+          it: 'Il nome Mix & Match cattura sia la logica del prodotto (combinare il caffè con altri sapori) sia lo spirito collaborativo del brand (Illy abbinata ad Apreda). L’identità visiva riprende il linguaggio rigoroso bianco e rosso di Illy, per poi aprirlo a texture più calde e culinarie, grana, cristalli di sale, pepe, rese in un sistema contemporaneo e pulito. Il packaging usa finestre fustellate per rivelare la texture del prodotto come parte del design.',
         },
       },
       {
         title: { en: 'Strategy & Outcome', it: 'Strategia e Risultato' },
         body: {
-          en: "Beyond the physical packaging, the project integrates a cross-promotional marketing strategy offering reciprocal discounts between Illy products and Chef Apreda's restaurant. The final deliverable encompasses the complete Mix & Match brand identity — logo, advertising materials, exhibition stands, and a dedicated social media presence — designed to fully support the product launch across retail, hospitality, and digital channels.",
-          it: 'Oltre al packaging fisico, il progetto integra una strategia di marketing cross-promozionale con sconti reciproci tra i prodotti Illy e il ristorante dello Chef Apreda. La consegna finale comprende l’intera identità di brand Mix & Match — logo, materiali pubblicitari, stand espositivi e una presenza social dedicata — progettata per supportare pienamente il lancio del prodotto su canali retail, hospitality e digitali.',
+          en: "Beyond the physical packaging, the project integrates a cross-promotional marketing strategy offering reciprocal discounts between Illy products and Chef Apreda's restaurant. The final deliverable encompasses the complete Mix & Match brand identity, logo, advertising materials, exhibition stands, and a dedicated social media presence, designed to fully support the product launch across retail, hospitality, and digital channels.",
+          it: 'Oltre al packaging fisico, il progetto integra una strategia di marketing cross-promozionale con sconti reciproci tra i prodotti Illy e il ristorante dello Chef Apreda. La consegna finale comprende l’intera identità di brand Mix & Match, logo, materiali pubblicitari, stand espositivi e una presenza social dedicata, progettata per supportare pienamente il lancio del prodotto su canali retail, hospitality e digitali.',
         },
       },
     ],
@@ -620,15 +620,15 @@ const RAW_PROJECTS: RawProject[] = [
     ],
     loopVideos: ['/videos/zoetrope/loop'],
     category: { en: 'Prototyping & Interaction', it: 'Prototyping & Interaction' },
-    client: { en: 'Academic Project', it: 'Progetto accademico' },
-    duration: { en: '10 weeks', it: '10 settimane' },
+    client: { en: 'Academic Project (SUPSI)', it: 'Progetto accademico (SUPSI)' },
+    team: { en: 'Group project', it: 'Progetto di gruppo' },
     tags: {
       en: ['Laser Cut', '3D Printing', 'Raspberry Pi Pico', 'Fusion 360'],
       it: ['Taglio Laser', 'Stampa 3D', 'Raspberry Pi Pico', 'Fusion 360'],
     },
     description: {
-      en: 'A functional reinvention of the historical zoetrope optical toy — transformed into an interactive device that blends analog mechanics, digital fabrication, and modern electronics. The final object offers dual-mode interaction: a mechanical side wheel for manual rotation control and a front button panel managing volume, track playback, and multimedia functions synchronized to the optical illusion.',
-      it: 'Una reinvenzione funzionale dello storico giocattolo ottico zootropio — trasformato in un dispositivo interattivo che fonde meccanica analogica, fabbricazione digitale ed elettronica moderna. L’oggetto finale offre un’interazione a doppia modalità: una ruota meccanica laterale per il controllo manuale della rotazione e un pannello di pulsanti frontale per gestire volume, riproduzione delle tracce e funzioni multimediali sincronizzate all’illusione ottica.',
+      en: 'A functional reinvention of the historical zoetrope optical toy, transformed into an interactive device that blends analog mechanics, digital fabrication, and modern electronics. The final object offers dual-mode interaction: a mechanical side wheel for manual rotation control and a front button panel managing volume, track playback, and multimedia functions synchronized to the optical illusion.',
+      it: 'Una reinvenzione funzionale dello storico giocattolo ottico zootropio, trasformato in un dispositivo interattivo che fonde meccanica analogica, fabbricazione digitale ed elettronica moderna. L’oggetto finale offre un’interazione a doppia modalità: una ruota meccanica laterale per il controllo manuale della rotazione e un pannello di pulsanti frontale per gestire volume, riproduzione delle tracce e funzioni multimediali sincronizzate all’illusione ottica.',
     },
     deliverables: {
       en: ['Laser-cut outer cylinder', '3D-printed base & mechanics', 'Raspberry Pi Pico integration', 'Potentiometer & speaker system', 'Front button control panel'],
@@ -638,8 +638,8 @@ const RAW_PROJECTS: RawProject[] = [
       {
         title: { en: 'Brief & Challenge', it: 'Brief e Sfida' },
         body: {
-          en: 'The project required designing and building a functional object using laser cutting, 3D printing, and microcontroller integration. The core challenge was to reinvent a historical optical toy — the zoetrope — transforming it into an interactive device that seamlessly blends analog mechanics, digital fabrication, and modern electronics.',
-          it: 'Il progetto richiedeva di progettare e costruire un oggetto funzionale usando taglio laser, stampa 3D e integrazione di microcontrollori. La sfida centrale era reinventare uno storico giocattolo ottico — lo zootropio — trasformandolo in un dispositivo interattivo che fonde con naturalezza meccanica analogica, fabbricazione digitale ed elettronica moderna.',
+          en: 'The project required designing and building a functional object using laser cutting, 3D printing, and microcontroller integration. The core challenge was to reinvent a historical optical toy, the zoetrope, transforming it into an interactive device that seamlessly blends analog mechanics, digital fabrication, and modern electronics.',
+          it: 'Il progetto richiedeva di progettare e costruire un oggetto funzionale usando taglio laser, stampa 3D e integrazione di microcontrollori. La sfida centrale era reinventare uno storico giocattolo ottico, lo zootropio, trasformandolo in un dispositivo interattivo che fonde con naturalezza meccanica analogica, fabbricazione digitale ed elettronica moderna.',
         },
       },
       {
@@ -652,15 +652,15 @@ const RAW_PROJECTS: RawProject[] = [
       {
         title: { en: 'Construction', it: 'Costruzione' },
         body: {
-          en: "The base, internal mechanics, and side control wheel were 3D printed for structural precision and repeatability. The outer cylinder was laser-cut, its slits calibrated to the animation's frame count and the motor's RPM range. A full-black finish was chosen across all surfaces to maximize visual contrast — ensuring the internal animation strip reads cleanly during rotation without light bleed or surface reflection competing with the illusion.",
-          it: 'La base, la meccanica interna e la ruota di controllo laterale sono state stampate in 3D per precisione strutturale e ripetibilità. Il cilindro esterno è stato tagliato al laser, con le fessure calibrate sul numero di fotogrammi dell’animazione e sul range di giri del motore. È stata scelta una finitura completamente nera su tutte le superfici per massimizzare il contrasto visivo — assicurando che la striscia d’animazione interna si legga nitidamente durante la rotazione, senza dispersioni di luce o riflessi superficiali a competere con l’illusione.',
+          en: "The base, internal mechanics, and side control wheel were 3D printed for structural precision and repeatability. The outer cylinder was laser-cut, its slits calibrated to the animation's frame count and the motor's RPM range. A full-black finish was chosen across all surfaces to maximize visual contrast, ensuring the internal animation strip reads cleanly during rotation without light bleed or surface reflection competing with the illusion.",
+          it: 'La base, la meccanica interna e la ruota di controllo laterale sono state stampate in 3D per precisione strutturale e ripetibilità. Il cilindro esterno è stato tagliato al laser, con le fessure calibrate sul numero di fotogrammi dell’animazione e sul range di giri del motore. È stata scelta una finitura completamente nera su tutte le superfici per massimizzare il contrasto visivo, assicurando che la striscia d’animazione interna si legga nitidamente durante la rotazione, senza dispersioni di luce o riflessi superficiali a competere con l’illusione.',
         },
       },
       {
         title: { en: 'Outcome', it: 'Risultato' },
         body: {
-          en: 'The final device is powered by a Raspberry Pi Pico connected to a potentiometer and speakers, synchronizing the optical illusion with an audio component — animation and sound locked together. Users engage via a mechanical side wheel for manual rotation speed control and a front button panel to manage multimedia functions: volume, track selection, and playback. The object exists simultaneously as a precision-engineered mechanism and a kinetic sculpture.',
-          it: 'Il dispositivo finale è alimentato da un Raspberry Pi Pico collegato a un potenziometro e ad altoparlanti, sincronizzando l’illusione ottica con una componente audio — animazione e suono agganciati insieme. L’utente interagisce tramite una ruota meccanica laterale per controllare manualmente la velocità di rotazione e un pannello di pulsanti frontale per gestire le funzioni multimediali: volume, selezione delle tracce e riproduzione. L’oggetto esiste al tempo stesso come meccanismo di precisione e scultura cinetica.',
+          en: 'The final device is powered by a Raspberry Pi Pico connected to a potentiometer and speakers, synchronizing the optical illusion with an audio component, animation and sound locked together. Users engage via a mechanical side wheel for manual rotation speed control and a front button panel to manage multimedia functions: volume, track selection, and playback. The object exists simultaneously as a precision-engineered mechanism and a kinetic sculpture.',
+          it: 'Il dispositivo finale è alimentato da un Raspberry Pi Pico collegato a un potenziometro e ad altoparlanti, sincronizzando l’illusione ottica con una componente audio, animazione e suono agganciati insieme. L’utente interagisce tramite una ruota meccanica laterale per controllare manualmente la velocità di rotazione e un pannello di pulsanti frontale per gestire le funzioni multimediali: volume, selezione delle tracce e riproduzione. L’oggetto esiste al tempo stesso come meccanismo di precisione e scultura cinetica.',
         },
       },
     ],
@@ -673,7 +673,7 @@ const RAW_PROJECTS: RawProject[] = [
     num: '10',
     year: '2024',
     image: '/portfolio/docare/dsc-6030.jpg',
-    tools: ['Figma', 'Arduino / ESP32', 'Rhino / Fusion 360', 'After Effects'],
+    tools: ['Figma', 'Arduino', 'Fusion 360', '3D Printing', 'After Effects', 'Illustrator'],
     hasLocalGallery: true,
     localImages: [
       '/portfolio/docare/dsc-6030.jpg',
@@ -689,16 +689,16 @@ const RAW_PROJECTS: RawProject[] = [
       '/portfolio/docare/dsc-6208.jpg',
     ],
     loopVideos: ['/videos/docare/film', '/videos/docare/app'],
-    category: { en: 'Product & Interaction Design', it: 'Product & Interaction Design' },
-    client: { en: 'Thesis / Research Project', it: 'Tesi di Laurea / Progetto di Ricerca' },
-    duration: { en: '16 weeks', it: '16 settimane' },
+    category: { en: 'Prototyping & Interaction', it: 'Prototyping & Interaction' },
+    client: { en: 'Academic Project (SUPSI)', it: 'Progetto accademico (SUPSI)' },
+    team: { en: 'Group project', it: 'Progetto di gruppo' },
     tags: {
       en: ['Product Design', 'IoT', 'Interaction Design', 'Mobile App'],
       it: ['Product Design', 'IoT', 'Interaction Design', 'App Mobile'],
     },
     description: {
-      en: 'A connected ecosystem of devices that blends into the home to support thyroid patients through their complex morning routine — guiding medication intake and the strict fasting window afterwards through light and voice, without screens.',
-      it: 'Un ecosistema di dispositivi connessi che si integra nell’arredamento domestico per supportare i pazienti con problemi alla tiroide nella complessa routine mattutina — guidando l’assunzione del farmaco e il rigido digiuno successivo tramite luce e voce, senza schermi.',
+      en: 'A connected ecosystem of devices that blends into the home to support thyroid patients through their complex morning routine, guiding medication intake and the strict fasting window afterwards through light and voice, without screens.',
+      it: 'Un ecosistema di dispositivi connessi che si integra nell’arredamento domestico per supportare i pazienti con problemi alla tiroide nella complessa routine mattutina, guidando l’assunzione del farmaco e il rigido digiuno successivo tramite luce e voce, senza schermi.',
     },
     deliverables: {
       en: ['Domestic IoT ecosystem (Bedside & Kitchen Nodes)', 'Companion mobile app (iOS)', 'Voice & light interaction design', 'Local AI & privacy framework'],
@@ -729,8 +729,8 @@ const RAW_PROJECTS: RawProject[] = [
       {
         title: { en: 'Personality Design & Local AI', it: 'Personality Design e Local AI' },
         body: {
-          en: 'The system’s voice and light are designed to feel gentle and reassuring, never alarming: DoCare accompanies, it doesn’t scold. To protect sensitive health data, the intelligence that governs reminders and interventions lives locally on the home devices, without sending personal information to the cloud — a Local AI & privacy framework that keeps care within the walls of the home.',
-          it: 'La voce e la luce del sistema sono progettate per essere gentili e rassicuranti, mai allarmistiche: DoCare accompagna, non sgrida. Per proteggere dati sanitari sensibili, l’intelligenza che regola promemoria e interventi vive localmente sui dispositivi di casa, senza inviare informazioni personali nel cloud — un framework di Local AI e privacy che tiene la cura dentro le mura domestiche.',
+          en: 'The system’s voice and light are designed to feel gentle and reassuring, never alarming: DoCare accompanies, it doesn’t scold. To protect sensitive health data, the intelligence that governs reminders and interventions lives locally on the home devices, without sending personal information to the cloud, a Local AI & privacy framework that keeps care within the walls of the home.',
+          it: 'La voce e la luce del sistema sono progettate per essere gentili e rassicuranti, mai allarmistiche: DoCare accompagna, non sgrida. Per proteggere dati sanitari sensibili, l’intelligenza che regola promemoria e interventi vive localmente sui dispositivi di casa, senza inviare informazioni personali nel cloud, un framework di Local AI e privacy che tiene la cura dentro le mura domestiche.',
         },
       },
     ],
@@ -743,7 +743,7 @@ const RAW_PROJECTS: RawProject[] = [
     num: '11',
     year: '2026',
     image: '/portfolio/movy/2-1.jpg',
-    tools: ['Figma'],
+    tools: ['Figma', 'After Effects', 'Procreate', 'Illustrator', 'Claude AI'],
     hasLocalGallery: true,
     localImages: [
       '/portfolio/movy/2-1.jpg',
@@ -758,17 +758,21 @@ const RAW_PROJECTS: RawProject[] = [
       '/portfolio/movy/3.png',
       '/portfolio/movy/3-1.png',
     ],
-    loopVideos: ['/videos/movy/loop'],
-    film: '/videos/movy/film',
-    category: { en: 'Health & Interaction Design', it: 'Health & Interaction Design' },
+    loopVideos: [
+      '/videos/movy/loop',
+      '/videos/movy/home-program',
+      '/videos/movy/exercise',
+      '/videos/movy/check-in',
+    ],
+    category: { en: 'Web & App Design', it: 'Web & App Design' },
     client: { en: 'Academic Project (SUPSI)', it: 'Progetto accademico (SUPSI)' },
-    duration: { en: '16 weeks', it: '16 settimane' },
+    team: { en: 'Group project', it: 'Progetto di gruppo' },
     tags: {
       en: ['UX Design', 'Interaction Design', 'AI', 'Healthcare'],
       it: ['UX Design', 'Interaction Design', 'AI', 'Healthcare'],
     },
     description: {
-      en: 'Movy is an intelligent support system that connects patient and physiotherapist, extending rehabilitation beyond the walls of the clinic. Through an AI companion, it guides patients through their at-home exercises and synthesises structured insights for the professional — improving adherence and continuity of care, without ever replacing the therapeutic relationship.',
+      en: 'Movy is an intelligent support system that connects patient and physiotherapist, extending rehabilitation beyond the walls of the clinic. Through an AI companion, it guides patients through their at-home exercises and synthesises structured insights for the professional, improving adherence and continuity of care, without ever replacing the therapeutic relationship.',
       it: 'Movy è un sistema di supporto intelligente che connette paziente e fisioterapista, estendendo la riabilitazione oltre i confini della clinica. Attraverso un compagno AI, il progetto accompagna i pazienti durante gli esercizi a casa e sintetizza insight strutturati per il professionista, migliorando l’aderenza al piano e la continuità di cura, senza mai sostituire la relazione terapeutica.',
     },
     deliverables: {
@@ -820,7 +824,7 @@ function resolve(raw: RawProject, locale: Locale): Project {
     tools: raw.tools,
     category: pick(raw.category, locale),
     client: pick(raw.client, locale),
-    duration: pick(raw.duration, locale),
+    team: pick(raw.team, locale),
     tags: pick(raw.tags, locale),
     description: pick(raw.description, locale),
     deliverables: pick(raw.deliverables, locale),
@@ -837,5 +841,5 @@ export function getProject(slug: string, locale: Locale): Project | undefined {
   return raw ? resolve(raw, locale) : undefined;
 }
 
-/** All slugs, locale-independent — for generateStaticParams. */
+/** All slugs, locale-independent, for generateStaticParams. */
 export const PROJECT_SLUGS = RAW_PROJECTS.map((p) => p.slug);
