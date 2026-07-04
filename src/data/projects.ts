@@ -18,11 +18,12 @@ interface RawProject {
   image: string;
   localImages?: string[];
   hasLocalGallery?: boolean;
-  /** Self-hosted muted autoplay loop (Level A). */
-  loopVideo?: string;
-  loopPoster?: string;
-  /** YouTube video id for a click-to-play embed (Level B). */
-  youtubeId?: string;
+  /** Self-hosted muted autoplay loops (Level A) — base paths without extension;
+   *  the player appends .webm / .mp4 (sources) and .jpg (poster). */
+  loopVideos?: string[];
+  /** Self-hosted click-to-play film with audio — base path without extension
+   *  (player appends .webm / .mp4 sources and .jpg poster). */
+  film?: string;
   tools: string[];
   category: L;
   client: L;
@@ -43,11 +44,12 @@ export interface Project {
   image: string;
   localImages?: string[];
   hasLocalGallery?: boolean;
-  /** Self-hosted muted autoplay loop (Level A). */
-  loopVideo?: string;
-  loopPoster?: string;
-  /** YouTube video id for a click-to-play embed (Level B). */
-  youtubeId?: string;
+  /** Self-hosted muted autoplay loops (Level A) — base paths without extension;
+   *  the player appends .webm / .mp4 (sources) and .jpg (poster). */
+  loopVideos?: string[];
+  /** Self-hosted click-to-play film with audio — base path without extension
+   *  (player appends .webm / .mp4 sources and .jpg poster). */
+  film?: string;
   tools: string[];
   category: string;
   client: string;
@@ -82,8 +84,7 @@ const RAW_PROJECTS: RawProject[] = [
       '/portfolio/bommie-surf/sticker-blubommie2.jpg',
       '/portfolio/bommie-surf/totalpin-blubommie.jpg',
     ],
-    loopVideo: '/videos/bommie-surf/loop.mp4',
-    loopPoster: '/videos/bommie-surf/poster.jpg',
+    loopVideos: ['/videos/bommie-surf/loop'],
     category: { en: 'Web & App Design', it: 'Web & App Design' },
     client: { en: 'Bommie Surf', it: 'Bommie Surf' },
     duration: { en: '12 weeks', it: '12 settimane' },
@@ -151,8 +152,7 @@ const RAW_PROJECTS: RawProject[] = [
       '/portfolio/unspoken/style2.png',
       '/portfolio/unspoken/style3.png',
     ],
-    loopVideo: '/videos/unspoken/loop.mp4',
-    loopPoster: '/videos/unspoken/poster.jpg',
+    loopVideos: ['/videos/unspoken/loop'],
     category: { en: 'Editorial Design', it: 'Design Editoriale' },
     client: { en: 'Academic Project', it: 'Progetto accademico' },
     duration: { en: '10 weeks', it: '10 settimane' },
@@ -287,8 +287,7 @@ const RAW_PROJECTS: RawProject[] = [
       '/portfolio/the-mythological-transceiver/img-0345.jpg',
       '/portfolio/the-mythological-transceiver/img-5297.jpg',
     ],
-    loopVideo: '/videos/the-mythological-transceiver/loop.mp4',
-    loopPoster: '/videos/the-mythological-transceiver/poster.jpg',
+    loopVideos: ['/videos/the-mythological-transceiver/loop'],
     category: { en: 'Prototyping & Interaction', it: 'Prototyping & Interaction' },
     client: { en: 'SUPSI — Academic Project', it: 'SUPSI — Progetto accademico' },
     duration: { en: '8 weeks', it: '8 settimane' },
@@ -360,8 +359,7 @@ const RAW_PROJECTS: RawProject[] = [
       '/portfolio/soul-box/photo-2026-01-24-01-08-53-2.jpg',
       '/portfolio/soul-box/photo-2026-01-24-01-08-55.jpg',
     ],
-    loopVideo: '/videos/soul-box/loop.mp4',
-    loopPoster: '/videos/soul-box/poster.jpg',
+    loopVideos: ['/videos/soul-box/loop'],
     category: { en: 'Prototyping & Interaction', it: 'Prototyping & Interaction' },
     client: { en: 'Academic Project', it: 'Progetto accademico' },
     duration: { en: '10 weeks', it: '10 settimane' },
@@ -422,7 +420,7 @@ const RAW_PROJECTS: RawProject[] = [
       '/portfolio/tata-matilda/primeprove.jpg',
       '/portfolio/tata-matilda/storyboar.jpg',
     ],
-    youtubeId: '', // TODO: paste the unlisted YouTube id
+    film: '/videos/tata-matilda/film',
     category: { en: 'Motion & Video', it: 'Motion & Video' },
     client: { en: 'Academic Project', it: 'Progetto accademico' },
     duration: { en: '6 weeks', it: '6 settimane' },
@@ -486,8 +484,7 @@ const RAW_PROJECTS: RawProject[] = [
       '/portfolio/sospese/comunicazione-urbana.png',
       '/portfolio/sospese/website.png',
     ],
-    loopVideo: '/videos/sospese/loop.mp4',
-    loopPoster: '/videos/sospese/poster.jpg',
+    loopVideos: ['/videos/sospese/loop'],
     category: { en: 'Exhibition Design', it: 'Exhibition Design' },
     client: { en: 'Academic Project', it: 'Progetto accademico' },
     duration: { en: '8 weeks', it: '8 settimane' },
@@ -621,8 +618,7 @@ const RAW_PROJECTS: RawProject[] = [
       '/portfolio/zoetrope/test.jpg',
       '/portfolio/zoetrope/test2.jpg',
     ],
-    loopVideo: '/videos/zoetrope/loop.mp4',
-    loopPoster: '/videos/zoetrope/poster.jpg',
+    loopVideos: ['/videos/zoetrope/loop'],
     category: { en: 'Prototyping & Interaction', it: 'Prototyping & Interaction' },
     client: { en: 'Academic Project', it: 'Progetto accademico' },
     duration: { en: '10 weeks', it: '10 settimane' },
@@ -692,9 +688,7 @@ const RAW_PROJECTS: RawProject[] = [
       '/portfolio/docare/dsc-6205.jpg',
       '/portfolio/docare/dsc-6208.jpg',
     ],
-    loopVideo: '/videos/docare/loop.mp4',
-    loopPoster: '/videos/docare/poster.jpg',
-    youtubeId: '', // TODO: paste the unlisted YouTube id
+    loopVideos: ['/videos/docare/film', '/videos/docare/app'],
     category: { en: 'Product & Interaction Design', it: 'Product & Interaction Design' },
     client: { en: 'Thesis / Research Project', it: 'Tesi di Laurea / Progetto di Ricerca' },
     duration: { en: '16 weeks', it: '16 settimane' },
@@ -764,9 +758,8 @@ const RAW_PROJECTS: RawProject[] = [
       '/portfolio/movy/3.png',
       '/portfolio/movy/3-1.png',
     ],
-    loopVideo: '/videos/movy/loop.mp4',
-    loopPoster: '/videos/movy/poster.jpg',
-    youtubeId: '', // TODO: paste the unlisted YouTube id
+    loopVideos: ['/videos/movy/loop'],
+    film: '/videos/movy/film',
     category: { en: 'Health & Interaction Design', it: 'Health & Interaction Design' },
     client: { en: 'Academic Project (SUPSI)', it: 'Progetto accademico (SUPSI)' },
     duration: { en: '16 weeks', it: '16 settimane' },
@@ -822,9 +815,8 @@ function resolve(raw: RawProject, locale: Locale): Project {
     image: raw.image,
     localImages: raw.localImages,
     hasLocalGallery: raw.hasLocalGallery,
-    loopVideo: raw.loopVideo,
-    loopPoster: raw.loopPoster,
-    youtubeId: raw.youtubeId,
+    loopVideos: raw.loopVideos,
+    film: raw.film,
     tools: raw.tools,
     category: pick(raw.category, locale),
     client: pick(raw.client, locale),
