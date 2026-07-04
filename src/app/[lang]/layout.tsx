@@ -68,7 +68,9 @@ export default async function LangLayout({
 
   return (
     <html lang={htmlLang[locale]} className={`${gloock.variable} ${dmSans.variable} ${dmMono.variable}`}>
-      <body>
+      {/* Extensions (ColorZilla, Grammarly…) inject attributes onto <body>
+          before hydration; ignore those attribute mismatches. */}
+      <body suppressHydrationWarning>
         <JsonLd
           data={{
             '@context': 'https://schema.org',
