@@ -21,8 +21,9 @@ interface RawProject {
   /** Self-hosted muted autoplay loops (Level A) — base paths without extension;
    *  the player appends .webm / .mp4 (sources) and .jpg (poster). */
   loopVideos?: string[];
-  /** YouTube video id for a click-to-play embed (Level B). */
-  youtubeId?: string;
+  /** Self-hosted click-to-play film with audio — base path without extension
+   *  (player appends .webm / .mp4 sources and .jpg poster). */
+  film?: string;
   tools: string[];
   category: L;
   client: L;
@@ -46,8 +47,9 @@ export interface Project {
   /** Self-hosted muted autoplay loops (Level A) — base paths without extension;
    *  the player appends .webm / .mp4 (sources) and .jpg (poster). */
   loopVideos?: string[];
-  /** YouTube video id for a click-to-play embed (Level B). */
-  youtubeId?: string;
+  /** Self-hosted click-to-play film with audio — base path without extension
+   *  (player appends .webm / .mp4 sources and .jpg poster). */
+  film?: string;
   tools: string[];
   category: string;
   client: string;
@@ -418,7 +420,7 @@ const RAW_PROJECTS: RawProject[] = [
       '/portfolio/tata-matilda/primeprove.jpg',
       '/portfolio/tata-matilda/storyboar.jpg',
     ],
-    youtubeId: '', // TODO: paste the unlisted YouTube id
+    film: '/videos/tata-matilda/film',
     category: { en: 'Motion & Video', it: 'Motion & Video' },
     client: { en: 'Academic Project', it: 'Progetto accademico' },
     duration: { en: '6 weeks', it: '6 settimane' },
@@ -757,7 +759,7 @@ const RAW_PROJECTS: RawProject[] = [
       '/portfolio/movy/3-1.png',
     ],
     loopVideos: ['/videos/movy/loop'],
-    youtubeId: '', // TODO: paste the unlisted YouTube id
+    film: '/videos/movy/film',
     category: { en: 'Health & Interaction Design', it: 'Health & Interaction Design' },
     client: { en: 'Academic Project (SUPSI)', it: 'Progetto accademico (SUPSI)' },
     duration: { en: '16 weeks', it: '16 settimane' },
@@ -814,7 +816,7 @@ function resolve(raw: RawProject, locale: Locale): Project {
     localImages: raw.localImages,
     hasLocalGallery: raw.hasLocalGallery,
     loopVideos: raw.loopVideos,
-    youtubeId: raw.youtubeId,
+    film: raw.film,
     tools: raw.tools,
     category: pick(raw.category, locale),
     client: pick(raw.client, locale),

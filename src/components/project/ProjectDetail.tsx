@@ -9,7 +9,7 @@ import type { Locale } from '@/lib/i18n';
 import { ImageWithFallback } from '@/components/ImageWithFallback';
 import GalleryCarousel from '@/components/project/GalleryCarousel';
 import LoopVideo from '@/components/project/LoopVideo';
-import VideoEmbed from '@/components/project/VideoEmbed';
+import FilmVideo from '@/components/project/FilmVideo';
 import { C, serif, sans, mono, fadeUp, easeOut } from '@/lib/theme';
 
 interface ProjectDict {
@@ -196,14 +196,14 @@ export default function ProjectDetail({
             </div>
 
             {/* Video */}
-            {(project.youtubeId || project.loopVideos?.length) && (
+            {(project.film || project.loopVideos?.length) && (
               <div className="mb-10">
                 <h2 style={{ ...sans, fontSize: '0.72rem', color: C.muted, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '1rem' }}>
                   {dict.video}
                 </h2>
-                {project.youtubeId && (
+                {project.film && (
                   <div className="mb-3">
-                    <VideoEmbed id={project.youtubeId} title={project.title} playLabel={dict.watch} />
+                    <FilmVideo base={project.film} title={project.title} playLabel={dict.watch} />
                   </div>
                 )}
                 {project.loopVideos?.map((base) => (
