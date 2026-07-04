@@ -69,6 +69,8 @@ export const en = {
     gallery: 'Gallery',
     openImage: 'Open image in full screen',
     galleryImageWord: 'gallery image',
+    video: 'Video',
+    watch: 'Watch the video',
   },
   contact: {
     eyebrow: 'Get in Touch',

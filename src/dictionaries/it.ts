@@ -69,6 +69,8 @@ export const it: Dictionary = {
     gallery: 'Galleria',
     openImage: 'Apri immagine a schermo intero',
     galleryImageWord: 'immagine della galleria',
+    video: 'Video',
+    watch: 'Guarda il video',
   },
   contact: {
     eyebrow: 'Mettiamoci in contatto',

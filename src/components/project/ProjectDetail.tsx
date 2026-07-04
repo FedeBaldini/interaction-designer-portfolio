@@ -8,6 +8,8 @@ import type { Project } from '@/data/projects';
 import type { Locale } from '@/lib/i18n';
 import { ImageWithFallback } from '@/components/ImageWithFallback';
 import GalleryCarousel from '@/components/project/GalleryCarousel';
+import LoopVideo from '@/components/project/LoopVideo';
+import VideoEmbed from '@/components/project/VideoEmbed';
 import { C, serif, sans, mono, fadeUp, easeOut } from '@/lib/theme';
 
 interface ProjectDict {
@@ -21,6 +23,8 @@ interface ProjectDict {
   gallery: string;
   openImage: string;
   galleryImageWord: string;
+  video: string;
+  watch: string;
 }
 
 export default function ProjectDetail({
@@ -190,6 +194,29 @@ export default function ProjectDetail({
                 </span>
               ))}
             </div>
+
+            {/* Video */}
+            {(project.youtubeId || project.loopVideo) && (
+              <div className="mb-10">
+                <h2 style={{ ...sans, fontSize: '0.72rem', color: C.muted, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '1rem' }}>
+                  {dict.video}
+                </h2>
+                {project.youtubeId && (
+                  <div className="mb-3">
+                    <VideoEmbed id={project.youtubeId} title={project.title} playLabel={dict.watch} />
+                  </div>
+                )}
+                {project.loopVideo && (
+                  <div className="w-full overflow-hidden flex justify-center" style={{ background: C.card, maxHeight: '75vh' }}>
+                    <LoopVideo
+                      src={project.loopVideo}
+                      poster={project.loopPoster}
+                      className="max-h-[75vh] w-auto max-w-full object-contain"
+                    />
+                  </div>
+                )}
+              </div>
+            )}
 
             {/* Sections */}
             {project.sections.map((s, i) => (
