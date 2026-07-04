@@ -34,6 +34,7 @@ export default function FilmVideo({
           playsInline
           title={title}
           className="max-h-[80vh] w-auto max-w-full"
+          suppressHydrationWarning
         >
           <source src={`${base}.webm`} type="video/webm" />
           <source src={`${base}.mp4`} type="video/mp4" />

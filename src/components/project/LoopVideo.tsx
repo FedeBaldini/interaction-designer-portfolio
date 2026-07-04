@@ -36,7 +36,18 @@ export default function LoopVideo({ base, className }: { base: string; className
   }, []);
 
   return (
-    <video ref={ref} poster={`${base}.jpg`} muted loop playsInline preload="none" className={className}>
+    <video
+      ref={ref}
+      poster={`${base}.jpg`}
+      muted
+      loop
+      playsInline
+      preload="none"
+      className={className}
+      // Some browser extensions (e.g. McAfee Web Boost) inject attributes onto
+      // <video> before hydration; ignore those attribute mismatches.
+      suppressHydrationWarning
+    >
       <source src={`${base}.webm`} type="video/webm" />
       <source src={`${base}.mp4`} type="video/mp4" />
     </video>
