@@ -5,17 +5,13 @@ import { useEffect, useRef } from 'react';
 /**
  * Muted, looping video that behaves like an elegant GIF: it plays only while
  * on screen (saving bandwidth) and starts from a poster frame to avoid layout
- * shift. Users who prefer reduced motion get a paused video with controls.
+ * shift. Serves AV1/WebM first (smallest) with an H.264/MP4 fallback. Users
+ * who prefer reduced motion get a paused video with controls.
+ *
+ * `base` is the path without extension, e.g. "/videos/docare/film" →
+ * <base>.webm, <base>.mp4 sources and <base>.jpg poster.
  */
-export default function LoopVideo({
-  src,
-  poster,
-  className,
-}: {
-  src: string;
-  poster?: string;
-  className?: string;
-}) {
+export default function LoopVideo({ base, className }: { base: string; className?: string }) {
   const ref = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -40,15 +36,9 @@ export default function LoopVideo({
   }, []);
 
   return (
-    <video
-      ref={ref}
-      src={src}
-      poster={poster}
-      muted
-      loop
-      playsInline
-      preload="none"
-      className={className}
-    />
+    <video ref={ref} poster={`${base}.jpg`} muted loop playsInline preload="none" className={className}>
+      <source src={`${base}.webm`} type="video/webm" />
+      <source src={`${base}.mp4`} type="video/mp4" />
+    </video>
   );
 }

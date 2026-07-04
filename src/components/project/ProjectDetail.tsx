@@ -196,7 +196,7 @@ export default function ProjectDetail({
             </div>
 
             {/* Video */}
-            {(project.youtubeId || project.loopVideo) && (
+            {(project.youtubeId || project.loopVideos?.length) && (
               <div className="mb-10">
                 <h2 style={{ ...sans, fontSize: '0.72rem', color: C.muted, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '1rem' }}>
                   {dict.video}
@@ -206,15 +206,15 @@ export default function ProjectDetail({
                     <VideoEmbed id={project.youtubeId} title={project.title} playLabel={dict.watch} />
                   </div>
                 )}
-                {project.loopVideo && (
-                  <div className="w-full overflow-hidden flex justify-center" style={{ background: C.card, maxHeight: '75vh' }}>
-                    <LoopVideo
-                      src={project.loopVideo}
-                      poster={project.loopPoster}
-                      className="max-h-[75vh] w-auto max-w-full object-contain"
-                    />
+                {project.loopVideos?.map((base) => (
+                  <div
+                    key={base}
+                    className="w-full overflow-hidden flex justify-center mb-3 last:mb-0"
+                    style={{ background: C.card, maxHeight: '75vh' }}
+                  >
+                    <LoopVideo base={base} className="max-h-[75vh] w-auto max-w-full object-contain" />
                   </div>
-                )}
+                ))}
               </div>
             )}
 
