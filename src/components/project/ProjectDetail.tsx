@@ -9,6 +9,7 @@ import type { Locale } from '@/lib/i18n';
 import { ImageWithFallback } from '@/components/ImageWithFallback';
 import GalleryCarousel from '@/components/project/GalleryCarousel';
 import LoopVideo from '@/components/project/LoopVideo';
+import LoopVideoCarousel from '@/components/project/LoopVideoCarousel';
 import FilmVideo from '@/components/project/FilmVideo';
 import { C, serif, sans, mono, fadeUp, easeOut } from '@/lib/theme';
 
@@ -212,13 +213,7 @@ export default function ProjectDetail({
                   </div>
                 )}
                 {project.loopVideos && project.loopVideos.length > 1 && (
-                  <div className="flex gap-3 overflow-x-auto pb-3">
-                    {project.loopVideos.map((base) => (
-                      <div key={base} className="shrink-0 overflow-hidden" style={{ background: C.card, height: '60vh' }}>
-                        <LoopVideo base={base} className="h-full w-auto" />
-                      </div>
-                    ))}
-                  </div>
+                  <LoopVideoCarousel bases={project.loopVideos} />
                 )}
               </div>
             )}
