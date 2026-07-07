@@ -26,7 +26,7 @@ export default function About({ dict }: { dict: AboutDict }) {
         transition={{ duration: 0.7 }}
       >
         <ParallaxImage
-          src="/portfolio/placeholder.svg"
+          src="/portfolio/portrait.jpg"
           alt={dict.portraitAlt}
           amount={45}
           style={{ background: C.card, aspectRatio: '4/5' }}
